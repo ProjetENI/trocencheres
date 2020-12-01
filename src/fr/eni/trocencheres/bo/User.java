@@ -8,4 +8,5 @@ public class User {
 	private String userLogin;
 	private String userPassword;
 	private LocalDate dateRegistration = LocalDate.now();
+	// Test 
 }
