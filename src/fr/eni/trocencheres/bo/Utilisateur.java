@@ -20,7 +20,7 @@ public class Utilisateur {
 	
 	//constructeur avec toutes les variables d'instance
 	
-		public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 			super();
 			this.noUtilisateur = noUtilisateur;
@@ -39,7 +39,7 @@ public class Utilisateur {
 	
 	
 	
-	}
+	
 	//constructeur sans parametre 
 	public int getNoUtilisateur() {
 		return noUtilisateur;
