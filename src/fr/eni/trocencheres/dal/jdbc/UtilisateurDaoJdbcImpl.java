@@ -12,8 +12,9 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 import fr.eni.trocencheres.dal.UtilisateurDao;
 
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
-	private final String SELECT_ALL = "select * from UTILISATEURS;";
-	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?);";
+	private final String SELECT_ALL = "SELECT * FROM UTILISATEURS;";
+	private final String SELECT_MDP_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=? OR email=? AND mot_de_passe=?;";
+	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 
 
 	/**
@@ -24,39 +25,36 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	public List<Utilisateur> listerUtilisateurs() {
 		List<Utilisateur> listeUtilisateurs = new ArrayList<>();
 
-		try (Connection conn = ConnectionProvider.getConnection()) {
+		try (Connection conn = ConnectionProvider.getConnection();
+			 Statement stt = conn.createStatement()) {
 
-        	conn.setAutoCommit(false);
-        	 try (Statement stt = conn.createStatement()) {
+			ResultSet rs = stt.executeQuery(SELECT_ALL);
+			Utilisateur utilisateurCourant = new Utilisateur();
 
-                    ResultSet rs = stt.executeQuery(SELECT_ALL);
-                    while (rs.next()) {
-                    	int noUtilisateur = rs.getInt("no_utilisateur");
-                    	String pseudo = rs.getString("pseudo");
-                    	String nom = rs.getString("nom");
-                    	String prenom = rs.getString("prenom");
-                    	String email = rs.getString("email");
-                    	String telephone = rs.getString("telephone");
-                    	String rue = rs.getString("rue");
-                    	String code_postal = rs.getString("code_postal");
-                    	String ville = rs.getString("ville");
-                    	String mot_de_passe = rs.getString("mot_de_passe");
-                    	int credit = rs.getInt("credit");
-                    	boolean administrateur = rs.getBoolean("administrateur");
+            while (rs.next()) {
+            	int noUtilisateur = rs.getInt("no_utilisateur");
+            	String pseudo = rs.getString("pseudo");
+            	String nom = rs.getString("nom");
+            	String prenom = rs.getString("prenom");
+            	String email = rs.getString("email");
+            	String telephone = rs.getString("telephone");
+            	String rue = rs.getString("rue");
+            	String code_postal = rs.getString("code_postal");
+            	String ville = rs.getString("ville");
+            	String mot_de_passe = rs.getString("mot_de_passe");
+            	int credit = rs.getInt("credit");
+            	boolean administrateur = rs.getBoolean("administrateur");
 
-                    	Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);
-                    	listeUtilisateurs.add(utilisateur);
-                    }
-
-        	 } catch (Exception e) {
-                 e.printStackTrace();
-             }
+            	Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);
+            	listeUtilisateurs.add(utilisateur);
+            }
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return listeUtilisateurs;
 	}
+
 
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour l'ajouter en base de données
