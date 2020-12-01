@@ -29,7 +29,6 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			 Statement stt = conn.createStatement()) {
 
 			ResultSet rs = stt.executeQuery(SELECT_ALL);
-			Utilisateur utilisateurCourant = new Utilisateur();
 
             while (rs.next()) {
             	int noUtilisateur = rs.getInt("no_utilisateur");
