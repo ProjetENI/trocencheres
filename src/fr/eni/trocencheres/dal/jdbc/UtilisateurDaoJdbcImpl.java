@@ -10,7 +10,7 @@ import java.util.List;
 import fr.eni.trocencheres.bo.Utilisateur;
 import fr.eni.trocencheres.dal.ConnectionProvider;
 
-public class UtilisateurDaoJdbcImpl {
+public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	private final String SELECT_ALL = "select * from UTILISATEURS;";
 	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values (?,?,?,?,?,?,?,?,?,?,?);";
 
@@ -19,6 +19,7 @@ public class UtilisateurDaoJdbcImpl {
 	 * Fonction qui permet lister tous les utilisateurs présents en base de données
 	 * @return une liste d'Utilisateur
 	 */
+	@Override
 	public List<Utilisateur> listerUtilisateurs() {
 		List<Utilisateur> listeUtilisateurs = new ArrayList<>();
 
@@ -60,6 +61,7 @@ public class UtilisateurDaoJdbcImpl {
 	 * Fonction prenant en paramètre un utilisateur pour l'ajouter en base de données
 	 * @param Utilisateur
 	 */
+	@Override
 	public void ajouterUtilisateur(Utilisateur u) {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
