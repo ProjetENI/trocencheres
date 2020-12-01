@@ -9,6 +9,7 @@ import java.util.List;
 
 import fr.eni.trocencheres.bo.Utilisateur;
 import fr.eni.trocencheres.dal.ConnectionProvider;
+import fr.eni.trocencheres.dal.UtilisateurDao;
 
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	private final String SELECT_ALL = "select * from UTILISATEURS;";
