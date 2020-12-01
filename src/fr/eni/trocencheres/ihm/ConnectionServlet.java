@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/connectionServlet")
-public class connectionServlet extends HttpServlet {
+public class ConnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static String REDIRECTIONLOGIN = "login.jsp";
