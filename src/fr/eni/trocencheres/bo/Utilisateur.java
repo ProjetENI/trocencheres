@@ -3,6 +3,7 @@ package fr.eni.trocencheres.bo;
 public class Utilisateur {
 	
 	// declaration des variables de la classe utillisateur
+	
 	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
@@ -14,7 +15,31 @@ public class Utilisateur {
 	private String ville; 
 	private String motDePasse;
 	private int credit;
+	private boolean administrateur;
 	
+	
+	//constructeur avec toutes les variables d'instance
+	
+		public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
+			super();
+			this.noUtilisateur = noUtilisateur;
+			this.pseudo = pseudo;
+			this.nom = nom;
+			this.prenom = prenom;
+			this.email = email;
+			this.telephone = telephone;
+			this.rue = rue;
+			this.codePostal = codePostal;
+			this.ville = ville;
+			this.motDePasse = motDePasse;
+			this.credit = credit;
+			this.administrateur = administrateur;
+	
+	
+	
+	
+	}
 	//constructeur sans parametre 
 	public int getNoUtilisateur() {
 		return noUtilisateur;
@@ -81,7 +106,22 @@ public class Utilisateur {
 	}
 	public void setCredit(int credit) {
 		this.credit = credit;
-	} 
+	}
+	public boolean isAdministrateur() {
+		return administrateur;
+	}
+	public void setAdministrateur(boolean administrateur) {
+		this.administrateur = administrateur;
+		}
+	
+	
+	
+	
+	
+	
+	
+	 
+	
 	
 	
 	
