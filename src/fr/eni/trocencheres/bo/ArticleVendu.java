@@ -1,5 +1,6 @@
 package fr.eni.trocencheres.bo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ArticleVendu {
@@ -9,16 +10,16 @@ public class ArticleVendu {
 	private int noArticle;
 	private String nomArticle;
 	private String description;
-	private Date dateDebutEncheres;
-	private Date dateFinEcheres;
+	private LocalDate dateDebutEncheres;
+	private LocalDate dateFinEcheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
 
 // construteur avec toutes les variables d'instances
 
-	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEcheres, int miseAPrix, int prixVente, int etatVente) {
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEcheres, int miseAPrix, int prixVente, int etatVente) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -55,19 +56,19 @@ public class ArticleVendu {
 		this.description = description;
 	}
 
-	public Date getDateDebutEncheres() {
+	public LocalDate getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(Date dateDebutEncheres) {
+	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public Date getDateFinEcheres() {
+	public LocalDate getDateFinEcheres() {
 		return dateFinEcheres;
 	}
 
-	public void setDateFinEcheres(Date dateFinEcheres) {
+	public void setDateFinEcheres(LocalDate dateFinEcheres) {
 		this.dateFinEcheres = dateFinEcheres;
 	}
 
