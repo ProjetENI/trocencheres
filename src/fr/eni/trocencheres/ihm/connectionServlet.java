@@ -1,4 +1,4 @@
-package fr.eni.trocencheres.servlets;
+package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
