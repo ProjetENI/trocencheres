@@ -5,8 +5,7 @@ import java.util.Date;
 
 public class ArticleVendu {
 
-//Déclaration des variables de la classe article vendu 	
-
+	//Dï¿½claration des variables de la classe article vendu 	
 	private int noArticle;
 	private String nomArticle;
 	private String description;
@@ -16,8 +15,8 @@ public class ArticleVendu {
 	private int prixVente;
 	private int etatVente;
 
-// construteur avec toutes les variables d'instances
 
+	// construteur avec toutes les variables d'instances
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEcheres, int miseAPrix, int prixVente, int etatVente) {
 		super();
@@ -31,11 +30,11 @@ public class ArticleVendu {
 		this.etatVente = etatVente;
 	}
 
-// Constructeur sans paramètre
+
+	// Getters et setters
 	public int getNoArticle() {
 		return noArticle;
 	}
-
 	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
@@ -43,7 +42,6 @@ public class ArticleVendu {
 	public String getNomArticle() {
 		return nomArticle;
 	}
-
 	public void setNomArticle(String nomArticle) {
 		this.nomArticle = nomArticle;
 	}
@@ -51,7 +49,6 @@ public class ArticleVendu {
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -59,7 +56,6 @@ public class ArticleVendu {
 	public LocalDate getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
-
 	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
@@ -67,7 +63,6 @@ public class ArticleVendu {
 	public LocalDate getDateFinEcheres() {
 		return dateFinEcheres;
 	}
-
 	public void setDateFinEcheres(LocalDate dateFinEcheres) {
 		this.dateFinEcheres = dateFinEcheres;
 	}
@@ -75,7 +70,6 @@ public class ArticleVendu {
 	public int getMiseAPrix() {
 		return miseAPrix;
 	}
-
 	public void setMiseAPrix(int miseAPrix) {
 		this.miseAPrix = miseAPrix;
 	}
@@ -83,7 +77,6 @@ public class ArticleVendu {
 	public int getPrixVente() {
 		return prixVente;
 	}
-
 	public void setPrixVente(int prixVente) {
 		this.prixVente = prixVente;
 	}
@@ -91,7 +84,6 @@ public class ArticleVendu {
 	public int getEtatVente() {
 		return etatVente;
 	}
-
 	public void setEtatVente(int etatVente) {
 		this.etatVente = etatVente;
 	}
