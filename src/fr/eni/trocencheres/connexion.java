@@ -1,5 +1,6 @@
 package fr.eni.trocencheres;
 
 public class connexion {
-	String username;
+	private String username;
+	
 }
