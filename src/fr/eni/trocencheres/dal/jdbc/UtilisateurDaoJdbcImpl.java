@@ -69,21 +69,19 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         	try (Statement stt = conn.createStatement();
                  PreparedStatement pstt_utilisateur = conn.prepareStatement(INSERT_UTILISATEUR)) {
 
-        		ResultSet rs = stt.executeQuery(SELECT_ALL);
-                while (rs.next()) {
-					pstt_utilisateur.setString(1, u.getPseudo());
-					pstt_utilisateur.setString(2, u.getNom());
-					pstt_utilisateur.setString(3, u.getPrenom());
-					pstt_utilisateur.setString(4, u.getEmail());
-					pstt_utilisateur.setString(5, u.getTelephone());
-					pstt_utilisateur.setString(6, u.getRue());
-					pstt_utilisateur.setString(7, u.getCodePostal());
-					pstt_utilisateur.setString(8, u.getVille());
-					pstt_utilisateur.setString(9, u.getMotDePasse());
-					pstt_utilisateur.setInt(10, u.getCredit());
-					pstt_utilisateur.setBoolean(11, u.isAdministrateur());
-					pstt_utilisateur.executeUpdate();
-                }
+				pstt_utilisateur.setString(1, u.getPseudo());
+				pstt_utilisateur.setString(2, u.getNom());
+				pstt_utilisateur.setString(3, u.getPrenom());
+				pstt_utilisateur.setString(4, u.getEmail());
+				pstt_utilisateur.setString(5, u.getTelephone());
+				pstt_utilisateur.setString(6, u.getRue());
+				pstt_utilisateur.setString(7, u.getCodePostal());
+				pstt_utilisateur.setString(8, u.getVille());
+				pstt_utilisateur.setString(9, u.getMotDePasse());
+				pstt_utilisateur.setInt(10, u.getCredit());
+				pstt_utilisateur.setBoolean(11, u.isAdministrateur());
+
+				pstt_utilisateur.executeUpdate();
 
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -94,5 +92,24 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		}
 	}
 
+	
+	public boolean verifierMotDePasse(String identifiant, String mdp) {
+		boolean isCorrect = false;
+		
+		try (Connection conn = ConnectionProvider.getConnection();
+		     PreparedStatement pstt = conn.prepareStatement(SELECT_MDP_PSEUDO)) {
 
+			pstt.setString(1, identifiant);
+			pstt.setString(2, identifiant);
+			pstt.setString(3, mdp);
+			
+			ResultSet rs = pstt.executeQuery();
+			while (rs.next()) {
+				isCorrect = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isCorrect;
+	}
 }
