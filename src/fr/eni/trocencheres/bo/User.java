@@ -7,6 +7,7 @@ public class User {
 	private String userLastName;
 	private String userLogin;
 	private String userPassword;
+	private String userPassword2;
 	private LocalDate dateRegistration = LocalDate.now();
-	// Test 
+	// Test de commentaire
 }
