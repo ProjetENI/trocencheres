@@ -21,15 +21,15 @@
 			<div class="row">
 				<div class="form-group col-4">
 					<label for="ancienMotDePasse">Ancien Mot de Passe</label>
-					<input type="text" class="form-control" id="ancienMotDePasse">
+					<input type="password" class="form-control" id="ancienMotDePasse">
 				</div>
 				<div class="form-group col-4">
 					<label for="nouveauMotDePasse1">Nouveau Mot de Passe</label>
-					<input type="text" class="form-control" id="nouveauMotDePasse1">
+					<input type="password" class="form-control" id="nouveauMotDePasse1">
 				</div>
 				<div class="form-group col-4">
 					<label for="nouveauMotDePasse2">Confirmer mot de passe</label>
-					<input type="text" class="form-control" id="nouveauMotDePasse2">
+					<input type="password" class="form-control" id="nouveauMotDePasse2">
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Modifier</button>
