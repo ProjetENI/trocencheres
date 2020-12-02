@@ -30,4 +30,10 @@ public interface UtilisateurDao {
 	 */
 	void supprimerUtilisateur(Utilisateur utilisateur);
 
+	/**
+	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
+	 * @return une liste d'Utilisateur
+	 */
+	Utilisateur listeUtilisateurInformation();
+
 }
