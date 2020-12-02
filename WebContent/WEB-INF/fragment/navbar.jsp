@@ -10,6 +10,9 @@
 			<li class="nav-item active">
 				<a class="nav-link" href="#">S'inscrire-Se connecter<span class="sr-only">(current)</span></a>
 			</li>
+			<li class="nav-item active">
+			<a class="nav-link" href="MonProfil.jsp">Mon Profil<span class="sr-only">(current)</span></a>
+			</li>
 		</ul>
 		
 		<c:choose>
