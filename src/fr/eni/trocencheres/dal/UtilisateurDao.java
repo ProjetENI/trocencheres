@@ -16,6 +16,18 @@ public interface UtilisateurDao {
 	 * Fonction prenant en paramètre un utilisateur pour l'ajouter en base de données
 	 * @param Utilisateur
 	 */
-	void ajouterUtilisateur(Utilisateur u);
+	void ajouterUtilisateur(Utilisateur utilisateur);
+
+	/**
+	 * Fonction prenant en paramètre un utilisateur pour modifier ses données en base
+	 * @param Utilisateur
+	 */
+	void modifierUtilisateur(Utilisateur utilisateur);
+
+	/**
+	 * Fonction prenant en paramètre un utilisateur pour supprimer ses données en base
+	 * @param Utilisateur
+	 */
+	void supprimerUtilisateur(Utilisateur utilisateur);
 
 }
