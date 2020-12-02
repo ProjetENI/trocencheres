@@ -23,8 +23,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			+ "WHERE no_utilisateur=?; ";
 	private final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?; ";
 
-	private final String SELECT_MDP = "SELECT mot_de_passe FROM UTILISATEURS WHERE pseudo=? OR email=?;";
-	// private final String SELECT_MDP_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=? OR email=? AND mot_de_passe=?;";
+	private final String SELECT_MDP_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=? OR email=? AND mot_de_passe=?;";
 
 	/**
 	 * Fonction qui permet lister tous les utilisateurs présents en base de données
@@ -183,26 +182,26 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 	
 	
-//	public boolean verifierMotDePasse(String identifiant, String mdp) {
-//
-//		boolean isCorrect = false;
-//
-//		try (Connection conn = ConnectionProvider.getConnection();
-//		     PreparedStatement pstt = conn.prepareStatement(SELECT_MDP_PSEUDO)) {
-//
-//			pstt.setString(1, identifiant);
-//			pstt.setString(2, identifiant);
-//			pstt.setString(3, mdp);
-//
-//			ResultSet rs = pstt.executeQuery();
-//			while (rs.next()) {
-//				isCorrect = true;
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return isCorrect;
-//	}
+	public boolean verifierMotDePasse(String identifiant, String mdp) {
+
+		boolean isCorrect = false;
+
+		try (Connection conn = ConnectionProvider.getConnection();
+		     PreparedStatement pstt = conn.prepareStatement(SELECT_MDP_PSEUDO)) {
+
+			pstt.setString(1, identifiant);
+			pstt.setString(2, identifiant);
+			pstt.setString(3, mdp);
+
+			ResultSet rs = pstt.executeQuery();
+			while (rs.next()) {
+				isCorrect = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isCorrect;
+	}
 
 
 }

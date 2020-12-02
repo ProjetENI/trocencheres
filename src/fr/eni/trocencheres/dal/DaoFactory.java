@@ -4,7 +4,7 @@ import fr.eni.trocencheres.dal.jdbc.UtilisateurDaoJdbcImpl;
 
 public abstract class DaoFactory {
 	
-	private static UtilisateurDao getUtilisaseurDao() {
+	public static UtilisateurDao getUtilisaseurDao() {
 		return new UtilisateurDaoJdbcImpl();
 	}
 
