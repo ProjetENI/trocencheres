@@ -32,9 +32,13 @@
 			<input type="password" id="motdepassse"
 				name="motdepasse" size="20" maxlength="20" />
 			<span class="erreur">${form.erreurs['motdepasse']}</span> 
-				<br /> 
+			<br /> 
 				
 			<input type="submit" value="Connexion" class="sansLabel" /> 
+			
+		</form>
+		<form action="InscriptionServlet">
+			<input type="submit" value="S'inscrire" class="sansLabel"/>
 		</form>
 			
 			<br />

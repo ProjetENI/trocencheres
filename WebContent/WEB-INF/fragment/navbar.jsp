@@ -8,7 +8,7 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">S'inscrire-Se connecter<span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="ConnectionServlet">S'inscrire-Se connecter<span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item active">
 			<a class="nav-link" href="MonProfilServlet">Mon Profil<span class="sr-only">(current)</span></a>
