@@ -13,9 +13,12 @@ import fr.eni.trocencheres.dal.UtilisateurDao;
 
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
-	private final String SELECT_ALL = "SELECT * FROM UTILISATEURS;";
+	private final String SELECT_ALL = "SELECT (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
+			+ "FROM UTILISATEURS;";
 	
-	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS = "SELECT * FROM UTILISATEURS WHERE pseudo=? OR email=?;";
+	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS = "SELECT "
+			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur) "
+			+ "FROM UTILISATEURS WHERE pseudo=? OR email=?;";
 	
 	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS"
 			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
@@ -68,6 +71,44 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			e.printStackTrace();
 		}
 		return listeUtilisateurs;
+	}
+	
+	/**
+	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
+	 * @return une liste d'Utilisateur
+	 */
+	@Override
+	public Utilisateur listeUtilisateurInformation() {
+
+		Utilisateur infoUtilisateur = new Utilisateur();
+
+		try (Connection conn = ConnectionProvider.getConnection();
+			 Statement stt = conn.createStatement()) {
+
+			ResultSet rs = stt.executeQuery(SELECT_ALL_UTILISATEUR_INFORMATIONS);
+
+            while (rs.next()) {
+            	int noUtilisateur = rs.getInt("no_utilisateur");
+            	String pseudo = rs.getString("pseudo");
+            	String nom = rs.getString("nom");
+            	String prenom = rs.getString("prenom");
+            	String email = rs.getString("email");
+            	String telephone = rs.getString("telephone");
+            	String rue = rs.getString("rue");
+            	String code_postal = rs.getString("code_postal");
+            	String ville = rs.getString("ville");
+            	String mot_de_passe = rs.getString("mot_de_passe");
+            	int credit = rs.getInt("credit");
+            	boolean administrateur = rs.getBoolean("administrateur");
+
+            	infoUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);
+            	
+            }
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return infoUtilisateur;
 	}
 
 
