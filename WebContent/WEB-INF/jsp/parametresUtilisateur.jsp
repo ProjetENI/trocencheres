@@ -15,28 +15,28 @@
 
 <!-- Remplit à titre d'exemple pour le moment-->
 <div class="container">
-	<section>
+	<section class="mb-5">
 		<h2>Changer de mot de passe</h2>
 		<form action="changerMotDePasseServlet" method="POST">
 			<div class="row">
 				<div class="form-group col-4">
-					<label for="prenom">Ancien Mot de Passe</label>
-					<input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+					<label for="ancienMotDePasse">Ancien Mot de Passe</label>
+					<input type="text" class="form-control" id="ancienMotDePasse">
 				</div>
 				<div class="form-group col-4">
-					<label for="nom">Nouveau Mot de Passe</label>
-					<input type="text" class="form-control" id="nom" placeholder="Votre nom">
+					<label for="nouveauMotDePasse1">Nouveau Mot de Passe</label>
+					<input type="text" class="form-control" id="nouveauMotDePasse1">
 				</div>
 				<div class="form-group col-4">
-					<label for="nom">Confirmer mot de passe</label>
-					<input type="text" class="form-control" id="nom" placeholder="Votre nom">
+					<label for="nouveauMotDePasse2">Confirmer mot de passe</label>
+					<input type="text" class="form-control" id="nouveauMotDePasse2">
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Modifier</button>
 		</form>
 	</section>
 	
-	<section>
+	<section class="mb-5">
 		<h2>Modifier les paramètres utilisateur</h2>
 		<form action="ParametresUtilisateurServlet" method="POST">
 			<div class="row">
@@ -72,18 +72,14 @@
 				<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
 				<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 			</div>
-			<div class="form-group">
-				<label for="InputPassword">Mot de Passe</label>
-				<input type="password" class="form-control" id="InputPassword">
-			</div>
 			<button type="submit" class="btn btn-primary">Modifier</button>
 		</form>
 	</section>
 	
-	<section>
+	<section class="mb-5">
 		<h2>Supprimer mon compte</h2>
-		<p>Vous pouvez supprimer votre compte en cliquant sur "Supprimer le compte".</p>
-		<p>Attention: Toutes vos données seront perdue.</p>
+		<p>Vous pouvez supprimer votre compte en cliquant sur "Supprimer le compte".<br/>
+		Attention: Toutes vos données seront perdue.</p>
 		<button type="button" class="btn btn-outline-danger">Supprimer le compte</button>	
 	</section>
 	
