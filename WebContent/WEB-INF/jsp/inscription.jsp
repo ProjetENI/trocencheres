@@ -16,26 +16,33 @@
 <!-- Remplit à titre d'exemple pour le moment-->
 <div class="container">
 	<form action="inscriptionServlet" method="POST">
-		<div class="form-group">
-			<label for="prenom">Prénom</label>
-			<input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
-			<label for="nom">Nom</label>
-			<input type="text" class="form-control" id="nom" placeholder="Votre nom">
+		<div class="row">
+			<div class="form-group col-6">
+				<label for="prenom">Prénom</label>
+				<input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+			</div>
+			<div class="form-group col-6">
+				<label for="nom">Nom</label>
+				<input type="text" class="form-control" id="nom" placeholder="Votre nom">
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="pseudo">Pseudo</label>
 			<input type="text" class="form-control" id="pseudo" placeholder="Votre pseudo">
 		</div>
-		<p>Adresse</p>
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>
 			<input type="text" class="form-control" id="rue" placeholder="Votre adresse">
 		</div>
-		<div class="form-group">
-			<label for="codePostal">Code Postal</label>
+		<div class="row">
+			<div class="form-group col-6">
+				<label for="codePostal">Code Postal</label>
 			<input type="text" class="form-control" id="codePostal" placeholder="CP">
-			<label for="ville">Ville</label>
-			<input type="text" class="form-control" id="ville" placeholder="Ville">
+			</div>
+			<div class="form-group col-6">
+				<label for="ville">Ville</label>
+				<input type="text" class="form-control" id="ville" placeholder="Ville">
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="InputEmail">Email</label>
