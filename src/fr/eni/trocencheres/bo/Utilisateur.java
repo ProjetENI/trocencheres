@@ -2,7 +2,7 @@ package fr.eni.trocencheres.bo;
 
 public class Utilisateur {
 	
-	// declaration des variables de la classe utilisateur
+	// declaration des variables de la utilisateur
 	
 	private int noUtilisateur;
 	private String pseudo;
@@ -22,8 +22,28 @@ public class Utilisateur {
 	public Utilisateur() {
 		
 	}
+	
+	
+	//constructeur avec toutes les variables sauf le motDePasse
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, int credit, boolean administrateur) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.credit = credit;
+		this.administrateur = administrateur;
+	}
 
-	//constructeur avec toutes les variables d'instance	
+
+
+	//constructeur avec toutes les variables
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 			this.noUtilisateur = noUtilisateur;

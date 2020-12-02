@@ -14,16 +14,23 @@ import fr.eni.trocencheres.dal.UtilisateurDao;
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
 	private final String SELECT_ALL = "SELECT * FROM UTILISATEURS;";
+	
+	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS = "SELECT * FROM UTILISATEURS WHERE pseudo=? OR email=?;";
+	
 	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS"
 			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
 			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?);";
-	private final String UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET "
+	
+	private final String UPDATE_UTILISATEUR_INFO = "UPDATE UTILISATEURS SET "
 			+ "pseudo = '?',nom = '?',prenom = '?',email = '?',telephone = '?',rue = '?',"
 			+ "code_postal = '?',ville = '?',mot_de_passe = '?',credit = '?',administrateur = '?'"
 			+ "WHERE no_utilisateur=?; ";
+	private final String UPDATE_UTILISATEUR_MDP = "UPDATE UTILISATEURS SET mot_de_passe = '?'"
+			+ "WHERE no_utilisateur=?; ";
+	
 	private final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?; ";
 
-	private final String SELECT_MDP_PSEUDO = "SELECT * FROM UTILISATEURS WHERE pseudo=? OR email=? AND mot_de_passe=?;";
+	private final String SELECT_MDP_PSEUDO = "SELECT pseudo FROM UTILISATEURS WHERE (pseudo=? OR email=?) AND mot_de_passe=?;";
 
 	/**
 	 * Fonction qui permet lister tous les utilisateurs présents en base de données
@@ -87,7 +94,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 				pstt_utilisateur.setString(8, utilisateur.getVille());
 				pstt_utilisateur.setString(9, utilisateur.getMotDePasse());
 				pstt_utilisateur.setInt(10, utilisateur.getCredit());
-				pstt_utilisateur.setBoolean(11, utilisateur.isAdministrateur());
+				pstt_utilisateur.setBoolean(11, false);
 
 				pstt_utilisateur.executeUpdate();
 				
@@ -122,7 +129,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 			conn.setAutoCommit(false);
         	try (Statement stt = conn.createStatement();
-                 PreparedStatement pstt_utilisateur = conn.prepareStatement(UPDATE_UTILISATEUR)) {
+                 PreparedStatement pstt_utilisateur = conn.prepareStatement(UPDATE_UTILISATEUR_INFO)) {
 
         		pstt_utilisateur.setInt(12, utilisateur.getNoUtilisateur());
         		
@@ -179,10 +186,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		e.printStackTrace();
 	}
 }
-
 	
 	
-	public boolean verifierMotDePasse(String identifiant, String mdp) {
+	public boolean verifierIdentification(String identifiant, String mdp) {
 
 		boolean isCorrect = false;
 
@@ -194,7 +200,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			pstt.setString(3, mdp);
 
 			ResultSet rs = pstt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				isCorrect = true;
 			}
 		} catch (Exception e) {
