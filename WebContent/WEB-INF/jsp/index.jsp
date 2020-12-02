@@ -13,8 +13,13 @@
 	<div class="container">
 	
 		<!-- 	CONTENU DE LA PAGE INDEX -->
-		kqsdfkjqsdhkjdhsfkj dshf kjdshfk jhsdfk jdhskj fdsfl kjsdhf lkjsdhfk jshdf qkjdshkjdsf 
-		dskjfhdfkjghkfdjhkf jhg kjdfghjk dfhjkg dfkgk jdfhg 
+		<div class="row text-center">
+	    <div class="col">Informatique</div>
+	    <div class="col">Ameublement</div>
+	    <div class="w-100"></div>
+	    <div class="col">Vêtement</div>
+	    <div class="col">Sport et Loisirs</div>
+	  </div>
 	</div>
 
 
