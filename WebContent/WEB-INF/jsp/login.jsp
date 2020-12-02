@@ -4,14 +4,18 @@
     <jsp:param name="onglet" value="Header_Value"/>
 </jsp:include>
 
+<jsp:include page="/WEB-INF/fragment/navbar.jsp">
+    <jsp:param name="title" value="Navbar_Value"/>
+</jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/banner.jsp">
     <jsp:param name="title" value="Banner_Value"/>
 </jsp:include>
 
+
 <!-- Remplit à titre d'exemple pour le moment-->
 <div class="container">
-    <c:if test="${!empty listeUtilisateur}">
+<%--     <c:if test="${!empty listeUtilisateur}">
 	    <div class="row d-flex justify-content-center align-items-center full-height">
 	        <ul class="list-group col-12">
 		        <c:forEach items="${listeUtilisateur}" var="lu">
@@ -25,7 +29,7 @@
 		        </c:forEach>
 	        </ul>
 	    </div>
-    </c:if>
+    </c:if> --%>
 </div>
 
 <jsp:include page="/WEB-INF/fragment/footer.jsp">
