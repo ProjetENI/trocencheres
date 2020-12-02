@@ -12,13 +12,13 @@
 <li>Mes enchères en cours</li>
 <li>Mes articles suivis</li>
 <li class="nav-item active">
-			<a class="nav-link" href="#">Modifier mes paramètres<span class="sr-only">(current)</span></a>
+			<a class="nav-link" href="ModifierParametreServlet">Modifier mes paramètres<span class="sr-only">(current)</span></a>
 			</li>
 <li class="nav-item active">
-			<a class="nav-link" href="#">Modifier mon mot de passe<span class="sr-only">(current)</span></a>
+			<a class="nav-link" href="ModifierMotDePasseServlet">Modifier mon mot de passe<span class="sr-only">(current)</span></a>
 			</li>
 <li class="nav-item active">
-			<a class="nav-link" href="#">Supprimer mon compte<span class="sr-only">(current)</span></a>
+			<a class="nav-link" href="SupprimerCompte.jsp">Supprimer mon compte<span class="sr-only">(current)</span></a>
 			</li>			
 </ul>
 
