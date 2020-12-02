@@ -9,27 +9,38 @@
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/banner.jsp">
-    <jsp:param name="title" value="Banner_Value"/>
+    <jsp:param name="title" value="Connection"/>
 </jsp:include>
 
 
 <!-- Remplit à titre d'exemple pour le moment-->
 <div class="container">
-<%--     <c:if test="${!empty listeUtilisateur}">
-	    <div class="row d-flex justify-content-center align-items-center full-height">
-	        <ul class="list-group col-12">
-		        <c:forEach items="${listeUtilisateur}" var="lu">
-		            <li class="list-group-item d-flex justify-content-between align-items-center">
-		                ${lu.id} : ${lu.name}
-		                <div class="list-buttons">
-		                    <i class="fa fa-shopping-cart"></i>
-		                    <i class="fa fa-trash"></i>
-		                </div>
-		            </li>
-		        </c:forEach>
-	        </ul>
-	    </div>
-    </c:if> --%>
+	
+	<fieldset>
+	
+		<legend>Connexion</legend>
+		<p>Formulaire de connexion</p>
+		<form method="post" action="connexion">	
+			<label for="nom">Adresse email<span class="requis">*</span></label> 
+			<input type="email" id="email" name="email"
+				value="<c:out value="${utilisateur.email}"/>" size="20"
+				maxlength="60" />
+			<span class="erreur">${form.erreurs['email']}</span>
+			
+			<br /> 
+			<label for="motdepasse">Mot de passe<span class="requis">*</span></label>
+			<input type="password" id="motdepassse"
+				name="motdepasse" size="20" maxlength="20" />
+			<span class="erreur">${form.erreurs['motdepasse']}</span> 
+				<br /> 
+				
+			<input type="submit" value="Connexion" class="sansLabel" /> 
+		</form>
+			
+			<br />
+
+		<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+	</fieldset>
 </div>
 
 <jsp:include page="/WEB-INF/fragment/footer.jsp">

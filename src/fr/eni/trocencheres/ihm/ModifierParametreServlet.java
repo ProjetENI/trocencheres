@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MonProfilServlet
  */
-@WebServlet("/MonProfilServlet")
+@WebServlet("/ModifierParametreServlet")
 public class ModifierParametreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

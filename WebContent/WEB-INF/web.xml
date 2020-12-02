@@ -1,50 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>trocencheres</display-name>
-  <welcome-file-list>
-    <welcome-file>IndexServlet</welcome-file>
-  </welcome-file-list>
-  
-  <servlet>
-  	<description>Index</description>
-    <servlet-name>Index</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/index.jsp</jsp-file>
-  </servlet>
-  
-  <servlet>
-  	<description>Inscription</description>
-    <servlet-name>Inscription</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/inscription.jsp</jsp-file>
-  </servlet>
-  
-    <servlet>
-  	<description>Parametres</description>
-    <servlet-name>Parametres</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/parametresUtilisateur.jsp</jsp-file>
-  </servlet>
-  
-   <servlet>
-  	<description>MonProfil</description>
-    <servlet-name>MonProfil</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/MonProfil.jsp</jsp-file>
-  </servlet>
-  
-   <servlet>
-  	<description>ModifierParametre</description>
-    <servlet-name>ModifierParametre</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/ModifierParametre.jsp</jsp-file>
-  </servlet>
-  
-  <servlet>
-  	<description>ModifierMotDePasse</description>
-    <servlet-name>ModifierMotDePasse </servlet-name>
-  	<jsp-file>/WEB-INF/jsp/ModifierMotDePasse.jsp</jsp-file>
-  </servlet>
-  
-  <servlet>
-  	<description>SupprimerCompte</description>
-    <servlet-name>SupprimerCompte</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/SupprimerCompte.jsp</jsp-file>
-  </servlet>
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>trocencheres</display-name>
+	<welcome-file-list>
+		<welcome-file>IndexServlet</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<description>Index</description>
+		<servlet-name>Index</servlet-name>
+		<jsp-file>/WEB-INF/jsp/index.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>Inscription</description>
+		<servlet-name>Inscription</servlet-name>
+		<jsp-file>/WEB-INF/jsp/inscription.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>Parametres</description>
+		<servlet-name>Parametres</servlet-name>
+		<jsp-file>/WEB-INF/jsp/parametresUtilisateur.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>MonProfil</description>
+		<servlet-name>MonProfil</servlet-name>
+		<jsp-file>/WEB-INF/jsp/MonProfil.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>ModifierParametre</description>
+		<servlet-name>ModifierParametre</servlet-name>
+		<jsp-file>/WEB-INF/jsp/ModifierParametre.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>ModifierMotDePasse</description>
+		<servlet-name>ModifierMotDePasse</servlet-name>
+		<jsp-file>/WEB-INF/jsp/ModifierMotDePasse.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>SupprimerCompte</description>
+		<servlet-name>SupprimerCompte</servlet-name>
+		<jsp-file>/WEB-INF/jsp/SupprimerCompte.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<description>ConnectionServlet</description>
+		<servlet-name>ConnectionServlet</servlet-name>
+		<jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
+	</servlet>
 </web-app>

@@ -14,14 +14,7 @@
 			<a class="nav-link" href="MonProfilServlet">Mon Profil<span class="sr-only">(current)</span></a>
 			</li>
 		</ul>
-		
-		<c:choose>
-        	<c:when test="${Utilisateur != null}">
-        		${Utilisateur.name}
-        		// href vers seDeconnecter
-        	</c:when>
-        	<c:when test="${Utilisateur = null }"><a href="versServletConnexion">Connexion</a></c:when>
-		</c:choose>
+
 
 	</div>
 
