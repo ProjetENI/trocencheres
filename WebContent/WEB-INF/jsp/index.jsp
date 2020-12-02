@@ -13,13 +13,13 @@
 	<div class="container">
 	
 		<!-- 	CONTENU DE LA PAGE INDEX -->
-		<div class="row text-center">
-	    <div class="col">Informatique</div>
-	    <div class="col">Ameublement</div>
-	    <div class="w-100"></div>
-	    <div class="col">Vêtement</div>
-	    <div class="col">Sport et Loisirs</div>
-	  </div>
+		<div class="row">
+	    	<div class="col h200 d-flex align-items-center justify-content-center">Informatique</div>
+	    	<div class="col h200 d-flex align-items-center justify-content-center">Ameublement</div>
+		    <div class="w-100"></div>
+		    <div class="col h200 d-flex align-items-center justify-content-center">Vêtement</div>
+		    <div class="col h200 d-flex align-items-center justify-content-center">Sport et Loisirs</div>
+	  	</div>
 	</div>
 
 
