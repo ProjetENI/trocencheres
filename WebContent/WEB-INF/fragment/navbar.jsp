@@ -7,19 +7,21 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item active">
-				<c:choose>
-					<c:when test="${utilisateur.pseudo eq null}">
+			<c:choose>
+				<c:when test="${utilisateur.pseudo eq null}">
+					<li class="nav-item">
 						<a class="nav-link" href="ConnectionServlet">Se connecter<span class="sr-only">(current)</span></a>
-					</c:when>
-					<c:otherwise>
-						<a class="nav-link" href="DeconnexionServlet">Se déconnecter<span class="sr-only">(current)</span></a>
-					</c:otherwise>
-				</c:choose>
-			</li>
-			<li class="nav-item active">
-			<a class="nav-link" href="MonProfilServlet">Mon Profil<span class="sr-only">(current)</span></a>
-			</li>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li class="nav-item">
+						<a class="nav-link" href="DeconnectionServlet">Se déconnecter<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="MonProfilServlet">Mon Profil<span class="sr-only">(current)</span></a>
+					</li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 
 
