@@ -78,15 +78,15 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	 * @return une liste d'Utilisateur
 	 */
 	@Override
-	public Utilisateur listeUtilisateurInformation(String pPseudo) {
+	public Utilisateur listerUtilisateurInformation(String identifiant) {
 
 		Utilisateur infoUtilisateur = new Utilisateur();
 
 		try (	Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement pstt_utilisateur = conn.prepareStatement(SELECT_ALL_UTILISATEUR_INFORMATIONS)) {
 
-			pstt_utilisateur.setString(1, pPseudo);
-			pstt_utilisateur.setString(2, pPseudo);
+			pstt_utilisateur.setString(1, identifiant);
+			pstt_utilisateur.setString(2, identifiant);
 
 			ResultSet rs = pstt_utilisateur.executeQuery();
 			
