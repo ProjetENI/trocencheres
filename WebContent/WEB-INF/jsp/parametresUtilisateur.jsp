@@ -6,7 +6,7 @@
 	<div class="container">
 	<section class="mb-5">
 		<h2>Modifier les paramètres utilisateur</h2>
-		<form action="ParametresUtilisateurServlet" method="POST">
+		<form action="ModifierParametresServlet" method="POST">
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="prenom">Prénom</label>

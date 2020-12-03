@@ -29,25 +29,25 @@
 	<servlet>
 		<description>MonProfil</description>
 		<servlet-name>MonProfil</servlet-name>
-		<jsp-file>/WEB-INF/jsp/MonProfil.jsp</jsp-file>
+		<jsp-file>/WEB-INF/jsp/monProfil.jsp</jsp-file>
 	</servlet>
 
 	<servlet>
 		<description>ModifierParametre</description>
 		<servlet-name>ModifierParametre</servlet-name>
-		<jsp-file>/WEB-INF/jsp/ModifierParametre.jsp</jsp-file>
+		<jsp-file>/WEB-INF/jsp/modifierParametre.jsp</jsp-file>
 	</servlet>
 
 	<servlet>
 		<description>ModifierMotDePasse</description>
 		<servlet-name>ModifierMotDePasse</servlet-name>
-		<jsp-file>/WEB-INF/jsp/ModifierMotDePasse.jsp</jsp-file>
+		<jsp-file>/WEB-INF/jsp/modifierMotDePasse.jsp</jsp-file>
 	</servlet>
 
 	<servlet>
 		<description>SupprimerCompte</description>
 		<servlet-name>SupprimerCompte</servlet-name>
-		<jsp-file>/WEB-INF/jsp/SupprimerCompte.jsp</jsp-file>
+		<jsp-file>/WEB-INF/jsp/supprimerCompte.jsp</jsp-file>
 	</servlet>
 
 	<servlet>

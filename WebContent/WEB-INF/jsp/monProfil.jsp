@@ -45,17 +45,17 @@
 					</div>
 	
 					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-						<jsp:include page="/WEB-INF/jsp/ModifierMotDePasse.jsp">
+						<jsp:include page="/WEB-INF/jsp/modifierMotDePasse.jsp">
 							<jsp:param name="onglet" value="Header_Value"/>
 						</jsp:include>
 					</div>
 	
 					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-						<jsp:include page="/WEB-INF/jsp/SupprimerCompte.jsp">
+						<jsp:include page="/WEB-INF/jsp/supprimerCompte.jsp">
 							<jsp:param name="onglet" value="Header_Value"/>
 						</jsp:include>
 					</div>
-	
+
 					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 						...
 					</div>
