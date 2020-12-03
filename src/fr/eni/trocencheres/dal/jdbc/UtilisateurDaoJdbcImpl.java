@@ -26,10 +26,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
 	private final String UPDATE_UTILISATEUR_INFO = "UPDATE UTILISATEURS SET "
 			+ "pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, "
-			+ "code_postal=?, ville=?"
-			+ "WHERE no_utilisateur=?; ";
+			+ "code_postal=?, ville=? "
+			+ "WHERE no_utilisateur=?;";
 	
-	private final String UPDATE_UTILISATEUR_MDP = "UPDATE UTILISATEURS SET mot_de_passe = '?'"
+	private final String UPDATE_UTILISATEUR_MDP = "UPDATE UTILISATEURS SET mot_de_passe =? "
 			+ "WHERE no_utilisateur=?; ";
 	
 	private final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?; ";
