@@ -8,22 +8,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
-@WebServlet("/DeconnexionServlet")
-public class DeconnexionServlet extends HttpServlet {
+@WebServlet("/DeconnectionServlet")
+public class DeconnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String INDEX = "Index";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		forward(request, response, INDEX);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("utilisateur");
+		
 		forward(request, response, INDEX);
+		
 	}
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String redirection) throws ServletException, IOException {
 
