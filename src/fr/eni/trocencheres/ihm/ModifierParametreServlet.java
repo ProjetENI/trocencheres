@@ -23,15 +23,14 @@ public class ModifierParametreServlet extends HttpServlet {
 
 	private static final String PARAMETRE_UTILISATEUR = "MonProfil";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		forward(request, response, PARAMETRE_UTILISATEUR);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		boolean validModif = false;
 		String pseudo = request.getParameter("pseudo");
 		UtilisateurManager um = new UtilisateurManager();
 		Utilisateur userAModifieer = um.listerUtilisateurInformation(pseudo);
@@ -42,11 +41,15 @@ public class ModifierParametreServlet extends HttpServlet {
 	
 		try {
 			um.modifierUtilisateur(myUser);
+			validModif = true;
 
-			HttpSession session = request.getSession();
-			session.setAttribute("utilisateur", myUser);
 		} catch (BllException e) {
 			e.printStackTrace();
+		}
+		
+		if (validModif) {
+			HttpSession session = request.getSession();
+			session.setAttribute("utilisateur", myUser);
 		}
 		
 		forward(request, response, PARAMETRE_UTILISATEUR);

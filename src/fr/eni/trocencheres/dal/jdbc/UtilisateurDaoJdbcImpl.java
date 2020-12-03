@@ -185,8 +185,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 				pstt_utilisateur.setString(8, utilisateur.getVille());
 
 				pstt_utilisateur.executeUpdate();
+				
 				conn.commit();
-
+				
 	        } catch (Exception e) {
 	        	conn.rollback();
 	            e.printStackTrace();

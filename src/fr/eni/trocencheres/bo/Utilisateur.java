@@ -173,6 +173,17 @@ public class Utilisateur {
 	}
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
-	}		
+	}
+
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Utilisateur noUtilisateur=%s, pseudo=%s, nom=%s, prenom=%s, email=%s, telephone=%s, rue=%s, codePostal=%s, ville=%s, motDePasse=%s, credit=%s, administrateur=%s",
+				noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit,
+				administrateur);
+	}	
+	
+	
 
 }
