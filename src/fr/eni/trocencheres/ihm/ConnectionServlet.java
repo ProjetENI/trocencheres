@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.trocencheres.dal.jdbc.UtilisateurDaoJdbcImpl;
+import fr.eni.trocencheres.bll.UtilisateurManager;
 
 @WebServlet("/ConnectionServlet")
 public class ConnectionServlet extends HttpServlet {
@@ -28,16 +28,23 @@ public class ConnectionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String motdepasse = request.getParameter("motdepasse");
-		String erreur = request.getParameter("erreur");
 
-		UtilisateurDaoJdbcImpl toto = new UtilisateurDaoJdbcImpl();
-		boolean resulatIdentification = toto.verifierIdentification(email, motdepasse);
+		UtilisateurManager toto = new UtilisateurManager();
+		//boolean resulatIdentification = toto.verifierIdentification(email, motdepasse);
+		boolean resulatIdentification = false;
+		
+		if(email  == null || motdepasse == null) {
+			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
+			forward(request, response, LOGIN);
+		}
+		
 		if (resulatIdentification) {
 			forward(request, response, INDEX);
 		} else {
-			request.setAttribute("error", "");
-			forward(request, response, INDEX);
+			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
+			forward(request, response, LOGIN);
 		}
+		
 	}
 
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection)

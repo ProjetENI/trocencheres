@@ -21,17 +21,14 @@
 		<legend>Connexion</legend>
 		<p>Formulaire de connexion</p>
 		<form method="post" action="ConnectionServlet">	
-			<label for="nom">Adresse email<span class="requis">*</span></label> 
-			<input type="email" id="email" name="email"
-				value="<c:out value="${utilisateur.email}"/>" size="20"
-				maxlength="60" />
-			<span class="erreur">${form.erreurs['email']}</span>
+			<label for="email">Adresse email<span class="requis">*</span></label> 
+			<input type="email" id="email" name="email" size="20" maxlength="60" />
+		
 			
 			<br /> 
 			<label for="motdepasse">Mot de passe<span class="requis">*</span></label>
-			<input type="password" id="motdepasse"
-				name="motdepasse" size="20" maxlength="20" />
-			<span class="erreur">${form.erreurs['motdepasse']}</span> 
+			<input type="password" id="motdepasse" name="motdepasse" size="20" maxlength="60" />
+			
 			<br /> 
 				
 			<input type="submit" value="Connexion" class="button" /> 
@@ -40,11 +37,13 @@
 		
 			
 			<br />
-			<% if(request.getAttribute("error") != null) {%>
-   			<div class="error">Connexion échouée, mauvaise combinaison identifiant/mot de passe !<%request.getAttribute("error");%></div>
-   			<%}%>
-		
-	</fieldset>
+			<%--  <% if(request.getAttribute("error") != null) {%>
+   			<div class="error"><%request.getAttribute("error");%></div>
+   			<%}%>--%>
+   			<div class="error">${vide}</div>		
+   			
+   			<div class="error">${error}</div>
+   				</fieldset>
 </div>
 
 <jsp:include page="/WEB-INF/fragment/footer.jsp">
