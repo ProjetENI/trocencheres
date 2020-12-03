@@ -34,16 +34,19 @@ public class UtilisateurManager {
 
 	public void ajouterUtilisateur(Utilisateur utilisateur) throws BllException {
 		validerUtilisateur(utilisateur);
+		utilisateurDao.ajouterUtilisateur(utilisateur);
 	}
 
 
 	public void modifierUtilisateur(Utilisateur utilisateur) throws BllException {
 		validerUtilisateur(utilisateur);
+		utilisateurDao.modifierUtilisateur(utilisateur);
 	}
 
 
 	public void modifierMotDePasse(Utilisateur identifiant) throws BllException {
 		validerPseudo(identifiant);
+		utilisateurDao.modifierMotDePasse(identifiant);
 	}
 
 

@@ -46,6 +46,6 @@ public interface UtilisateurDao {
 	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
 	 * @return une liste d'Utilisateur
 	 */
-	Utilisateur listerUtilisateurInformation(String pseudo);
+	Utilisateur listerUtilisateurInformation(String identifiant);
 
 }
