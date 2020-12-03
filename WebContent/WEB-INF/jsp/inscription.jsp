@@ -15,7 +15,7 @@
 
 <!-- Remplit à titre d'exemple pour le moment-->
 <div class="container">
-	<form action="inscriptionServlet" method="POST">
+	<form action="InscriptionServlet" method="POST">
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="prenom">Prénom</label>
@@ -26,9 +26,16 @@
 				<input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom">
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="pseudo">Pseudo</label>
-			<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Votre pseudo">
+		
+		<div class="row">
+			<div class="form-group col-6">
+				<label for="pseudo">Pseudo</label>
+				<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Votre pseudo">
+			</div>
+			<div class="form-group col-6">
+				<label for="telephone">Téléphone</label>
+				<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Votre numéro de tééphone">
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>

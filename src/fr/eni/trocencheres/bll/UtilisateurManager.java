@@ -101,7 +101,7 @@ public class UtilisateurManager {
 	}
 
 	private void validerTelephone(Utilisateur utilisateur) throws BllException {
-		String checkTelephone = "^(0|\\+33|33|0033){1|2|3|4|5|6|7|9}[0-9]{8}$";
+		String checkTelephone = "^(0|\\+33|33|0033)[0-9]{9}$";
 		
 		if (!utilisateur.getTelephone().matches(checkTelephone)) {
 			throw new BllException("Numéro de téléphone invalide");
