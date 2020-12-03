@@ -1,20 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="/WEB-INF/fragment/header.jsp">
-    <jsp:param name="onglet" value="Header_Value"/>
-</jsp:include>
 
-<jsp:include page="/WEB-INF/fragment/navbar.jsp">
-    <jsp:param name="title" value="Supprimer Compte"/>
-</jsp:include>
+<div class="container">
+<section class="mb-5">
+		<h2>Supprimer mon compte</h2>
+		<p>Vous pouvez supprimer votre compte en cliquant sur "Supprimer le compte".<br/>
+		Attention: Toutes vos données seront perdue.</p>
+		<button type="button" class="btn btn-outline-danger">Supprimer le compte</button>	
+	</section>
 
+</div>
 
-
-
-
-
-
-
-<jsp:include page="/WEB-INF/fragment/footer.jsp">
-    <jsp:param name="button" value="Footer_Value"/>
-</jsp:include>
