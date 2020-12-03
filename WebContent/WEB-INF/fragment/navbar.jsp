@@ -8,9 +8,14 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item active">
-				<c:if test="${utilisateur.pseudo eq null}">
-					<a class="nav-link" href="ConnectionServlet">Se connecter<span class="sr-only">(current)</span></a>
-				</c:if>
+				<c:choose>
+					<c:when test="${utilisateur.pseudo eq null}">
+						<a class="nav-link" href="ConnectionServlet">Se connecter<span class="sr-only">(current)</span></a>
+					</c:when>
+					<c:otherwise>
+						<a class="nav-link" href="DeconnexionServlet">Se déconnecter<span class="sr-only">(current)</span></a>
+					</c:otherwise>
+				</c:choose>
 			</li>
 			<li class="nav-item active">
 			<a class="nav-link" href="MonProfilServlet">Mon Profil<span class="sr-only">(current)</span></a>
