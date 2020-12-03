@@ -26,7 +26,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
 	private final String UPDATE_UTILISATEUR_INFO = "UPDATE UTILISATEURS SET "
 			+ "pseudo = '?',nom = '?',prenom = '?',email = '?',telephone = '?',rue = '?',"
-			+ "code_postal = '?',ville = '?',administrateur = '?'"
+			+ "code_postal = '?',ville = '?'"
 			+ "WHERE no_utilisateur=?; ";
 	
 	private final String UPDATE_UTILISATEUR_MDP = "UPDATE UTILISATEURS SET mot_de_passe = '?'"
@@ -173,7 +173,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			conn.setAutoCommit(false);
         	try (PreparedStatement pstt_utilisateur = conn.prepareStatement(UPDATE_UTILISATEUR_INFO)) {
 
-        		pstt_utilisateur.setInt(10, utilisateur.getNoUtilisateur());
+        		pstt_utilisateur.setInt(9, utilisateur.getNoUtilisateur());
         		
 				pstt_utilisateur.setString(1, utilisateur.getPseudo());
 				pstt_utilisateur.setString(2, utilisateur.getNom());
@@ -183,7 +183,6 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 				pstt_utilisateur.setString(6, utilisateur.getRue());
 				pstt_utilisateur.setString(7, utilisateur.getCodePostal());
 				pstt_utilisateur.setString(8, utilisateur.getVille());
-				pstt_utilisateur.setBoolean(9, utilisateur.isAdministrateur());
 
 				pstt_utilisateur.executeUpdate();
 				conn.commit();

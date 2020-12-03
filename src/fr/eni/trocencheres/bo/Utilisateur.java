@@ -37,6 +37,21 @@ public class Utilisateur {
 			this.ville = ville;
 			this.motDePasse = motDePasse;
 	}
+	
+	//constructeur avec toutes les variables sauf le motDePasse
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+	}
 		
 	//constructeur avec toutes les variables sauf le motDePasse
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
