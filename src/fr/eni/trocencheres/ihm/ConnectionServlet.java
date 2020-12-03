@@ -30,19 +30,16 @@ public class ConnectionServlet extends HttpServlet {
 		String motdepasse = request.getParameter("motdepasse");
 
 		UtilisateurManager toto = new UtilisateurManager();
-		//boolean resulatIdentification = toto.verifierIdentification(email, motdepasse);
-		boolean resulatIdentification = false;
+		boolean resulatIdentification = toto.verifierIdentification(email, motdepasse);
 		
-		if(email  == null || motdepasse == null) {
+		if(motdepasse.equals("") || email.equals("")) {
 			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
 			forward(request, response, LOGIN);
-		}
-		
-		if (resulatIdentification) {
-			forward(request, response, INDEX);
-		} else {
-			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
+		} else if (!resulatIdentification) {
+			request.setAttribute("error", "Connexion Ã©chouÃ©e, mauvaise combinaison identifiant/mot de passe !");
 			forward(request, response, LOGIN);
+		} else {
+			forward(request, response, INDEX);
 		}
 		
 	}

@@ -22,12 +22,12 @@
 		<p>Formulaire de connexion</p>
 		<form method="post" action="ConnectionServlet">	
 			<label for="email">Adresse email<span class="requis">*</span></label> 
-			<input type="email" id="email" name="email" size="20" maxlength="60" />
+			<input type="email" id="email" name="email" size="20" maxlength="60" required/>
 		
 			
 			<br /> 
 			<label for="motdepasse">Mot de passe<span class="requis">*</span></label>
-			<input type="password" id="motdepasse" name="motdepasse" size="20" maxlength="60" />
+			<input type="password" id="motdepasse" name="motdepasse" size="20" maxlength="60" required/>
 			
 			<br /> 
 				
@@ -40,9 +40,10 @@
 			<%--  <% if(request.getAttribute("error") != null) {%>
    			<div class="error"><%request.getAttribute("error");%></div>
    			<%}%>--%>
-   			<div class="error">${vide}</div>		
-   			
-   			<div class="error">${error}</div>
+   			<div class="error">
+   				${vide}
+   				${error}
+   			</div>
    				</fieldset>
 </div>
 
