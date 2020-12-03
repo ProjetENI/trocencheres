@@ -20,7 +20,6 @@ import fr.eni.trocencheres.exceptions.BllException;
 public class ModifierParametreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String INDEX = "Index";
 	private static final String PARAMETRE_UTILISATEUR = "ParametresUtilisateur";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

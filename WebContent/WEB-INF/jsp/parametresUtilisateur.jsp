@@ -6,7 +6,7 @@
 	<div class="container">
 	<section class="mb-5">
 		<h2>Modifier les paramètres utilisateur</h2>
-		<form action="ModifierParametresServlet" method="POST">
+		<form action="ModifierParametreServlet" method="POST">
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="prenom">Prénom</label>
@@ -42,8 +42,8 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="InputEmail">Email</label>
-				<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="${utilisateur.email}">
+				<label for="email">Email</label>
+				<input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="${utilisateur.email}">
 				<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 			</div>
 			<button type="submit" class="btn btn-primary">Modifier</button>

@@ -33,12 +33,12 @@ public class InscriptionServlet extends HttpServlet {
 		String pseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		String email = request.getParameter("InputEmail");
+		String email = request.getParameter("email");
 		String telephone = request.getParameter("telephone");
 		String rue = request.getParameter("rue");
 		String codepostal = request.getParameter("codepostal");
 		String ville = request.getParameter("ville");
-		String password = request.getParameter("InputPassword");
+		String password = request.getParameter("password");
 
 		Utilisateur utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codepostal, ville, password);
 

@@ -52,13 +52,13 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="InputEmail">Email</label>
-			<input type="email" class="form-control" id="InputEmail" name="InputEmail" aria-describedby="emailHelp">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
 			<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 		</div>
 		<div class="form-group">
-			<label for="InputPassword">Mot de Passe</label>
-			<input type="password" class="form-control" id="InputPassword" name="InputPassword">
+			<label for="password">Mot de Passe</label>
+			<input type="password" class="form-control" id="password" name="password">
 		</div>
 		<button type="submit" class="btn btn-primary">S'inscrire</button>
 	</form>
