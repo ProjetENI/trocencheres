@@ -22,7 +22,7 @@
 		<p>Formulaire de connexion</p>
 		<form method="post" action="ConnectionServlet">	
 			<label for="email">Adresse email<span class="requis">*</span></label> 
-			<input type="email" id="email" name="email" size="20" maxlength="60"/>
+			<input type="text" id="email" name="email" size="20" maxlength="60"/>
 		
 			
 			<br /> 

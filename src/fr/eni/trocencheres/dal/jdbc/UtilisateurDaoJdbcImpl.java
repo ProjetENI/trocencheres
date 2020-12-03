@@ -147,7 +147,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         			int noUtilisateur = rs.getInt(1);
         			utilisateur.setNoUtilisateur(noUtilisateur);
         		}
-				
+				rs.close();
 				conn.commit();
 
 	        } catch (Exception e) {

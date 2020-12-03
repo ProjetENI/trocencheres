@@ -26,8 +26,6 @@ public class ConnectionServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String redirection = "";
-		
 		String email = request.getParameter("email");
 		String motdepasse = request.getParameter("motdepasse");
 
@@ -36,15 +34,12 @@ public class ConnectionServlet extends HttpServlet {
 		
 		if(motdepasse.equals("") || email.equals("")) {
 			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
-			redirection = LOGIN;
-			forward(request, response, redirection);
+			forward(request, response, LOGIN);
 		} else if (!resulatIdentification) {
 			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
-			redirection = LOGIN;
-			forward(request, response, redirection);
+			forward(request, response, LOGIN);
 		} else {
-			redirection = INDEX;
-			forward(request, response, redirection);
+			forward(request, response, INDEX);
 		}
 		
 	}
