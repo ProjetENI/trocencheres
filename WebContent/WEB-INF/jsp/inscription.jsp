@@ -19,39 +19,39 @@
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="prenom">Prénom</label>
-				<input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+				<input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom">
 			</div>
 			<div class="form-group col-6">
 				<label for="nom">Nom</label>
-				<input type="text" class="form-control" id="nom" placeholder="Votre nom">
+				<input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="pseudo">Pseudo</label>
-			<input type="text" class="form-control" id="pseudo" placeholder="Votre pseudo">
+			<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Votre pseudo">
 		</div>
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>
-			<input type="text" class="form-control" id="rue" placeholder="Votre adresse">
+			<input type="text" class="form-control" id="rue" name="rue" placeholder="Votre adresse">
 		</div>
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="codePostal">Code Postal</label>
-			<input type="text" class="form-control" id="codePostal" placeholder="CP">
+			<input type="text" class="form-control" id="codePostal" name="codepostal" placeholder="CP">
 			</div>
 			<div class="form-group col-6">
 				<label for="ville">Ville</label>
-				<input type="text" class="form-control" id="ville" placeholder="Ville">
+				<input type="text" class="form-control" id="ville" name="ville" placeholder="Ville">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="InputEmail">Email</label>
-			<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+			<input type="email" class="form-control" id="InputEmail" name="InputEmail" aria-describedby="emailHelp">
 			<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 		</div>
 		<div class="form-group">
 			<label for="InputPassword">Mot de Passe</label>
-			<input type="password" class="form-control" id="InputPassword">
+			<input type="password" class="form-control" id="InputPassword" name="InputPassword">
 		</div>
 		<button type="submit" class="btn btn-primary">S'inscrire</button>
 	</form>
