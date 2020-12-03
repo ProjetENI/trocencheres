@@ -20,7 +20,7 @@
 	
 		<legend>Connexion</legend>
 		<p>Formulaire de connexion</p>
-		<form method="post" action="connexion">	
+		<form method="post" action="ConnectionServlet">	
 			<label for="nom">Adresse email<span class="requis">*</span></label> 
 			<input type="email" id="email" name="email"
 				value="<c:out value="${utilisateur.email}"/>" size="20"
@@ -29,21 +29,21 @@
 			
 			<br /> 
 			<label for="motdepasse">Mot de passe<span class="requis">*</span></label>
-			<input type="password" id="motdepassse"
+			<input type="password" id="motdepasse"
 				name="motdepasse" size="20" maxlength="20" />
 			<span class="erreur">${form.erreurs['motdepasse']}</span> 
 			<br /> 
 				
-			<input type="submit" value="Connexion" class="sansLabel" /> 
-			
+			<input type="submit" value="Connexion" class="button" /> 
+			<a class="button" href="InscriptionServlet">S'inscrire </a>
 		</form>
-		<form action="InscriptionServlet">
-			<input type="submit" value="S'inscrire" class="sansLabel"/>
-		</form>
+		
 			
 			<br />
-
-		<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+			<% if(request.getAttribute("error") != null) {%>
+   			<div class="error">Connexion échouée, mauvaise combinaison identifiant/mot de passe !<%request.getAttribute("error");%></div>
+   			<%}%>
+		
 	</fieldset>
 </div>
 
