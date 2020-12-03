@@ -21,8 +21,8 @@
 		<legend>Connexion</legend>
 		<p>Formulaire de connexion</p>
 		<form method="post" action="ConnectionServlet">	
-			<label for="email">Adresse email<span class="requis">*</span></label> 
-			<input type="text" id="email" name="email" size="20" maxlength="60"/>
+			<label for="identifiant">Adresse email<span class="requis">*</span></label> 
+			<input type="text" id="identifiant" name="identifiant" size="20" maxlength="60"/>
 		
 			
 			<br /> 

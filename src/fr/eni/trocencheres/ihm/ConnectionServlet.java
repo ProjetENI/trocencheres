@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.trocencheres.bll.UtilisateurManager;
+import fr.eni.trocencheres.bo.Utilisateur;
 
 @WebServlet("/ConnectionServlet")
 public class ConnectionServlet extends HttpServlet {
@@ -18,27 +20,28 @@ public class ConnectionServlet extends HttpServlet {
 	private static final String INDEX = "Index";
 	private static final String LOGIN = "ConnectionServlet";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		forward(request, response, LOGIN);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String email = request.getParameter("email");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String identifiant = request.getParameter("identifiant");
 		String motdepasse = request.getParameter("motdepasse");
 
-		UtilisateurManager toto = new UtilisateurManager();
-		boolean resulatIdentification = toto.verifierIdentification(email, motdepasse);
+		UtilisateurManager um = new UtilisateurManager();
+		boolean resulatIdentification = um.verifierIdentification(identifiant, motdepasse);
 		
-		if(motdepasse.equals("") || email.equals("")) {
+		if(motdepasse.equals("") || identifiant.equals("")) {
 			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
 			forward(request, response, LOGIN);
 		} else if (!resulatIdentification) {
 			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
 			forward(request, response, LOGIN);
 		} else {
+			Utilisateur myUser =  um.listerUtilisateurInformation(identifiant);
+			HttpSession session = request.getSession();
+			session.setAttribute("utilisateur", myUser);
 			forward(request, response, INDEX);
 		}
 		

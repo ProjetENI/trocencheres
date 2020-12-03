@@ -13,11 +13,11 @@ import fr.eni.trocencheres.dal.UtilisateurDao;
 
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
-	private final String SELECT_ALL = "SELECT (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur) "
+	private final String SELECT_ALL = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur "
 			+ "FROM UTILISATEURS;";
 	
 	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS = "SELECT "
-			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur) "
+			+ "no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur "
 			+ "FROM UTILISATEURS WHERE pseudo=? OR email=?;";
 	
 	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS"
