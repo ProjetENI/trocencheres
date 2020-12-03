@@ -31,9 +31,21 @@ public interface UtilisateurDao {
 	void supprimerUtilisateur(Utilisateur utilisateur);
 
 	/**
+	 * Fonction prenant en paramètre un utilisateur pour modifier son mot de passe en base
+	 * @param Utilisateur
+	 */
+	void modifierMotDePasse(Utilisateur utilisateur);
+
+	/**
+	 * Fonction prenant en paramètre l'identifiant et le mot de passe d'un utilisateur pour vérifier leur concordance
+	 * @param Utilisateur
+	 */
+	boolean verifierIdentification(String identifiant, String mdp);
+
+	/**
 	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
 	 * @return une liste d'Utilisateur
 	 */
-	Utilisateur listeUtilisateurInformation();
+	Utilisateur listeUtilisateurInformation(String pseudo);
 
 }

@@ -13,7 +13,7 @@ import fr.eni.trocencheres.dal.UtilisateurDao;
 
 public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
-	private final String SELECT_ALL = "SELECT (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
+	private final String SELECT_ALL = "SELECT (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur) "
 			+ "FROM UTILISATEURS;";
 	
 	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS = "SELECT "
@@ -26,8 +26,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
 	private final String UPDATE_UTILISATEUR_INFO = "UPDATE UTILISATEURS SET "
 			+ "pseudo = '?',nom = '?',prenom = '?',email = '?',telephone = '?',rue = '?',"
-			+ "code_postal = '?',ville = '?',mot_de_passe = '?',credit = '?',administrateur = '?'"
+			+ "code_postal = '?',ville = '?',credit = '?',administrateur = '?'"
 			+ "WHERE no_utilisateur=?; ";
+	
 	private final String UPDATE_UTILISATEUR_MDP = "UPDATE UTILISATEURS SET mot_de_passe = '?'"
 			+ "WHERE no_utilisateur=?; ";
 	
@@ -59,11 +60,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
             	String rue = rs.getString("rue");
             	String code_postal = rs.getString("code_postal");
             	String ville = rs.getString("ville");
-            	String mot_de_passe = rs.getString("mot_de_passe");
             	int credit = rs.getInt("credit");
             	boolean administrateur = rs.getBoolean("administrateur");
 
-            	Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);
+            	Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur);
             	listeUtilisateurs.add(utilisateur);
             }
 
@@ -78,16 +78,20 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	 * @return une liste d'Utilisateur
 	 */
 	@Override
-	public Utilisateur listeUtilisateurInformation() {
+	public Utilisateur listeUtilisateurInformation(String pPseudo) {
 
 		Utilisateur infoUtilisateur = new Utilisateur();
 
-		try (Connection conn = ConnectionProvider.getConnection();
-			 Statement stt = conn.createStatement()) {
+		try (	Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement pstt_utilisateur = conn.prepareStatement(SELECT_ALL_UTILISATEUR_INFORMATIONS)) {
 
-			ResultSet rs = stt.executeQuery(SELECT_ALL_UTILISATEUR_INFORMATIONS);
+			pstt_utilisateur.setString(1, pPseudo);
+			pstt_utilisateur.setString(2, pPseudo);
 
-            while (rs.next()) {
+			ResultSet rs = pstt_utilisateur.executeQuery();
+			
+
+            if (rs.next()) {
             	int noUtilisateur = rs.getInt("no_utilisateur");
             	String pseudo = rs.getString("pseudo");
             	String nom = rs.getString("nom");
@@ -97,11 +101,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
             	String rue = rs.getString("rue");
             	String code_postal = rs.getString("code_postal");
             	String ville = rs.getString("ville");
-            	String mot_de_passe = rs.getString("mot_de_passe");
             	int credit = rs.getInt("credit");
             	boolean administrateur = rs.getBoolean("administrateur");
 
-            	infoUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur);
+            	infoUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur);
             	
             }
 
@@ -122,8 +125,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
 			conn.setAutoCommit(false);
-        	try (Statement stt = conn.createStatement();
-                 PreparedStatement pstt_utilisateur = conn.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS)) {
+        	try (PreparedStatement pstt_utilisateur = conn.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS)) {
         		
 				pstt_utilisateur.setString(1, utilisateur.getPseudo());
 				pstt_utilisateur.setString(2, utilisateur.getNom());
@@ -134,7 +136,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 				pstt_utilisateur.setString(7, utilisateur.getCodePostal());
 				pstt_utilisateur.setString(8, utilisateur.getVille());
 				pstt_utilisateur.setString(9, utilisateur.getMotDePasse());
-				pstt_utilisateur.setInt(10, utilisateur.getCredit());
+				pstt_utilisateur.setInt(10, 100);
 				pstt_utilisateur.setBoolean(11, false);
 
 				pstt_utilisateur.executeUpdate();
@@ -169,10 +171,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
 			conn.setAutoCommit(false);
-        	try (Statement stt = conn.createStatement();
-                 PreparedStatement pstt_utilisateur = conn.prepareStatement(UPDATE_UTILISATEUR_INFO)) {
+        	try (PreparedStatement pstt_utilisateur = conn.prepareStatement(UPDATE_UTILISATEUR_INFO)) {
 
-        		pstt_utilisateur.setInt(12, utilisateur.getNoUtilisateur());
+        		pstt_utilisateur.setInt(11, utilisateur.getNoUtilisateur());
         		
 				pstt_utilisateur.setString(1, utilisateur.getPseudo());
 				pstt_utilisateur.setString(2, utilisateur.getNom());
@@ -182,11 +183,41 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 				pstt_utilisateur.setString(6, utilisateur.getRue());
 				pstt_utilisateur.setString(7, utilisateur.getCodePostal());
 				pstt_utilisateur.setString(8, utilisateur.getVille());
-				pstt_utilisateur.setString(9, utilisateur.getMotDePasse());
-				pstt_utilisateur.setInt(10, utilisateur.getCredit());
-				pstt_utilisateur.setBoolean(11, utilisateur.isAdministrateur());
+				pstt_utilisateur.setInt(9, utilisateur.getCredit());
+				pstt_utilisateur.setBoolean(10, utilisateur.isAdministrateur());
 
 				pstt_utilisateur.executeUpdate();
+				conn.commit();
+
+	        } catch (Exception e) {
+	        	conn.rollback();
+	            e.printStackTrace();
+	        }
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	/**
+	 * Fonction prenant en paramètre un utilisateur pour modifier son mot de passe en base
+	 * @param Utilisateur
+	 */
+	@Override
+	public void modifierMotDePasse(Utilisateur utilisateur) {
+
+		try (Connection conn = ConnectionProvider.getConnection()) {
+
+			conn.setAutoCommit(false);
+        	try (Statement stt = conn.createStatement();
+                 PreparedStatement pstt_mdp = conn.prepareStatement(UPDATE_UTILISATEUR_MDP)) {
+
+        		pstt_mdp.setInt(2, utilisateur.getNoUtilisateur());
+        		
+        		pstt_mdp.setString(1, utilisateur.getMotDePasse());
+
+        		pstt_mdp.executeUpdate();
 				conn.commit();
 
 	        } catch (Exception e) {
@@ -210,8 +241,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 		conn.setAutoCommit(false);
 		
-    	try (Statement stt = conn.createStatement();
-             PreparedStatement pstt_utilisateur = conn.prepareStatement(DELETE_UTILISATEUR)) {
+    	try (PreparedStatement pstt_utilisateur = conn.prepareStatement(DELETE_UTILISATEUR)) {
 
     		pstt_utilisateur.setInt(1, utilisateur.getNoUtilisateur());
 
@@ -228,7 +258,11 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	}
 }
 	
-	
+	/**
+	 * Fonction prenant en paramètre l'identifiant et le mot de passe d'un utilisateur pour vérifier leur concordance
+	 * @param Utilisateur
+	 */
+	@Override
 	public boolean verifierIdentification(String identifiant, String mdp) {
 
 		boolean isCorrect = false;
