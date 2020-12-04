@@ -31,10 +31,10 @@ public class ModifierParametreServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		boolean validModif = false;
-		String pseudo = request.getParameter("pseudo");
+		HttpSession session = request.getSession();
+		Utilisateur userAModifieer = (Utilisateur) session.getAttribute("utilisateur");
 		UtilisateurManager um = new UtilisateurManager();
-		Utilisateur userAModifieer = um.listerUtilisateurInformation(pseudo);
-
+		
 		Utilisateur myUser = new Utilisateur(userAModifieer.getNoUtilisateur(),request.getParameter("pseudo"),request.getParameter("nom"),
 				request.getParameter("prenom"),request.getParameter("email"),request.getParameter("telephone"),request.getParameter("rue"),
 				request.getParameter("codePostal"),request.getParameter("ville"));
@@ -48,7 +48,6 @@ public class ModifierParametreServlet extends HttpServlet {
 		}
 		
 		if (validModif) {
-			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", myUser);
 		}
 		
