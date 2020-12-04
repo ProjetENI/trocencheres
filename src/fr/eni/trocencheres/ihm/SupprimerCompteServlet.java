@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import fr.eni.trocencheres.bll.UtilisateurManager;
+import fr.eni.trocencheres.bo.Utilisateur;
+import fr.eni.trocencheres.exceptions.BllException;
 
 /**
  * Servlet implementation class MonProfilServlet
@@ -17,16 +22,21 @@ public class SupprimerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String INDEX = "Index";
-	private static final String SUPPRIMER_COMPTE = "SupprimerCompte";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Utilisateur userASupprimer = (Utilisateur) session.getAttribute("utilisateur");
+		UtilisateurManager um = new UtilisateurManager();
 
-		forward(request, response, SUPPRIMER_COMPTE);
+		um.supprimerUtilisateur(userASupprimer);
+		
+		Utilisateur emptyUser = new Utilisateur();
+		session.setAttribute("utilisateur", emptyUser);
+		
+		forward(request, response, INDEX);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		forward(request, response, INDEX);
 

@@ -19,10 +19,10 @@ public class DeconnectionServlet extends HttpServlet {
 	private static final String INDEX = "Index";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Utilisateur myUser = new Utilisateur();
+		Utilisateur emptyUser = new Utilisateur();
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("utilisateur", myUser);
+		session.setAttribute("utilisateur", emptyUser);
 		
 		forward(request, response, INDEX);
 	}
