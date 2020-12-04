@@ -1,5 +1,5 @@
  
-    <footer class="d-flex justify-content-center align-items-center">
+    <footer class="d-flex justify-content-center align-items-center mt-5">
 	  
     </footer>
 

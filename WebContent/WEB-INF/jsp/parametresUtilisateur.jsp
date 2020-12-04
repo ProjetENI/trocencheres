@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group">
+				<div class="form-group col-6">
 					<label for="pseudo">Pseudo</label>
 					<input type="text" class="form-control" id="pseudo" name="pseudo" value="${utilisateur.pseudo}">
 				</div>
