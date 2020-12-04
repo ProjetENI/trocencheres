@@ -20,13 +20,13 @@ h2 {
 input[type=text] {
 	height: 30px;
 	font-size: 1.2em;
-	color: #0cf;
+	color: #18354C;
 }
 input[type=text]:focus {
 	outline: none;
 }
 
-.button, input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], input[type=reset] {
   background-color: #128A6F;
   border: none;
   color: white;
@@ -41,8 +41,22 @@ input[type=text]:focus {
   letter-spacing: .15rem;
   transition: all .3s;
 }
+.button, input[type=button], input[type=submit], input[type=reset] {
+  background-color: #73BEEC;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10rem;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: .15rem;
+  transition: all .3s;
+}
 .button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-	background-color: #49B8A7;
+	background-color: #A7C7DA;
 }
 
 .banner {
@@ -55,7 +69,70 @@ input[type=text]:focus {
 .nav-logo {
     background-color: #49B8A7
 }
-
+.bgBlue {
+	background-image: url('../img/bg.jpg');
+	background-size: 100% 100%;
+	height: calc(100vh - 66px);
+}
+.curvedBg {
+	background-image: url('../img/curved_bg.jpg');
+	border-radius: 0 50px 50px 0;
+	background-size: 100% 100%;
+}
+.formOuter {
+	background: #FAFDFF;
+	width: 50%;
+	height: 50vh;
+	border-radius: 50px;
+	position: relative;
+	-webkit-box-shadow: 3px 3px 15px 0px rgba(255,255,255,0.5);
+	-moz-box-shadow: 3px 3px 15px 0px rgba(255,255,255,0.5);
+	box-shadow: 3px 3px 15px 0px rgba(255,255,255,0.5);
+}
+.img-full {
+	position: absolute;
+	width:120%;
+	max-width: 120%;
+	z-index: 9;
+	left: 50px;
+}
+#loginForm input[type=text], #loginForm input[type=password] {
+	width: 300px;
+	min-width: 300px;
+	height: 34px;
+	margin-bottom: 12px;
+	background: #104977;
+	color: #A7BDCE;
+	border-radius: 15px;
+	border:0px;
+	text-indent: 20px;
+	font-wight: normal;
+}
+#loginForm label {
+	color: #FFF;
+}
+#loginForm .button {
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.register {
+	margin-top: 80px;
+	text-align: center;
+	color: #FFF;
+}
+.register a {
+	text-decoration: none;
+	color: #73BEEC;
+	transition: color 0.3s ease;
+}
+.register a:hover {
+	text-decoration: none;
+	color: #A7C7DA;
+}
+.h100 {
+	height: 100%;
+}
 .h200 {
 	min-height: 200px;
 }
@@ -64,7 +141,7 @@ footer {
     width: 100%;
     height: 60px;
     color: #fff;
-    background-color: #49B8A7;
+    background-color: #5E97C5;
     text-align: center;
 }
 footer i {

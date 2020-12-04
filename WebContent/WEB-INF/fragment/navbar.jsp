@@ -2,7 +2,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container mr-auto">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/img/logo.png" width="121" height="40" alt="green auction" title="green auction"/></a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/img/logo_ecoauction.png" width="121" height="40" alt="green auction" title="green auction"/></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

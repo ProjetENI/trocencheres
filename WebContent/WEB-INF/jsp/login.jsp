@@ -8,45 +8,53 @@
     <jsp:param name="title" value="Navbar_Value"/>
 </jsp:include>
 
-<jsp:include page="/WEB-INF/fragment/banner.jsp">
-    <jsp:param name="title" value="Connection"/>
-</jsp:include>
-
-
 <!-- Remplit à titre d'exemple pour le moment-->
-<div class="container">
-	
-	<fieldset>
-	
-		<legend>Connexion</legend>
-		<p>Formulaire de connexion</p>
-		<form method="post" action="ConnectionServlet">	
-			<label for="identifiant">Adresse email<span class="requis">*</span></label> 
-			<input type="text" id="identifiant" name="identifiant" size="20" maxlength="60"/>
-		
-			
-			<br /> 
-			<label for="motdepasse">Mot de passe<span class="requis">*</span></label>
-			<input type="password" id="motdepasse" name="motdepasse" size="20" maxlength="60" required/>
-			
-			<br /> 
-				
-			<input type="submit" value="Connexion" class="button" /> 
-			<a class="button" href="InscriptionServlet">S'inscrire </a>
-		</form>
-		
-			
-			<br />
-			<%--  <% if(request.getAttribute("error") != null) {%>
-   			<div class="error"><%request.getAttribute("error");%></div>
-   			<%}%>--%>
-   			<div class="error">
-   				${vide}
-   				${error}
-   			</div>
-   				</fieldset>
+<div class="bgBlue d-flex justify-content-center align-items-center">
+	<div class="formOuter">
+		<div class="row m-0 h100">
+			<div class="col-4 m-0 d-flex justify-content-center align-items-center">
+				<img src="${pageContext.request.contextPath}/img/auction-2.png" class="img-full d-block mx-auto" alt="green auction" title="green auction"/>
+		   	</div>
+		   	<div class="col-8 curvedBg m-0 d-flex justify-content-end align-items-center">
+		   		<div id="loginForm">
+					<form method="post" action="ConnectionServlet">	
+						<label for="identifiant">Identifiant</label><br/>
+						<input type="text" id="identifiant" name="identifiant"/>
+					
+						
+						<br /> 
+						<label for="motdepasse">Mot de passe</label><br/>
+						<input type="password" id="motdepasse" name="motdepasse"/>
+						
+						<br /> 
+							
+						<input type="submit" value="Connexion" class="button mx-auto" /> 
+
+						<div class="register">
+							Vous n'avez pas de compte ?<br/>
+							<a href="InscriptionServlet">S'inscrire </a>
+						</div>
+					</form>
+					
+						
+					<br />
+					<%--  <% if(request.getAttribute("error") != null) {%>
+		   			<div class="error"><%request.getAttribute("error");%></div>
+		   			<%}%>--%>
+		   			<div class="error">
+		   				${vide}
+		   				${error}
+		   			</div>
+		   		</div>
+		   	</div>
+		</div>
+	</div>
 </div>
 
-<jsp:include page="/WEB-INF/fragment/footer.jsp">
-    <jsp:param name="button" value="Footer_Value"/>
-</jsp:include>
+     <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    
+</body>
+</html>
