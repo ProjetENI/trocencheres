@@ -30,17 +30,21 @@ public class ConnectionServlet extends HttpServlet {
 		String motdepasse = request.getParameter("motdepasse");
 
 		UtilisateurManager um = new UtilisateurManager();
-		boolean resulatIdentification = um.verifierIdentification(identifiant, motdepasse);
+//		boolean resulatIdentification = um.verifierIdentification(identifiant, motdepasse);
 		
 		if(motdepasse.equals("") || identifiant.equals("")) {
 			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
 			forward(request, response, LOGIN);
-		} else if (!resulatIdentification) {
+		} else if (!um.verifierIdentification(identifiant, motdepasse)) {
 			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
 			forward(request, response, LOGIN);
 		} else {
 			Utilisateur myUser =  um.listerUtilisateurInformation(identifiant);
 			HttpSession session = request.getSession();
+
+			// 8001 _ Sécurité - Session utilisateur de 5min
+			session.setMaxInactiveInterval(300);
+
 			session.setAttribute("utilisateur", myUser);
 			forward(request, response, INDEX);
 		}
