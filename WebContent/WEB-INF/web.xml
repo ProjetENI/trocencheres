@@ -51,8 +51,8 @@
 	</servlet>
 
 	<servlet>
-		<description>ConnectionServlet</description>
-		<servlet-name>ConnectionServlet</servlet-name>
+		<description>Login</description>
+		<servlet-name>Login</servlet-name>
 		<jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
 	</servlet>
 </web-app>

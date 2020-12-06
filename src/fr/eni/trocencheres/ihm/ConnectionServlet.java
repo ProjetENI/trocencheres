@@ -18,7 +18,7 @@ public class ConnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String INDEX = "Index";
-	private static final String LOGIN = "ConnectionServlet";
+	private static final String LOGIN = "Login";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,10 +37,10 @@ public class ConnectionServlet extends HttpServlet {
 			forward(request, response, LOGIN);
 		} else {
 			myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
-
+			System.out.println(myUser);
 		}
 				
-		if (myUser == null) {
+		if (myUser.getPseudo() == null) {
 			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
 			forward(request, response, LOGIN);
 		} else {
