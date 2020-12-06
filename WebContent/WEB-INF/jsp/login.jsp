@@ -8,48 +8,65 @@
     <jsp:param name="title" value="Navbar_Value"/>
 </jsp:include>
 
-<!-- Remplit à titre d'exemple pour le moment-->
-<div class="bgBlue d-flex justify-content-center align-items-center">
-	<div class="formOuter">
-		<div class="row m-0 h100">
-			<div class="col-4 m-0 d-flex justify-content-center align-items-center">
-				<img src="${pageContext.request.contextPath}/img/auction-2.png" class="img-full d-block mx-auto" alt="green auction" title="green auction"/>
-		   	</div>
-		   	<div class="col-8 curvedBg m-0 d-flex justify-content-end align-items-center">
-		   		<div id="loginForm">
-					<form method="post" action="ConnectionServlet">	
-						<label for="identifiant">Identifiant</label><br/>
-						<input type="text" id="identifiant" name="identifiant"/>
-					
-						
-						<br /> 
-						<label for="motdepasse">Mot de passe</label><br/>
-						<input type="password" id="motdepasse" name="motdepasse"/>
-						
-						<br /> 
-							
-						<input type="submit" value="Connexion" class="button mx-auto" /> 
+	<!-- NOUVELLE PRESENTATION -->
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
 
-						<div class="register">
-							Vous n'avez pas de compte ?<br/>
-							<a href="InscriptionServlet">S'inscrire </a>
+				<form class="login100-form validate-form" method="post" action="ConnectionServlet">
+
+					<span class="login100-form-title p-b-43">
+						Se connecter pour continuer
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Pseudo ou email requis">
+						<input class="input100" type="text" id="identifiant" name="identifiant">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Identifiant</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Mot de passe requis">
+						<input class="input100" type="password" id="motdepasse" name="motdepasse">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Mot de passe</span>
+					</div>
+
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Se souvenir de moi
+							</label>
 						</div>
-					</form>
-					
-						
-					<br />
-					<%--  <% if(request.getAttribute("error") != null) {%>
-		   			<div class="error"><%request.getAttribute("error");%></div>
-		   			<%}%>--%>
-		   			<div class="error">
-		   				${vide}
-		   				${error}
-		   			</div>
-		   		</div>
-		   	</div>
-		</div>
-	</div>
-</div>
+
+						<div class="forgot-password">
+							<a href="#" class="txt1">
+								Mot de passe oublié ?
+							</a>
+						</div>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Se connecter
+						</button>
+					</div>
+
+					<div class="text-center p-t-46 p-b-20">
+						<span class="txt2">
+							Vous n'avez pas encore de compte ?
+						</span>
+						<a class="login100-form-btn" href="InscriptionServlet">Inscrivez-vous</a>
+					</div>
+
+				</form>
+
+				<div class="login100-more" style="background-image: url('img/login_bg.jpg');"></div>
+
+			</div><!-- End .wrap-login100 -->
+		</div><!-- End .container-login100 -->
+	</div><!-- End .limiter -->
 
      <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
