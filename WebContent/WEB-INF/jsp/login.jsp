@@ -45,6 +45,14 @@
 							</a>
 						</div>
 					</div>
+					
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="text-center p-t-5 p-b-20">
+							<span class="text-danger">
+								${error}
+							</span>
+						</div>
+					</div>
 
 
 					<div class="container-login100-form-btn">

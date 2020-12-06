@@ -33,15 +33,14 @@ public class ConnectionServlet extends HttpServlet {
 		UtilisateurManager um = new UtilisateurManager();
 		
 		if(motdepasse.equals("") || identifiant.equals("")) {
-			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
+			request.setAttribute("vide", "Veuillez remplir les champs obligatoires");
 			forward(request, response, LOGIN);
 		} else {
 			myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
-			System.out.println(myUser);
 		}
 				
 		if (myUser.getPseudo() == null) {
-			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
+			request.setAttribute("error", "Identifiant ou mot de passe incorrect");
 			forward(request, response, LOGIN);
 		} else {
 			HttpSession session = request.getSession();
