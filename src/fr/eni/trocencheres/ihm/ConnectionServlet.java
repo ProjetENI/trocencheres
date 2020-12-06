@@ -28,18 +28,22 @@ public class ConnectionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String identifiant = request.getParameter("identifiant");
 		String motdepasse = request.getParameter("motdepasse");
+		Utilisateur myUser = new Utilisateur();
 
 		UtilisateurManager um = new UtilisateurManager();
-//		boolean resulatIdentification = um.verifierIdentification(identifiant, motdepasse);
 		
 		if(motdepasse.equals("") || identifiant.equals("")) {
 			request.setAttribute("vide", "Veuillez remplir les champs obligatoires*");
 			forward(request, response, LOGIN);
-		} else if (!um.verifierIdentification(identifiant, motdepasse)) {
+		} else {
+			myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
+
+		}
+				
+		if (myUser == null) {
 			request.setAttribute("error", "Connexion échouée, mauvaise combinaison identifiant/mot de passe !");
 			forward(request, response, LOGIN);
 		} else {
-			Utilisateur myUser =  um.listerUtilisateurInformation(identifiant);
 			HttpSession session = request.getSession();
 
 			// 8001 _ Sécurité - Session utilisateur de 5min

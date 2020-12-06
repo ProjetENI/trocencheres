@@ -22,8 +22,8 @@ public class UtilisateurManager {
 	}
 
 
-	public Utilisateur listerUtilisateurInformation(String identifiant) {
-		return this.utilisateurDao.listerUtilisateurInformation(identifiant);
+	public Utilisateur listerUtilisateurInformation(String identifiant,String mdp) {
+		return this.utilisateurDao.listerUtilisateurInformation(identifiant,mdp);
 	}
 
 
@@ -47,11 +47,6 @@ public class UtilisateurManager {
 	public void modifierMotDePasse(Utilisateur identifiant) throws BllException {
 		validerPseudo(identifiant);
 		utilisateurDao.modifierMotDePasse(identifiant);
-	}
-
-
-	public boolean verifierIdentification(String identifiant, String mdp) {
-		return this.utilisateurDao.verifierIdentification(identifiant, mdp);
 	}
 
 

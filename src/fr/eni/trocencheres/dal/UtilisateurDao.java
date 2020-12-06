@@ -37,15 +37,9 @@ public interface UtilisateurDao {
 	void modifierMotDePasse(Utilisateur utilisateur);
 
 	/**
-	 * Fonction prenant en paramètre l'identifiant et le mot de passe d'un utilisateur pour vérifier leur concordance
-	 * @param Utilisateur
-	 */
-	boolean verifierIdentification(String identifiant, String mdp);
-
-	/**
 	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
 	 * @return une liste d'Utilisateur
 	 */
-	Utilisateur listerUtilisateurInformation(String identifiant);
+	Utilisateur listerUtilisateurInformation(String identifiant, String mdp);
 
 }

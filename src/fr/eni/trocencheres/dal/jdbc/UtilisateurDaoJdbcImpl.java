@@ -18,7 +18,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	
 	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS = "SELECT "
 			+ "no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur "
-			+ "FROM UTILISATEURS WHERE pseudo=? OR email=?;";
+			+ "FROM UTILISATEURS WHERE (pseudo=? OR email=?) AND mot_de_passe=?;";
 	
 	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS"
 			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
@@ -33,8 +33,6 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			+ "WHERE no_utilisateur=?; ";
 	
 	private final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?; ";
-
-	private final String SELECT_MDP_PSEUDO = "SELECT pseudo FROM UTILISATEURS WHERE (pseudo=? OR email=?) AND mot_de_passe=?;";
 
 	/**
 	 * Fonction qui permet lister tous les utilisateurs présents en base de données
@@ -78,7 +76,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	 * @return une liste d'Utilisateur
 	 */
 	@Override
-	public Utilisateur listerUtilisateurInformation(String identifiant) {
+	public Utilisateur listerUtilisateurInformation(String identifiant, String mdp) {
 
 		Utilisateur infoUtilisateur = new Utilisateur();
 
@@ -87,6 +85,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 			pstt_utilisateur.setString(1, identifiant);
 			pstt_utilisateur.setString(2, identifiant);
+			pstt_utilisateur.setString(3, mdp);
 
 			ResultSet rs = pstt_utilisateur.executeQuery();
 			
@@ -256,32 +255,6 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		e.printStackTrace();
 	}
 }
-	
-	/**
-	 * Fonction prenant en paramètre l'identifiant et le mot de passe d'un utilisateur pour vérifier leur concordance
-	 * @param Utilisateur
-	 */
-	@Override
-	public boolean verifierIdentification(String identifiant, String mdp) {
-
-		boolean isCorrect = false;
-
-		try (Connection conn = ConnectionProvider.getConnection();
-		     PreparedStatement pstt = conn.prepareStatement(SELECT_MDP_PSEUDO)) {
-
-			pstt.setString(1, identifiant);
-			pstt.setString(2, identifiant);
-			pstt.setString(3, mdp);
-
-			ResultSet rs = pstt.executeQuery();
-			if (rs.next()) {
-				isCorrect = true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return isCorrect;
-	}
 
 
 }
