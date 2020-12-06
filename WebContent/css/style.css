@@ -311,7 +311,7 @@ iframe {
 [ login more ]*/
 .login100-more {
   width: calc(100% - 560px);
-  box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 0 100vw rgba(255,255,255,0.3);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
