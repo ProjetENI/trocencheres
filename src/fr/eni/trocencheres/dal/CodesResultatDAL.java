@@ -5,33 +5,49 @@ package fr.eni.trocencheres.dal;
  */
 public abstract class CodesResultatDAL {
 	
+	//ERREURS GENERALES
 	/**
 	 * Echec général quand tentative d'ajouter un objet null
 	 */
-	public static final int INSERT_OBJET_NULL=10000;
+	public static final int INSERT_OBJET_NULL=10000; //ok
 	
 	/**
 	 * Echec général quand erreur non gérée à l'insertion 
 	 */
-	public static final int INSERT_OBJET_ECHEC=10001;
+	public static final int ERREUR_NON_GEREE=10001; //ok
 
 	
+	//ERREURS 
 	/**
-	 * Echec de la lecture des listes de course
+	 * Echec de la lecture des listes d'utilisateur
 	 */
-	public static final int LECTURE_LISTES_ECHEC = 10002;
+	public static final int LECTURE_LISTES_ECHEC = 10002; //ok
+	
+	/**
+	 * Echec à l'insertion d'un utilisateur
+	 */
+	public static final int INSERT_OBJET_ECHEC=10003; //ok
+	
+	
+	
 	/**
 	 * Echec de la lecture d'une liste de course
 	 */
-	public static final int LECTURE_LISTE_ECHEC = 10003;
+	public static final int LECTURE_LISTE_ECHEC = 10004;
+	
+	
 	/**
 	 * Liste de course inexistante
 	 */
-	public static final int LECTURE_LISTE_INEXISTANTE = 10004;
+	public static final int LECTURE_LISTE_INEXISTANTE = 10005;
+	
+	
 	/**
 	 * Erreur à la suppression d'un article
 	 */
-	public static final int SUPPRESSION_ARTICLE_ERREUR = 10005;
+	public static final int SUPPRESSION_ARTICLE_ERREUR = 10006;
+	
+	
 	/**
 	 * Erreur à la suppression d'une liste
 	 */

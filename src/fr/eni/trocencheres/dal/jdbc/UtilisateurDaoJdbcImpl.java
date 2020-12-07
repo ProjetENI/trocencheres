@@ -3,11 +3,14 @@ package fr.eni.trocencheres.dal.jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.Utilisateur;
+import fr.eni.trocencheres.dal.CodesResultatDAL;
 import fr.eni.trocencheres.dal.ConnectionProvider;
 import fr.eni.trocencheres.dal.UtilisateurDao;
 
@@ -37,9 +40,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	/**
 	 * Fonction qui permet lister tous les utilisateurs présents en base de données
 	 * @return une liste d'Utilisateur
+	 * @throws BusinessException 
 	 */
 	@Override
-	public List<Utilisateur> listerUtilisateurs() {
+	public List<Utilisateur> listerUtilisateurs() throws BusinessException {
 
 		List<Utilisateur> listeUtilisateurs = new ArrayList<>();
 
@@ -67,6 +71,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTES_ECHEC);
+			throw businessException;
 		}
 		return listeUtilisateurs;
 	}
@@ -74,9 +81,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	/**
 	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
 	 * @return une liste d'Utilisateur
+	 * @throws BusinessException 
 	 */
 	@Override
-	public Utilisateur listerUtilisateurInformation(String identifiant, String mdp) {
+	public Utilisateur listerUtilisateurInformation(String identifiant, String mdp) throws BusinessException {
 
 		Utilisateur infoUtilisateur = new Utilisateur();
 
@@ -104,11 +112,18 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
             	boolean administrateur = rs.getBoolean("administrateur");
 
             	infoUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur);
-            	
+            }
+            else {
+            	BusinessException businessException = new BusinessException();
+    			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_INEXISTANTE);
+    			throw businessException;
             }
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_ECHEC);
+			throw businessException;
 		}
 		return infoUtilisateur;
 	}
@@ -117,9 +132,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour l'ajouter en base de données
 	 * @param Utilisateur
+	 * @throws BusinessException 
 	 */
 	@Override
-	public void ajouterUtilisateur(Utilisateur utilisateur) {
+	public void ajouterUtilisateur(Utilisateur utilisateur) throws BusinessException {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
@@ -148,14 +164,23 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         		}
 				rs.close();
 				conn.commit();
-
+        	} catch (SQLException es) {
+        		es.printStackTrace();
+    			BusinessException businessException = new BusinessException();
+    			businessException.ajouterErreur(CodesResultatDAL.INSERT_OBJET_ECHEC);
+    			throw businessException;
+				
 	        } catch (Exception e) {
 	        	conn.rollback();
 	            e.printStackTrace();
+	            throw e;
 	        }
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.ERREUR_NON_GEREE);
+			throw businessException;
 		}
 	}
 
@@ -231,29 +256,25 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour supprimer ses données en base
 	 * @param Utilisateur
+	 * @throws BusinessException 
 	 */
 	@Override
-	public void supprimerUtilisateur(Utilisateur utilisateur) {
+	public void supprimerUtilisateur(Utilisateur utilisateur) throws BusinessException {
 		
-	try (Connection conn = ConnectionProvider.getConnection()) {
-
-		conn.setAutoCommit(false);
-		
-    	try (PreparedStatement pstt_utilisateur = conn.prepareStatement(DELETE_UTILISATEUR)) {
+    	try (	Connection conn = ConnectionProvider.getConnection();
+    			PreparedStatement pstt_utilisateur = conn.prepareStatement(DELETE_UTILISATEUR)) {
 
     		pstt_utilisateur.setInt(1, utilisateur.getNoUtilisateur());
 
 			pstt_utilisateur.executeUpdate();
-			conn.commit();
 
         } catch (Exception e) {
-        	conn.rollback();
             e.printStackTrace();
+            BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_LISTE_ERREUR);
+			throw businessException;
         }
 
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
 }
 
 
