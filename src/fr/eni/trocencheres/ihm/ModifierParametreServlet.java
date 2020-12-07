@@ -1,6 +1,7 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class ModifierParametreServlet extends HttpServlet {
 		forward(request, response, PARAMETRE_UTILISATEUR);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response, List<Integer> listeCodesErreur) throws ServletException, IOException {
 		
 		boolean validModif = false;
 		HttpSession session = request.getSession();
@@ -45,6 +46,7 @@ public class ModifierParametreServlet extends HttpServlet {
 
 		} catch (BusinessException e) {
 			e.printStackTrace();
+			listeCodesErreur.add(CodesResultatServlets.MODIFIER_PARAMETRES_SERVLET_ERREUR);
 		}
 		
 		if (validModif) {

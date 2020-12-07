@@ -1,6 +1,7 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class ConnectionServlet extends HttpServlet {
 		forward(request, response, LOGIN);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response, List<Integer> listeCodesErreur) throws ServletException, IOException {
 		String identifiant = request.getParameter("identifiant");
 		String motdepasse = request.getParameter("motdepasse");
 		Utilisateur myUser = new Utilisateur();
@@ -42,6 +43,7 @@ public class ConnectionServlet extends HttpServlet {
 			} catch (BusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				listeCodesErreur.add(CodesResultatServlets.CONNECTION_SERVLET_ERREUR);
 			}
 		}
 				

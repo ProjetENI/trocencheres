@@ -6,15 +6,21 @@ package fr.eni.trocencheres.ihm;
 public abstract class CodesResultatServlets {
 	
 	/**
-	 * Format id liste course incorrect
+	 * Erreur lancée par la Servlet lors de la connexion de l'utilisateur
 	 */
-	public static final int FORMAT_ID_LISTE_ERREUR=30000;
+	public static final int CONNECTION_SERVLET_ERREUR=30000;
 	/**
-	 * Format id liste course incorrect
+	 * Erreur lancée par la Servlet lors de l'inscription de l'utilisateur
 	 */
-	public static final Integer NOM_ARTICLE_OBLIGATOIRE = 30001;
-	public static final Integer NOM_LISTE_OBLIGATOIRE = 30002;
-	public static final Integer FORMAT_ID_ARTICLE_ERREUR = 30003;
+	public static final Integer INSCRIPTION_SERVLET_ERREUR = 30001;
+	/**
+	 * Erreur lanceé par la Servlet lors de l'inscription de l'utilisateur
+	 */
+	public static final Integer MODIFIER_PARAMETRES_SERVLET_ERREUR = 30002;
+	/**
+	 * Erreur lanceé par la Servlet lors de la suppression d'un compte utilisateur
+	 */
+	public static final Integer SUPPRIMER_COMPTE_SERVLET_ERREUR = 30003;
 	
 	
 	

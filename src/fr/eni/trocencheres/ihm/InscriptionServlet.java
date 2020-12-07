@@ -1,6 +1,7 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class InscriptionServlet extends HttpServlet {
 	}
 	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response, List<Integer> listeCodesErreur) throws ServletException, IOException {
 
 		String pseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
@@ -48,6 +49,7 @@ public class InscriptionServlet extends HttpServlet {
 			um.ajouterUtilisateur(utilisateur);
 		} catch (BusinessException e) {
 			e.printStackTrace();
+			listeCodesErreur.add(CodesResultatServlets.INSCRIPTION_SERVLET_ERREUR);
 		}
 
 		forward(request, response, INDEX);
