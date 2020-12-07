@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bll.UtilisateurManager;
 import fr.eni.trocencheres.bo.Utilisateur;
-import fr.eni.trocencheres.exceptions.BllException;
 
 
 
@@ -46,7 +46,7 @@ public class InscriptionServlet extends HttpServlet {
 
 		try {
 			um.ajouterUtilisateur(utilisateur);
-		} catch (BllException e) {
+		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
 

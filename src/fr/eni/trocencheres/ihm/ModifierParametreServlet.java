@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bll.UtilisateurManager;
 import fr.eni.trocencheres.bo.Utilisateur;
-import fr.eni.trocencheres.exceptions.BllException;
 
 /**
  * Servlet implementation class MonProfilServlet
@@ -43,7 +43,7 @@ public class ModifierParametreServlet extends HttpServlet {
 			um.modifierUtilisateur(myUser);
 			validModif = true;
 
-		} catch (BllException e) {
+		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
 		

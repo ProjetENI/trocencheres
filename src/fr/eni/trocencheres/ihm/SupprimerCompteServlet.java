@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bll.UtilisateurManager;
 import fr.eni.trocencheres.bo.Utilisateur;
-import fr.eni.trocencheres.exceptions.BllException;
 
 /**
  * Servlet implementation class MonProfilServlet
@@ -28,7 +28,12 @@ public class SupprimerCompteServlet extends HttpServlet {
 		Utilisateur userASupprimer = (Utilisateur) session.getAttribute("utilisateur");
 		UtilisateurManager um = new UtilisateurManager();
 
-		um.supprimerUtilisateur(userASupprimer);
+		try {
+			um.supprimerUtilisateur(userASupprimer);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Utilisateur emptyUser = new Utilisateur();
 		session.setAttribute("utilisateur", emptyUser);

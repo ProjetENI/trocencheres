@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bll.UtilisateurManager;
 import fr.eni.trocencheres.bo.Utilisateur;
 
@@ -36,7 +37,12 @@ public class ConnectionServlet extends HttpServlet {
 			request.setAttribute("vide", "Veuillez remplir les champs obligatoires");
 			forward(request, response, LOGIN);
 		} else {
-			myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
+			try {
+				myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 				
 		if (myUser.getPseudo() == null) {
