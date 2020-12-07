@@ -6,13 +6,33 @@ package fr.eni.trocencheres.bll;
 public abstract class CodesResultatBLL {
 	
 	/**
-	 * Echec le nom de l'article ne respecte pas les règles définies
+	 * Echec la taille du pseudo de l'utilisateur ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_NOM_ERREUR=20000;
+	public static final int REGLE_PSEUDO_TAILLE_NOM_ERREUR=20000;
 	/**
-	 * Echec le nom de l'article ne respecte pas les règles définies
+	 * Echec le pseudo de l'utilisateur ne respecte pas les règles définies
 	 */
-	public static final int REGLE_LISTE_NOM_ERREUR = 20001;
+	public static final int REGLE_PSEUDO_CARACTERES_NOM_ERREUR=20001;
+	/**
+	 * Echec l'email de l'utilisateur ne respecte pas les règles définies
+	 */
+	public static final int REGLE_EMAIL_NOM_ERREUR=20002;
+	/**
+	 * Echec le nom de l'utilisateur ne respecte pas les règles définies
+	 */
+	public static final int REGLE_NOM_UTILISATEUR_NOM_ERREUR=20003;
+	/**
+	 * Echec le prénom de l'utilisateur ne respecte pas les règles définies
+	 */
+	public static final int REGLE_PRENOM_UTILISATEUR_NOM_ERREUR=20004;
+	/**
+	 * Echec le numéro de téléphone de l'utilisateur ne respecte pas les règles définies
+	 */
+	public static final int REGLE_TELEPHONE_NOM_ERREUR=20005;
+	/**
+	 * Echec le code postal de l'utilisateur ne respecte pas les règles définies
+	 */
+	public static final int REGLE_CODEPOSTAL_NOM_ERREUR=20006;
 
 	
 }
