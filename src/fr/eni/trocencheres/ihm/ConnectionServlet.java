@@ -1,7 +1,6 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,28 +26,30 @@ public class ConnectionServlet extends HttpServlet {
 		forward(request, response, LOGIN);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response, List<Integer> listeCodesErreur) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BusinessException businessException = new BusinessException();
 		String identifiant = request.getParameter("identifiant");
 		String motdepasse = request.getParameter("motdepasse");
-		Utilisateur myUser = new Utilisateur();
+		Utilisateur myUser = null;
 
 		UtilisateurManager um = new UtilisateurManager();
-		
+
 		if(motdepasse.equals("") || identifiant.equals("")) {
-			request.setAttribute("vide", "Veuillez remplir les champs obligatoires");
+			businessException.ajouterErreur(CodesResultatServlets.CONNECTION_SERVLET_CHAMPS_VIDES_ERREUR);
+			request.setAttribute("listeCodesErreur", businessException.getListeCodesErreur());
 			forward(request, response, LOGIN);
 		} else {
 			try {
 				myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
 			} catch (BusinessException e) {
-				// TODO Auto-generated catch block
+				request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
 				e.printStackTrace();
-				listeCodesErreur.add(CodesResultatServlets.CONNECTION_SERVLET_ERREUR);
 			}
 		}
-				
-		if (myUser.getPseudo() == null) {
-			request.setAttribute("error", "Identifiant ou mot de passe incorrect");
+
+		if (myUser == null) {
+			businessException.ajouterErreur(CodesResultatServlets.CONNECTION_SERVLET_ID_MDP_ERREUR);
+			request.setAttribute("listeCodesErreur", businessException.getListeCodesErreur());
 			forward(request, response, LOGIN);
 		} else {
 			HttpSession session = request.getSession();
@@ -59,7 +60,7 @@ public class ConnectionServlet extends HttpServlet {
 			session.setAttribute("utilisateur", myUser);
 			forward(request, response, INDEX);
 		}
-		
+
 	}
 
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection)

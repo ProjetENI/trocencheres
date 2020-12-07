@@ -1,7 +1,6 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +23,7 @@ public class SupprimerCompteServlet extends HttpServlet {
 
 	private static final String INDEX = "Index";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response, List<Integer> listeCodesErreur) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Utilisateur userASupprimer = (Utilisateur) session.getAttribute("utilisateur");
 		UtilisateurManager um = new UtilisateurManager();
@@ -32,9 +31,8 @@ public class SupprimerCompteServlet extends HttpServlet {
 		try {
 			um.supprimerUtilisateur(userASupprimer);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
+			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
 			e.printStackTrace();
-			listeCodesErreur.add(CodesResultatServlets.SUPPRIMER_COMPTE_SERVLET_ERREUR);
 		}
 		
 		Utilisateur emptyUser = new Utilisateur();

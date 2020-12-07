@@ -9,7 +9,7 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
 				<c:choose>
-					<c:when test="${utilisateur.pseudo eq null}">
+					<c:when test="${utilisateur eq null}">
 						<li class="nav-item">
 							<a class="nav-link" href="ConnectionServlet">Se connecter<span class="sr-only">(current)</span></a>
 						</li>
