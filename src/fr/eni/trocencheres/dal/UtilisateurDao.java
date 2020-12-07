@@ -24,8 +24,9 @@ public interface UtilisateurDao {
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour modifier ses données en base
 	 * @param Utilisateur
+	 * @throws BusinessException 
 	 */
-	void modifierUtilisateur(Utilisateur utilisateur);
+	void modifierUtilisateur(Utilisateur utilisateur) throws BusinessException;
 
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour supprimer ses données en base
@@ -37,8 +38,9 @@ public interface UtilisateurDao {
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour modifier son mot de passe en base
 	 * @param Utilisateur
+	 * @throws BusinessException 
 	 */
-	void modifierMotDePasse(Utilisateur utilisateur);
+	void modifierMotDePasse(Utilisateur utilisateur) throws BusinessException;
 
 	/**
 	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données

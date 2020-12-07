@@ -142,6 +142,13 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			conn.setAutoCommit(false);
         	try (PreparedStatement pstt_utilisateur = conn.prepareStatement(INSERT_UTILISATEUR, PreparedStatement.RETURN_GENERATED_KEYS)) {
         		
+        		if(utilisateur == null)
+        		{
+        			BusinessException businessException = new BusinessException();
+        			businessException.ajouterErreur(CodesResultatDAL.INSERT_OBJET_NULL);
+        			throw businessException;
+        		}
+        		
 				pstt_utilisateur.setString(1, utilisateur.getPseudo());
 				pstt_utilisateur.setString(2, utilisateur.getNom());
 				pstt_utilisateur.setString(3, utilisateur.getPrenom());
@@ -164,11 +171,6 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         		}
 				rs.close();
 				conn.commit();
-        	} catch (SQLException es) {
-        		es.printStackTrace();
-    			BusinessException businessException = new BusinessException();
-    			businessException.ajouterErreur(CodesResultatDAL.INSERT_OBJET_ECHEC);
-    			throw businessException;
 				
 	        } catch (Exception e) {
 	        	conn.rollback();
@@ -179,7 +181,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			businessException.ajouterErreur(CodesResultatDAL.ERREUR_NON_GEREE);
+			businessException.ajouterErreur(CodesResultatDAL.INSERT_OBJET_ECHEC);
 			throw businessException;
 		}
 	}
@@ -188,9 +190,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour modifier ses données en base
 	 * @param Utilisateur
+	 * @throws BusinessException 
 	 */
 	@Override
-	public void modifierUtilisateur(Utilisateur utilisateur) {
+	public void modifierUtilisateur(Utilisateur utilisateur) throws BusinessException {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
@@ -219,6 +222,9 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.MODIF_UTILISATEUR_ERREUR);
+			throw businessException;
 		}
 	}
 
@@ -226,32 +232,28 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour modifier son mot de passe en base
 	 * @param Utilisateur
+	 * @throws BusinessException 
 	 */
 	@Override
-	public void modifierMotDePasse(Utilisateur utilisateur) {
+	public void modifierMotDePasse(Utilisateur utilisateur) throws BusinessException {
 
-		try (Connection conn = ConnectionProvider.getConnection()) {
-
-			conn.setAutoCommit(false);
-        	try (Statement stt = conn.createStatement();
-                 PreparedStatement pstt_mdp = conn.prepareStatement(UPDATE_UTILISATEUR_MDP)) {
+        	try (	Connection conn = ConnectionProvider.getConnection();
+        			Statement stt = conn.createStatement();
+        			PreparedStatement pstt_mdp = conn.prepareStatement(UPDATE_UTILISATEUR_MDP)) {
 
         		pstt_mdp.setInt(2, utilisateur.getNoUtilisateur());
-        		
         		pstt_mdp.setString(1, utilisateur.getMotDePasse());
 
         		pstt_mdp.executeUpdate();
-				conn.commit();
 
-	        } catch (Exception e) {
-	        	conn.rollback();
+	        } catch (SQLException e) {
 	            e.printStackTrace();
+	            BusinessException businessException = new BusinessException();
+				businessException.ajouterErreur(CodesResultatDAL.MODIFIER_MDP_ERREUR);
+				throw businessException;
 	        }
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
+	
 	
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour supprimer ses données en base
@@ -271,7 +273,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         } catch (Exception e) {
             e.printStackTrace();
             BusinessException businessException = new BusinessException();
-			businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_LISTE_ERREUR);
+			businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_UTILISATEUR_ERREUR);
 			throw businessException;
         }
 
