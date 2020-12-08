@@ -61,7 +61,7 @@ public class UtilisateurManager {
 		validerNouveauPassword(nouveauMDP, businessException);
 		
 		if(!businessException.hasErreurs()) {
-			utilisateurDao.modifierMotDePasse(utilisateur);
+			utilisateurDao.modifierMotDePasse(utilisateur, nouveauMDP);
 		} else {
 			throw businessException;
 		}
