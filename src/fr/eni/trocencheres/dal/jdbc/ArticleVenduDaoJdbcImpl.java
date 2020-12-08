@@ -56,7 +56,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 		    	int etatVente = rs.getInt("etat_vente");
 		    
 		    	ArticleVendu articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente);
-		    	listeArticleVendu.add(articlevendu);
+		    	listeArticleVendu.add(articleVendu);
 			
 			}
 		}catch (Exception e) {

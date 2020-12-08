@@ -52,7 +52,7 @@ public class ArticleVenduManager {
 		validerDescription(articlevendu, businessException);
 		validerDate(articlevendu.getDateDebutEncheres(), businessException);
 		validerDate(articlevendu.getDateFinEcheres(), businessException);
-		validerPrix(articlevendu.getMiseAPrix(), businessException);
+		validerPrix(articlevendu.getPrixInitial(), businessException);
 		validerPrix(articlevendu.getPrixVente(), businessException);
 		validerEtatVente(articlevendu.getEtatVente(), businessException);
 	}
