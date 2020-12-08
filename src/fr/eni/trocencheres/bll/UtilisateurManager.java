@@ -56,9 +56,9 @@ public class UtilisateurManager {
 	}
 
 
-	public void modifierMotDePasse(Utilisateur utilisateur) throws BusinessException {
+	public void modifierMotDePasse(Utilisateur utilisateur, String nouveauMDP) throws BusinessException {
 		BusinessException businessException = new BusinessException();
-		validerPassword(utilisateur, businessException);
+		validerNouveauPassword(nouveauMDP, businessException);
 		
 		if(!businessException.hasErreurs()) {
 			utilisateurDao.modifierMotDePasse(utilisateur);
@@ -138,6 +138,17 @@ public class UtilisateurManager {
 		if (utilisateur.getMotDePasse().length() < 6 ||
 			utilisateur.getMotDePasse().length() > 30 ||
 			utilisateur.getMotDePasse().matches(checkPassword) ) {
+
+			businessException.ajouterErreur(CodesResultatBLL.REGLE_MOTDEPASSE_NOM_ERREUR);
+		}
+	}
+	
+	private void validerNouveauPassword(String nouveauMDP, BusinessException businessException) {
+		String checkPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$€%&+=!])(?=\\S+$).{6,}$";
+		// Contient minimum un chiffre, une minuscule, une majuscule, un caractère spécial et fait minimum 6 caractères
+		if (nouveauMDP.length() < 6 ||
+			nouveauMDP.length() > 30 ||
+			nouveauMDP.matches(checkPassword) ) {
 
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_MOTDEPASSE_NOM_ERREUR);
 		}
