@@ -97,6 +97,12 @@ input[type=button], input[type=submit], input[type=reset] {
 .banner {
     width: 100%;
 }
+.navbar {
+	position: fixed;
+	top: 0;
+	z-index: 9;
+	width: 100%;
+}
 .nav-logo, .subtitle {
     width: 100%;
     height: 80px;
@@ -291,11 +297,14 @@ iframe {
   background: #f2f2f2;
 }
 
-
+.container-login100 {
+  width: 100%;
+}
 .wrap-login100 {
   width: 100%;
-  background: #fff;
+  position: relative;
   overflow: hidden;
+  background: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -336,8 +345,7 @@ iframe {
 
 .login100-form {
   width: 560px;
-  height: calc(100vh - 66px);
-  min-height: calc(100vh - 66px);
+  min-height: 100vh;
   display: block;
   background-color: #f7f7f7;
   padding: 103px 55px 55px 55px;
@@ -353,8 +361,27 @@ iframe {
   text-align: center;
 }
 
-
-
+.sidebar {
+	z-index: 9;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+.sidebar-closed {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	transform: translateX(500px);
+}
+.sidebar-open {
+	position: absolute;
+	visibility: visible;
+	opacity: 1;
+	transition: all 0.3s ease-in-out;
+	transform: translateX(0px);
+}
 /*------------------------------------------------------------------
 [ Input ]*/
 

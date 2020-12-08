@@ -8,6 +8,20 @@ $('#confirm-delete').on('show.bs.modal', function(e) {
 
 
 /*************************************************
+*	JAVASCRIPT TOGGLE OPEN CLOSE
+*	FORMULAIRE RENVOI MOT DE PASSE
+*************************************************/
+$(document).on('click', '.js-closeSidebar', function() {
+	$('#retrievePassword').removeClass('sidebar-open');
+	$('#retrievePassword').addClass('sidebar-closed');
+});
+$(document).on('click', '.js-openSidebar', function() {
+	$('#retrievePassword').removeClass('sidebar-closed');
+	$('#retrievePassword').addClass('sidebar-open');
+});
+
+
+/*************************************************
 *	JAVASCRIPT POUR LE FORMULAIRE DE CONNEXION
 *************************************************/
 (function ($) {

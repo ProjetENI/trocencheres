@@ -40,7 +40,7 @@
 						</div>
 
 						<div class="forgot-password">
-							<a href="#" class="txt1">
+							<a href="#" class="js-openSidebar txt1">
 								Mot de passe oublié ?
 							</a>
 						</div>
@@ -68,6 +68,42 @@
 						<a class="login100-form-btn" href="InscriptionServlet">Inscrivez-vous</a>
 					</div>
 
+				</form>
+				
+				<form id="retrievePassword" class="login100-form validate-form sidebar-closed" method="post" action="ConnectionServlet">
+					<div class="sidebar">
+						<span class="login100-form-title p-b-43">
+							Mot de passe oublié
+						</span>
+	
+						<div class="wrap-input100 validate-input" data-validate = "Email requis">
+							<input class="input100" type="text" id="identifiant" name="identifiant">
+							<span class="focus-input100"></span>
+							<span class="label-input100">Email</span>
+						</div>
+					
+						<div class="flex-sb-m w-full p-t-3">
+							<div class="text-center p-t-5 p-b-20">
+								<span class="text-danger">
+									${error}
+								</span>
+							</div>
+						</div>
+	
+	
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn">
+								Renvoyer le mot de passe
+							</button>
+						</div>
+	
+						<div class="text-center p-t-46 p-b-20">
+							<span class="txt2">
+								Vous êtes ici par erreur ?
+							</span>
+							<a class="js-closeSidebar login100-form-btn" href="#">Retour à la connexion</a>
+						</div>
+					</div>
 				</form>
 
 				<div class="login100-more" style="background-image: url('img/login_bg.jpg');"></div>
