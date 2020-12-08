@@ -34,5 +34,34 @@ public abstract class CodesResultatBLL {
 	 */
 	public static final int REGLE_CODEPOSTAL_NOM_ERREUR=20006;
 
-	
+
+
+	/**
+	 * Echec la taille du nom de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_TAILLE_NOM_ERREUR=20007;
+	/**
+	 * Echec le nom de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_CARACTERES_NOM_ERREUR=20008;
+	/**
+	 * Echec la taille de la description de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_TAILLE_DESCIPTION_ERREUR=20009;
+	/**
+	 * Echec la description de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_CARACTERES_DESCRIPTION_ERREUR=20010;
+	/**
+	 * Echec la date de vente de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_DATE_ERREUR=20011;
+	/**
+	 * Echec le prix de vente de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_PRIX_ERREUR=20012;
+	/**
+	 * Echec l'état de vente de l'article ne respecte pas les règles définies
+	 */
+	public static final int REGLE_ARTICLE_ETAT_ERREUR=20013;
 }
