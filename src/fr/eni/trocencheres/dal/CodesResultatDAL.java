@@ -56,6 +56,10 @@ public abstract class CodesResultatDAL {
 	 * Erreur à l'ajout d'un article
 	 */
 	public static final int LECTURE_ARTICLE_ECHEC = 10009;
+	/**
+	 * 
+	 */
+	public static final int MODIF_ARTICLE_ERREUR = 10010;
 }
 
 

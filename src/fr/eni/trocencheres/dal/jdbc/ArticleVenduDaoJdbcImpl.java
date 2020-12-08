@@ -25,7 +25,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			+ "VALUES (?,?,?,?,?,?,?,?);";
 	
 	private final String UPDATE_ARTICLE_VENDU_INFO = "UPDATE ARTICLE_VENDU SET "
-			+ "description=? "
+			+"nomArticle=?, description=?, miseAPrix=? " 
 			+ "WHERE no_articlevendu=?;";
 
 
@@ -114,35 +114,40 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	}
 		
 	
-	
-	
-	
-	
-	
-	
+	/**
+	 * Fonction prenant en paramètre une modification d'un article 
+	 * @param article vendu
+	 * @throws BusinessException 
+	 */
 	@Override
-	public void modifierArticleVendu(ArticleVendu articlevendu) {
-
-		try (Connection conn = ConnectionProvider.getConnection()) {
-
-			conn.setAutoCommit(false);
-        	try (PreparedStatement pstt_articlevendu = conn.prepareStatement(UPDATE_ARTICLE_VENDU_INFO)) {
-
-        		pstt_articlevendu.setString(1, articlevendu.getDescription());
-        		
-				pstt_articlevendu.executeUpdate();
-				
-				conn.commit();
-				
-	        } catch (Exception e) {
-	        	conn.rollback();
-	            e.printStackTrace();
-	        }
-
-		} catch (Exception e) {
-			e.printStackTrace();
+	public void modifierArticleVendu(ArticleVendu articlevendu) throws BusinessException {
+	
+			try (Connection conn = ConnectionProvider.getConnection()) {
+	
+				conn.setAutoCommit(false);
+		        	try (PreparedStatement pstt_articlevendu = conn.prepareStatement(UPDATE_ARTICLE_VENDU_INFO)) {
+		
+		        		pstt_articlevendu.setString(1, articlevendu.getNomArticle());
+		        		pstt_articlevendu.setString(2, articlevendu.getDescription());
+		        		pstt_articlevendu.setInt(3, articlevendu.getMiseAPrix());
+						pstt_articlevendu.executeUpdate();
+						
+						conn.commit();
+						
+		        	} catch (Exception e) {
+		    			e.printStackTrace();
+		    			BusinessException businessException = new BusinessException();
+		    			businessException.ajouterErreur(CodesResultatDAL.MODIF_ARTICLE_ERREUR);
+		    			throw businessException;
+		    		}
+			
+	
+					} catch (Exception e) {
+		    			e.printStackTrace();
+		    			BusinessException businessException = new BusinessException();
+		    			businessException.ajouterErreur(CodesResultatDAL.LECTURE_ARTICLE_ECHEC);
+		    			throw businessException;
+		    		}
 		}
 	}
-
-		}
 

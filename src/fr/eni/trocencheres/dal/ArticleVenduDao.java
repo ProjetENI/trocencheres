@@ -22,7 +22,11 @@ public interface ArticleVenduDao {
 	void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException;
 
 	
-	
-	void modifierArticleVendu(ArticleVendu articlevendu);
+	/**
+	 * Fonction prenant en paramètre une modification d'un article 
+	 * @param article vendu
+	 * @throws BusinessException 
+	 */
+	void modifierArticleVendu(ArticleVendu articlevendu) throws BusinessException ;
 
 }
