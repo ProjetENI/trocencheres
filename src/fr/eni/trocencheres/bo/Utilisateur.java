@@ -23,6 +23,11 @@ public class Utilisateur {
 		
 	}
 	
+	//constructeur avec toutes les variables
+	public Utilisateur(int noUtilisateur,String motDePasse) {
+			this.noUtilisateur = noUtilisateur;
+			this.motDePasse = motDePasse;
+	}
 
 	//constructeur pour l'inscription
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,

@@ -33,7 +33,6 @@ public class InscriptionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Integer> listeCodesErreur = new ArrayList<>();
 
-		// TODO Créer une méthode par parametre pour vérifier si ce n'est pas null.
 		String pseudo = verifierPseudo(request, listeCodesErreur);
 		String nom = verifierNom(request, listeCodesErreur);
 		String prenom = verifierPrenom(request, listeCodesErreur);
