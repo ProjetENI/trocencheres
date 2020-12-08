@@ -10,21 +10,21 @@ public class ArticleVendu {
 	private String description;
 	private LocalDate dateDebutEncheres;
 	private LocalDate dateFinEncheres;
-	private int miseAPrix;
+	private int prixInitial;
 	private int prixVente;
 	private int etatVente;
 
 
 	// construteur avec toutes les variables d'instances
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEcheres, int miseAPrix, int prixVente, int etatVente) {
+			LocalDate dateFinEcheres, int prixInitial, int prixVente, int etatVente) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEcheres;
-		this.miseAPrix = miseAPrix;
+		this.prixInitial = prixInitial;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 	}
@@ -66,11 +66,11 @@ public class ArticleVendu {
 		this.dateFinEncheres = dateFinEcheres;
 	}
 
-	public int getMiseAPrix() {
-		return miseAPrix;
+	public int getPrixInitial() {
+		return prixInitial;
 	}
-	public void setMiseAPrix(int miseAPrix) {
-		this.miseAPrix = miseAPrix;
+	public void setPrixInitial(int miseAPrix) {
+		this.prixInitial = miseAPrix;
 	}
 
 	public int getPrixVente() {
