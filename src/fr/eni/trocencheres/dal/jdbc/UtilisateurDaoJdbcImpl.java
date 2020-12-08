@@ -276,7 +276,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
         } catch (Exception e) {
             e.printStackTrace();
             BusinessException businessException = new BusinessException();
-			businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_UTILISATEUR_ERREUR);
+			businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_ARTICLE_ERREUR);
 			throw businessException;
         }
 

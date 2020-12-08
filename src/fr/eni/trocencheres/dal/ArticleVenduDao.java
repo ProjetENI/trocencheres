@@ -29,4 +29,11 @@ public interface ArticleVenduDao {
 	 */
 	void modifierArticleVendu(ArticleVendu articlevendu) throws BusinessException ;
 
+	/**
+	 * Fonction prenant en paramètre un utilisateur pour supprimer un article en base
+	 * @param Utilisateur
+	 * @throws BusinessException 
+	 */
+	void supprimerArticleVendu(ArticleVendu articlevendu) throws BusinessException;
+
 }

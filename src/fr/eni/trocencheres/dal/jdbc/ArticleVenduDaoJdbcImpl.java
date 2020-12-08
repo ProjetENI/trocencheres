@@ -27,6 +27,9 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	private final String UPDATE_ARTICLE_VENDU_INFO = "UPDATE ARTICLE_VENDU SET "
 			+"nomArticle=?, description=?, miseAPrix=? " 
 			+ "WHERE no_articlevendu=?;";
+	
+	private final String DELETE_ARTICLE_VENDU = "DELETE FROM ARTICLE_VENDU WHERE no_articlevendu=?; ";
+			
 
 
 	/**
@@ -148,6 +151,40 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 		    			businessException.ajouterErreur(CodesResultatDAL.LECTURE_ARTICLE_ECHEC);
 		    			throw businessException;
 		    		}
+		}
+	/**
+	 * Fonction prenant en paramètre un utilisateur pour supprimer un article en base
+	 * @param article vendu
+	 * @throws BusinessException 
+	 */
+	@Override
+	public void supprimerArticleVendu(ArticleVendu articlevendu) throws BusinessException {
+		
+    	try (	Connection conn = ConnectionProvider.getConnection();
+    			PreparedStatement pstt_articlevendu = conn.prepareStatement(DELETE_ARTICLE_VENDU)) {
+
+			pstt_articlevendu.setInt(1, articlevendu.getNoArticle());
+			pstt_articlevendu.setString(2, articlevendu.getNomArticle());
+			pstt_articlevendu.setString(3, articlevendu.getDescription());
+			pstt_articlevendu.setDate(4, java.sql.Date.valueOf(articlevendu.getDateDebutEncheres()));
+			pstt_articlevendu.setDate(5, java.sql.Date.valueOf(articlevendu.getDateFinEcheres()));
+			pstt_articlevendu.setInt(6, articlevendu.getMiseAPrix());
+			pstt_articlevendu.setInt(7, articlevendu.getPrixVente());
+			pstt_articlevendu.setInt(8, articlevendu.getEtatVente());
+
+			pstt_articlevendu.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.SUPPRESSION_UTILISATEUR_ERREUR);
+			throw businessException;
+        }
+	
+	
+	
+	
+	
 		}
 	}
 
