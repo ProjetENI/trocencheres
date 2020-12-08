@@ -9,7 +9,7 @@ public class ArticleVendu {
 	private String nomArticle;
 	private String description;
 	private LocalDate dateDebutEncheres;
-	private LocalDate dateFinEcheres;
+	private LocalDate dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
@@ -23,7 +23,7 @@ public class ArticleVendu {
 		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEcheres = dateFinEcheres;
+		this.dateFinEncheres = dateFinEcheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
@@ -60,10 +60,10 @@ public class ArticleVendu {
 	}
 
 	public LocalDate getDateFinEcheres() {
-		return dateFinEcheres;
+		return dateFinEncheres;
 	}
 	public void setDateFinEcheres(LocalDate dateFinEcheres) {
-		this.dateFinEcheres = dateFinEcheres;
+		this.dateFinEncheres = dateFinEcheres;
 	}
 
 	public int getMiseAPrix() {
