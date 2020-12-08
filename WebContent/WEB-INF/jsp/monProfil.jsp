@@ -20,16 +20,16 @@
 					<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
 						Modifier mes paramètres
 					</a>
-					<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+					<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-modifier-mot-de-passe" role="tab" aria-controls="v-pills-profile" aria-selected="false">
 						Modifier mon mot de passe
 					</a>
-					<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+					<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-supprimer-compte" role="tab" aria-controls="v-pills-messages" aria-selected="false">
 						Supprimer mon compte
 					</a>
-					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-encheres" role="tab" aria-controls="v-pills-settings" aria-selected="false">
 						Mes enchères en cours
 					</a>
-					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-encheres-suivies" role="tab" aria-controls="v-pills-settings" aria-selected="false">
 						Mes articles suivis
 					</a>
 				</div><!-- End .nav -->
@@ -44,22 +44,22 @@
 						</jsp:include>
 					</div>
 	
-					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+					<div class="tab-pane fade" id="v-pills-modifier-mot-de-passe" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 						<jsp:include page="/WEB-INF/jsp/modifierMotDePasse.jsp">
 							<jsp:param name="onglet" value="Header_Value"/>
 						</jsp:include>
 					</div>
 	
-					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+					<div class="tab-pane fade" id="v-pills-supprimer-compte" role="tabpanel" aria-labelledby="v-pills-messages-tab">
 						<jsp:include page="/WEB-INF/jsp/supprimerCompte.jsp">
 							<jsp:param name="onglet" value="Header_Value"/>
 						</jsp:include>
 					</div>
 
-					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+					<div class="tab-pane fade" id="v-pills-encheres" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 						...
 					</div>
-					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+					<div class="tab-pane fade" id="v-pills-encheres-suivies" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 						...
 					</div>
 				</div><!-- End .tab-content -->
