@@ -141,7 +141,7 @@ public class InscriptionServlet extends HttpServlet {
 	
 	private String verifierVille(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String ville;
-        ville = request.getParameter("codepostal");
+        ville = request.getParameter("ville");
         if(ville==null || ville.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_VILLE_VIDE_ERREUR);
@@ -151,7 +151,7 @@ public class InscriptionServlet extends HttpServlet {
 	
 	private String verifierPassword(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String password;
-        password = request.getParameter("codepostal");
+        password = request.getParameter("password");
         if(password==null || password.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);

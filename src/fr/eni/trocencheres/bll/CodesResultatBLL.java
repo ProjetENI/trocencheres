@@ -33,35 +33,39 @@ public abstract class CodesResultatBLL {
 	 * Echec le code postal de l'utilisateur ne respecte pas les règles définies
 	 */
 	public static final int REGLE_CODEPOSTAL_NOM_ERREUR=20006;
+	/**
+	 * Echec le mot de passe de l'utilisateur ne respecte pas les règles définies
+	 */
+	public static final int REGLE_MOTDEPASSE_NOM_ERREUR=20007;
 
 
 
 	/**
 	 * Echec la taille du nom de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_TAILLE_NOM_ERREUR=20007;
+	public static final int REGLE_ARTICLE_TAILLE_NOM_ERREUR=20040;
 	/**
 	 * Echec le nom de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_CARACTERES_NOM_ERREUR=20008;
+	public static final int REGLE_ARTICLE_CARACTERES_NOM_ERREUR=20041;
 	/**
 	 * Echec la taille de la description de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_TAILLE_DESCIPTION_ERREUR=20009;
+	public static final int REGLE_ARTICLE_TAILLE_DESCIPTION_ERREUR=20042;
 	/**
 	 * Echec la description de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_CARACTERES_DESCRIPTION_ERREUR=20010;
+	public static final int REGLE_ARTICLE_CARACTERES_DESCRIPTION_ERREUR=20043;
 	/**
 	 * Echec la date de vente de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_DATE_ERREUR=20011;
+	public static final int REGLE_ARTICLE_DATE_ERREUR=20044;
 	/**
 	 * Echec le prix de vente de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_PRIX_ERREUR=20012;
+	public static final int REGLE_ARTICLE_PRIX_ERREUR=20045;
 	/**
 	 * Echec l'état de vente de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_ETAT_ERREUR=20013;
+	public static final int REGLE_ARTICLE_ETAT_ERREUR=20046;
 }

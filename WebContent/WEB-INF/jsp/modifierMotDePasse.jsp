@@ -5,7 +5,7 @@
 <div class="container">
 	<section class="mb-5">
 		<h2>Changer de mot de passe</h2>
-		<form action="changerMotDePasseServlet" method="POST">
+		<form action="ModifierMotDePasseServlet" method="POST">
 			<div class="row">
 				<div class="form-group col-4">
 					<label for="ancienMotDePasse">Ancien Mot de Passe</label>

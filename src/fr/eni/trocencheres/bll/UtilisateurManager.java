@@ -56,12 +56,12 @@ public class UtilisateurManager {
 	}
 
 
-	public void modifierMotDePasse(Utilisateur identifiant) throws BusinessException {
+	public void modifierMotDePasse(Utilisateur utilisateur) throws BusinessException {
 		BusinessException businessException = new BusinessException();
-		validerPseudo(identifiant, businessException);
+		validerPassword(utilisateur, businessException);
 		
 		if(!businessException.hasErreurs()) {
-			utilisateurDao.modifierMotDePasse(identifiant);
+			utilisateurDao.modifierMotDePasse(utilisateur);
 		} else {
 			throw businessException;
 		}
@@ -80,6 +80,7 @@ public class UtilisateurManager {
 		validerPrenom(utilisateur, businessException);
 		validerTelephone(utilisateur, businessException);
 		validerCodePotal(utilisateur, businessException);
+		validerPassword(utilisateur, businessException);
 	}
 
 	private void validerPseudo(Utilisateur utilisateur, BusinessException businessException) {
@@ -131,5 +132,14 @@ public class UtilisateurManager {
 		}
 	}
 
+	private void validerPassword(Utilisateur utilisateur, BusinessException businessException) {
+		String checkPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$€%&+=!])(?=\\S+$).{6,}$";
+		// Contient minimum un chiffre, une minuscule, une majuscule, un caractère spécial et fait minimum 6 caractères
+		if (utilisateur.getMotDePasse().length() < 6 ||
+			utilisateur.getMotDePasse().length() > 30 ||
+			utilisateur.getMotDePasse().matches(checkPassword) ) {
 
+			businessException.ajouterErreur(CodesResultatBLL.REGLE_MOTDEPASSE_NOM_ERREUR);
+		}
+	}
 }
