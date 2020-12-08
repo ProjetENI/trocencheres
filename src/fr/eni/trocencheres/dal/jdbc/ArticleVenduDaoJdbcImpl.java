@@ -105,14 +105,14 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 		}
 	}
 		
-	public void modifierArticleVendu(Utilisateur utilisateur) {
+	public void modifierArticleVendu(ArticleVendu articlevendu) {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
 			conn.setAutoCommit(false);
         	try (PreparedStatement pstt_articlevendu = conn.prepareStatement(UPDATE_ARTICLE_VENDU_INFO)) {
 
-        		pstt_articlevendu.setstring(1, articlevendu.getDescription());
+        		pstt_articlevendu.setString(1, articlevendu.getDescription());
         		
 				pstt_articlevendu.executeUpdate();
 				
