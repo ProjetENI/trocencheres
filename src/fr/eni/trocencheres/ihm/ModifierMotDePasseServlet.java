@@ -49,7 +49,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 		
 		if (passwordNouveau.equals(passwordNouveau2)) {
 			Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),userConnecter.getPseudo(),userConnecter.getNom(),userConnecter.getPrenom(),
-					userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille(),userConnecter.getMotDePasse());
+					userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille(),passwordAncien);
 			
 			try {
 				um.modifierMotDePasse(myUser,passwordNouveau);
