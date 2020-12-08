@@ -24,6 +24,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String MODIFIER_MOT_DE_PASSE = "ModifierMotDePasse";
+	private static final String PARAMETRE_UTILISATEUR = "MonProfil";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -70,7 +71,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 			request.setAttribute("listeCodesErreur", be.getListeCodesErreur());
 		}
 
-		forward(request, response, MODIFIER_MOT_DE_PASSE);
+		forward(request, response, PARAMETRE_UTILISATEUR);
 
 	}
 
