@@ -22,12 +22,20 @@ public class Utilisateur {
 	public Utilisateur() {
 		
 	}
-	
-	//constructeur avec toutes les variables
-	public Utilisateur(int noUtilisateur,String motDePasse) {
-			this.noUtilisateur = noUtilisateur;
-			this.motDePasse = motDePasse;
-	}
+	//constructeur pour modif mot de passe
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse) {
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+}
 
 	//constructeur pour l'inscription
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,

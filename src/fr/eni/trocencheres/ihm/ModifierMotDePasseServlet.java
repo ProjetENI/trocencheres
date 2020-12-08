@@ -48,13 +48,11 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 		String passwordNouveau2 = verifierNouveauPassword2(request, listeCodesErreur);
 		
 		if (passwordNouveau.equals(passwordNouveau2)) {
-			Utilisateur myUserMdpModif = new Utilisateur(userConnecter.getNoUtilisateur(),passwordNouveau);
-			
 			Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),userConnecter.getPseudo(),userConnecter.getNom(),userConnecter.getPrenom(),
-					userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille());
+					userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille(),userConnecter.getMotDePasse());
 			
 			try {
-				um.modifierMotDePasse(myUserMdpModif);
+				um.modifierMotDePasse(myUser,passwordNouveau);
 				validModif = true;
 
 			} catch (BusinessException e) {
@@ -63,6 +61,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 			}
 			
 			if (validModif) {
+				myUser.setMotDePasse(passwordNouveau);
 				session.setAttribute("utilisateur", myUser);
 			}
 			
