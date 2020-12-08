@@ -24,7 +24,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			+ "VALUES (?,?,?,?,?,?,?,?);";
 	
 	private final String UPDATE_ARTICLE_VENDU_INFO = "UPDATE ARTICLE_VENDU SET "
-			+ "description "
+			+ "description=? "
 			+ "WHERE no_articlevendu=?;";
 
 
