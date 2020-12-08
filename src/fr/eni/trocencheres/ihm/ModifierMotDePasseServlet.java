@@ -92,7 +92,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 	
 	private String verifierNouveauPassword(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String password;
-        password = request.getParameter("ancienMotDePasse");
+        password = request.getParameter("nouveauMotDePasse1");
         if(password==null || password.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
@@ -102,7 +102,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 	
 	private String verifierNouveauPassword2(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String password;
-        password = request.getParameter("ancienMotDePasse");
+        password = request.getParameter("nouveauMotDePasse2");
         if(password==null || password.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
