@@ -10,11 +10,12 @@ import java.util.List;
 
 import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.ArticleVendu;
+import fr.eni.trocencheres.dal.ArticleVenduDao;
 import fr.eni.trocencheres.dal.CodesResultatDAL;
 import fr.eni.trocencheres.dal.ConnectionProvider;
 
 
-	public class ArticleVenduDaoJdbcImpl {
+	public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 		
 	private final String SELECT_ALL = "SELECT noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente "
 			+ "FROM ARTICLEVENDU;";
@@ -33,7 +34,8 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	 * @return une liste d'article vendu
 	 * @throws BusinessException 
 	 */
-	public List<ArticleVendu> listeArticleVendu() throws BusinessException{
+	@Override
+	public List<ArticleVendu> listerArticleVendu() throws BusinessException{
 			
 		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
 		try (	Connection conn = ConnectionProvider.getConnection();
@@ -70,7 +72,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	 * @param article vendu
 	 * @throws BusinessException 
 	 */
-	
+	@Override
 	public void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
@@ -118,6 +120,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	
 	
 	
+	@Override
 	public void modifierArticleVendu(ArticleVendu articlevendu) {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {

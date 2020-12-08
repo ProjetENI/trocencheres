@@ -2,10 +2,10 @@ package fr.eni.trocencheres.bll;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Scanner;
 
 import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.ArticleVendu;
+import fr.eni.trocencheres.dal.ArticleVenduDao;
 import fr.eni.trocencheres.dal.DaoFactory;
 
 public class ArticleVenduManager {
