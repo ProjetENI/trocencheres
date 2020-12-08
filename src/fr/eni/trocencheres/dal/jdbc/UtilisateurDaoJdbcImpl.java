@@ -33,7 +33,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			+ "WHERE no_utilisateur=?;";
 	
 	private final String UPDATE_UTILISATEUR_MDP = "UPDATE UTILISATEURS SET mot_de_passe =? "
-			+ "WHERE no_utilisateur=?; ";
+			+ "WHERE no_utilisateur=? AND mot_de_passe =?; ";
 	
 	private final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?; ";
 
@@ -235,14 +235,17 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	 * @throws BusinessException 
 	 */
 	@Override
-	public void modifierMotDePasse(Utilisateur utilisateur) throws BusinessException {
+	public void modifierMotDePasse(Utilisateur utilisateur,String nouveauMotDePasse) throws BusinessException {
 
         	try (	Connection conn = ConnectionProvider.getConnection();
         			Statement stt = conn.createStatement();
         			PreparedStatement pstt_mdp = conn.prepareStatement(UPDATE_UTILISATEUR_MDP)) {
 
+        		
+        		pstt_mdp.setString(1, nouveauMotDePasse);
         		pstt_mdp.setInt(2, utilisateur.getNoUtilisateur());
-        		pstt_mdp.setString(1, utilisateur.getMotDePasse());
+        		pstt_mdp.setString(3, utilisateur.getMotDePasse());
+        		
 
         		pstt_mdp.executeUpdate();
 

@@ -40,7 +40,7 @@ public interface UtilisateurDao {
 	 * @param Utilisateur
 	 * @throws BusinessException 
 	 */
-	void modifierMotDePasse(Utilisateur utilisateur) throws BusinessException;
+	void modifierMotDePasse(Utilisateur utilisateur,String nouveauMotDePasse) throws BusinessException;
 
 	/**
 	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données

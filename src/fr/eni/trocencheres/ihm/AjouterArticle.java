@@ -15,21 +15,24 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AjouterArticle")
 public class AjouterArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String INDEX = "Index";
+	private static final String LOGIN = "Login";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		forward(request, response, INDEX);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		forward(request, response, LOGIN);
 	}
 	
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection)

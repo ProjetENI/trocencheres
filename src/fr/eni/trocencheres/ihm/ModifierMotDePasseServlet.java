@@ -37,27 +37,38 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 		boolean validModif = false;
 		
 		HttpSession session = request.getSession();
+		BusinessException be = new BusinessException();
 		Utilisateur userConnecter = (Utilisateur) session.getAttribute("utilisateur");
 		UtilisateurManager um = new UtilisateurManager();
 		List<Integer> listeCodesErreur = new ArrayList<>();
 		
-		String password = verifierPassword(request, listeCodesErreur);
+		String passwordAncien = verifierAncienPassword(request, listeCodesErreur);
 		
-		Utilisateur myUserMdpModif = new Utilisateur(userConnecter.getNoUtilisateur(),password);
-		Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),userConnecter.getPseudo(),userConnecter.getNom(),userConnecter.getPrenom(),
-				userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille());
+		String passwordNouveau = verifierNouveauPassword(request, listeCodesErreur);
+		String passwordNouveau2 = verifierNouveauPassword2(request, listeCodesErreur);
 		
-		try {
-			um.modifierMotDePasse(myUserMdpModif);
-			validModif = true;
+		if (passwordNouveau.equals(passwordNouveau2)) {
+			Utilisateur myUserMdpModif = new Utilisateur(userConnecter.getNoUtilisateur(),passwordNouveau);
+			
+			Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),userConnecter.getPseudo(),userConnecter.getNom(),userConnecter.getPrenom(),
+					userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille());
+			
+			try {
+				um.modifierMotDePasse(myUserMdpModif);
+				validModif = true;
 
-		} catch (BusinessException e) {
-			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-			e.printStackTrace();
-		}
-		
-		if (validModif) {
-			session.setAttribute("utilisateur", myUser);
+			} catch (BusinessException e) {
+				request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+				e.printStackTrace();
+			}
+			
+			if (validModif) {
+				session.setAttribute("utilisateur", myUser);
+			}
+			
+		} else {
+			be.ajouterErreur(CodesResultatServlets.CORRESPONDACE_MDP);
+			request.setAttribute("listeCodesErreur", be.getListeCodesErreur());
 		}
 
 		forward(request, response, MODIFIER_MOT_DE_PASSE);
@@ -70,9 +81,29 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	private String verifierPassword(HttpServletRequest request, List<Integer> listeCodesErreur) {
+	private String verifierAncienPassword(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String password;
-        password = request.getParameter("codepostal");
+        password = request.getParameter("ancienMotDePasse");
+        if(password==null || password.trim().equals(""))
+        {
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
+        }
+        return password;
+    }
+	
+	private String verifierNouveauPassword(HttpServletRequest request, List<Integer> listeCodesErreur) {
+        String password;
+        password = request.getParameter("ancienMotDePasse");
+        if(password==null || password.trim().equals(""))
+        {
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
+        }
+        return password;
+    }
+	
+	private String verifierNouveauPassword2(HttpServletRequest request, List<Integer> listeCodesErreur) {
+        String password;
+        password = request.getParameter("ancienMotDePasse");
         if(password==null || password.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);

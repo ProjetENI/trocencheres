@@ -22,7 +22,10 @@ public abstract class CodesResultatServlets {
 	 * Erreur lanceé par la Servlet lors de la suppression d'un compte utilisateur
 	 */
 	public static final Integer SUPPRIMER_COMPTE_SERVLET_ERREUR = 30004;
-	
+	/**
+	 * Erreur lanceé par la Servlet lors de la suppression d'un compte utilisateur
+	 */
+	public static final Integer CORRESPONDACE_MDP = 30005;
 	
 	/*
 	 * Erreurs lancées lors de l'inscription si un champs est vide 
