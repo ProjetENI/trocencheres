@@ -8,8 +8,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.ArticleVendu;
-import fr.eni.trocencheres.bo.Utilisateur;
+import fr.eni.trocencheres.dal.CodesResultatDAL;
 import fr.eni.trocencheres.dal.ConnectionProvider;
 
 
@@ -30,8 +31,9 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	/**
 	 * Fonction qui permet lister tous les articles présents en base de données
 	 * @return une liste d'article vendu
+	 * @throws BusinessException 
 	 */
-	public List<ArticleVendu> listeArticleVendu(){
+	public List<ArticleVendu> listeArticleVendu() throws BusinessException{
 			
 		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
 		try (	Connection conn = ConnectionProvider.getConnection();
@@ -52,8 +54,11 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 		    	listeArticleVendu.add(articlevendu);
 			
 			}
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTES_ECHEC);
+			throw businessException;
 		}
 		return listeArticleVendu;
 	}
@@ -63,9 +68,10 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	/**
 	 * Fonction prenant en paramètre un article pour l'ajouter en base de données
 	 * @param article vendu
+	 * @throws BusinessException 
 	 */
 	
-	public void ajouterArticleVendu(ArticleVendu articlevendu) {
+	public void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
@@ -80,10 +86,6 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 				pstt_articlevendu.setInt(6, articlevendu.getMiseAPrix());
 				pstt_articlevendu.setInt(7, articlevendu.getPrixVente());
 				pstt_articlevendu.setInt(8, articlevendu.getEtatVente());
-				
-				pstt_articlevendu.setInt(10, 100);
-				pstt_articlevendu.setBoolean(11, false);
-
 				pstt_articlevendu.executeUpdate();
 				
 				ResultSet rs = pstt_articlevendu.getGeneratedKeys();
@@ -98,13 +100,24 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	        } catch (Exception e) {
 	        	conn.rollback();
 	            e.printStackTrace();
+	            throw e;
 	        }
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_ARTICLE_ECHEC);
+			throw businessException;
 		}
 	}
 		
+	
+	
+	
+	
+	
+	
+	
 	public void modifierArticleVendu(ArticleVendu articlevendu) {
 
 		try (Connection conn = ConnectionProvider.getConnection()) {

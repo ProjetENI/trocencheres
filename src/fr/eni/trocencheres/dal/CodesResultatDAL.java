@@ -52,7 +52,10 @@ public abstract class CodesResultatDAL {
 	 * Erreur à la suppression d'une liste
 	 */
 	public static final int MODIF_UTILISATEUR_ERREUR = 10008;
-	
+	/**
+	 * Erreur à l'ajout d'un article
+	 */
+	public static final int LECTURE_ARTICLE_ECHEC = 10009;
 }
 
 
