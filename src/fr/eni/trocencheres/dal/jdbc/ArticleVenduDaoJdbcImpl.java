@@ -17,10 +17,10 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 
 	public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 		
-	private final String SELECT_ALL = "SELECT noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente "
+	private final String SELECT_ALL = "SELECT noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, prixinitial, prixVente, etatVente "
 			+ "FROM ARTICLEVENDU;";
 	
-	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLE_VENDU"
+	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLE_VENDU "
 			+ "(noArticle, nomArticle, description, dateDebutencheres, dateFinEnchere, miseAPrix, prixVente, etatVente) "
 			+ "VALUES (?,?,?,?,?,?,?,?);";
 	
@@ -43,6 +43,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
 		try (	Connection conn = ConnectionProvider.getConnection();
 				Statement stt = conn.createStatement()) {
+			
 			ResultSet rs = stt.executeQuery(SELECT_ALL);
 
 			while (rs.next()) {
