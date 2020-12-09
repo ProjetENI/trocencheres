@@ -47,17 +47,18 @@ public class InscriptionServlet extends HttpServlet {
 
 		if(listeCodesErreur.size()>0) {
             request.setAttribute("listeCodesErreur",listeCodesErreur);
+            forward(request, response, INSCRIPTION);
         } else {
         	UtilisateurManager um = new UtilisateurManager();
     		try {
     			um.ajouterUtilisateur(utilisateur);
+    			forward(request, response, INDEX);
     		} catch (BusinessException e) {
     			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
     			e.printStackTrace();
+    			forward(request, response, INSCRIPTION);
     		}
         }
-
-		forward(request, response, INDEX);
 
 	}
 
