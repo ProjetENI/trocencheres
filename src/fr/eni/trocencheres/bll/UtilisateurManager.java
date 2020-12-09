@@ -79,7 +79,7 @@ public class UtilisateurManager {
 		validerNom(utilisateur, businessException);
 		validerPrenom(utilisateur, businessException);
 		validerTelephone(utilisateur, businessException);
-		validerCodePotal(utilisateur, businessException);
+		validerCodePostal(utilisateur, businessException);
 		validerPassword(utilisateur, businessException);
 	}
 
@@ -124,8 +124,8 @@ public class UtilisateurManager {
 		}
 	}
 
-	private void validerCodePotal(Utilisateur utilisateur, BusinessException businessException) {
-		String checkCodePostal = "[\\d]{5}";
+	private void validerCodePostal(Utilisateur utilisateur, BusinessException businessException) {
+		String checkCodePostal = "[0-9]{5}$";
 
 		if (!utilisateur.getCodePostal().matches(checkCodePostal)) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_CODEPOSTAL_NOM_ERREUR);
