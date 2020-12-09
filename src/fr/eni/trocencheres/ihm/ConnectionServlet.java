@@ -1,6 +1,8 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,16 +29,17 @@ public class ConnectionServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BusinessException businessException = new BusinessException();
-		String identifiant = request.getParameter("identifiant");
-		String motdepasse = request.getParameter("motdepasse");
+		
+		List<Integer> listeCodesErreur = new ArrayList<>();
+		String identifiant = verifierIdentifiant(request, listeCodesErreur);
+		String motdepasse = verifierPassword(request, listeCodesErreur);
+		
 		Utilisateur myUser = null;
 
 		UtilisateurManager um = new UtilisateurManager();
 
-		if(motdepasse.equals("") || identifiant.equals("")) {
-			businessException.ajouterErreur(CodesResultatServlets.CONNECTION_SERVLET_CHAMPS_VIDES_ERREUR);
-			request.setAttribute("listeCodesErreur", businessException.getListeCodesErreur());
+		if(listeCodesErreur.size()>0) {
+            request.setAttribute("listeCodesErreur",listeCodesErreur);
 			forward(request, response, LOGIN);
 		} else {
 			try {
@@ -48,8 +51,8 @@ public class ConnectionServlet extends HttpServlet {
 		}
 
 		if (myUser == null) {
-			businessException.ajouterErreur(CodesResultatServlets.CONNECTION_SERVLET_ID_MDP_ERREUR);
-			request.setAttribute("listeCodesErreur", businessException.getListeCodesErreur());
+			listeCodesErreur.add(CodesResultatServlets.CONNECTION_SERVLET_ID_MDP_ERREUR);
+			request.setAttribute("listeCodesErreur", listeCodesErreur);
 			forward(request, response, LOGIN);
 		} else {
 			HttpSession session = request.getSession();
@@ -69,4 +72,25 @@ public class ConnectionServlet extends HttpServlet {
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher(redirection);
 		rd.forward(request, response);
 	}
+	
+	private String verifierIdentifiant(HttpServletRequest request, List<Integer> listeCodesErreur) {
+        String ville;
+        ville = request.getParameter("identifiant");
+        if(ville==null || ville.trim().equals(""))
+        {
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_IDENTIFIANT_VIDE_ERREUR);
+        }
+        return ville;
+    }
+	
+	private String verifierPassword(HttpServletRequest request, List<Integer> listeCodesErreur) {
+        String password;
+        password = request.getParameter("motdepasse");
+        if(password==null || password.trim().equals(""))
+        {
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
+        }
+        return password;
+    }
+	
 }
