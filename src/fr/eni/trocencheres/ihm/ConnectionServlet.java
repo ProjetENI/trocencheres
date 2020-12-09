@@ -46,7 +46,8 @@ public class ConnectionServlet extends HttpServlet {
 				myUser =  um.listerUtilisateurInformation(identifiant,motdepasse);
 			} catch (BusinessException e) {
 				request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-				e.printStackTrace();
+				System.out.println(e.getListeCodesErreur().toString());
+//				e.printStackTrace();
 			}
 		}
 
