@@ -17,12 +17,16 @@ public class ArticleVendu {
 	private Categorie categorieArticle;
 	private Utilisateur utilisateur;
 
+	//Constructeur vide
+	public ArticleVendu () {
+		
+	}
+	
 
 	// construteur avec toutes les variables d'instances
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, int prixVente, int etatVente, Categorie categorieArticle,
 			Utilisateur utilisateur) {
-		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -31,8 +35,10 @@ public class ArticleVendu {
 		this.prixInitial = prixInitial;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
-		this.categorieArticle = categorieArticle;
 		this.utilisateur = utilisateur;
+		
+		this.categorieArticle = categorieArticle;
+		categorieArticle.ajouterArticles(this);
 	}
 	
 	// construteur sans les catégories et utilisateur
