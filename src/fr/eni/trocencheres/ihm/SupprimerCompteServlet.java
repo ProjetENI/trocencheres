@@ -35,7 +35,7 @@ public class SupprimerCompteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		Utilisateur emptyUser = new Utilisateur();
+		Utilisateur emptyUser = null;
 		session.setAttribute("utilisateur", emptyUser);
 		
 		forward(request, response, INDEX);

@@ -136,7 +136,7 @@ public class ModifierParametreServlet extends HttpServlet {
 	
 	private String verifierCodePostal(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String codepostal;
-        codepostal = request.getParameter("codepostal");
+        codepostal = request.getParameter("codePostal");
         if(codepostal==null || codepostal.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_CODEPOSTAL_VIDE_ERREUR);
@@ -146,7 +146,7 @@ public class ModifierParametreServlet extends HttpServlet {
 	
 	private String verifierVille(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String ville;
-        ville = request.getParameter("codepostal");
+        ville = request.getParameter("ville");
         if(ville==null || ville.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_VILLE_VIDE_ERREUR);

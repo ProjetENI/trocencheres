@@ -1,3 +1,4 @@
+<%@page import="fr.eni.trocencheres.bo.Utilisateur" %>
 <%@ page language="java" 
 	contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -52,27 +53,27 @@
 		
 		<div class="form-group date" data-provide="datepicker">
 			<label for="dateDebutEnchere">Début de l'enchère</label>
-			<input type="date" id="dateDebutEnchere" name="dateDebutEnchere"/>
+			<input type="date" class="form-control" name="dateDebutEnchere" id="dateDebutEnchere">
 		</div>
 		
 		<div class="form-group date" data-provide="datepicker">
-			<label for="dateFinEnchere">Fin de l'enchère</label>
-			<input type="date" id="dateFinEnchere" name="dateFinEnchere"/>
+			<label for="dateFinEnchere">Début de l'enchère</label>
+			<input type="date" class="form-control" name="dateFinEnchere" id="dateFinEnchere">
 		</div>
 		
 
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>
-			<input type="text" class="form-control" id="rue" name="rue" placeholder="Votre adresse">
+			<input type="text" class="form-control" id="rue" name="rue" value="${utilisateur.rue}">
 		</div>
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="codePostal">Code Postal</label>
-			<input type="text" class="form-control" id="codePostal" name="codepostal" placeholder="CP">
+			<input type="text" class="form-control" id="codePostal" name="codepostal" value="${utilisateur.codepostal}">
 			</div>
 			<div class="form-group col-6">
 				<label for="ville">Ville</label>
-				<input type="text" class="form-control" id="ville" name="ville" placeholder="Ville">
+				<input type="text" class="form-control" id="ville" name="ville" value="${utilisateur.ville}">
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Enregistrer</button>

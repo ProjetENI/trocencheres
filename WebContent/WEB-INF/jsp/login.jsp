@@ -1,3 +1,4 @@
+<%@page import="fr.eni.trocencheres.exceptions.LecteurMessage" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="/WEB-INF/fragment/header.jsp">

@@ -46,7 +46,7 @@ public class UtilisateurManager {
 
 	public void modifierUtilisateur(Utilisateur utilisateur) throws BusinessException {
 		BusinessException businessException = new BusinessException();
-		validerUtilisateur(utilisateur, businessException);
+		validerModificationUtilisateur(utilisateur, businessException);
 		
 		if(!businessException.hasErreurs()) {
 			utilisateurDao.modifierUtilisateur(utilisateur);
@@ -54,7 +54,6 @@ public class UtilisateurManager {
 			throw businessException;
 		}
 	}
-
 
 	public void modifierMotDePasse(Utilisateur utilisateur, String nouveauMDP) throws BusinessException {
 		BusinessException businessException = new BusinessException();
@@ -81,6 +80,15 @@ public class UtilisateurManager {
 		validerTelephone(utilisateur, businessException);
 		validerCodePostal(utilisateur, businessException);
 		validerPassword(utilisateur, businessException);
+	}
+	
+	private void validerModificationUtilisateur(Utilisateur utilisateur, BusinessException businessException) {
+		validerPseudo(utilisateur, businessException);
+		validerEmail(utilisateur, businessException);
+		validerNom(utilisateur, businessException);
+		validerPrenom(utilisateur, businessException);
+		validerTelephone(utilisateur, businessException);
+		validerCodePostal(utilisateur, businessException);
 	}
 
 	private void validerPseudo(Utilisateur utilisateur, BusinessException businessException) {
@@ -125,7 +133,7 @@ public class UtilisateurManager {
 	}
 
 	private void validerCodePostal(Utilisateur utilisateur, BusinessException businessException) {
-		String checkCodePostal = "[0-9]{5}$";
+		String checkCodePostal = "^[0-9]{5}$";
 
 		if (!utilisateur.getCodePostal().matches(checkCodePostal)) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_CODEPOSTAL_NOM_ERREUR);
