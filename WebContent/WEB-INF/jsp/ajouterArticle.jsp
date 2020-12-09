@@ -20,11 +20,11 @@
 
 	<form action="InscriptionServlet" method="POST">
 		
-		<div class="form-group col-6">
+		<div class="form-group">
 			<label for="article">Article</label>
 			<input type="text" class="form-control" id="article" name="article" placeholder="Titre de l'article">
 		</div>
-		<div class="form-group col-6">
+		<div class="form-group">
 			<label for="description">Description</label>
 			<textarea rows="" cols="" class="form-control" id="description" name="description"></textarea>
 		</div>
@@ -69,7 +69,7 @@
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="codePostal">Code Postal</label>
-			<input type="text" class="form-control" id="codePostal" name="codepostal" value="${utilisateur.codepostal}">
+			<input type="text" class="form-control" id="codePostal" name="codePostal" value="${utilisateur.codePostal}">
 			</div>
 			<div class="form-group col-6">
 				<label for="ville">Ville</label>

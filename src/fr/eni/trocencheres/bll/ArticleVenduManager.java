@@ -51,7 +51,7 @@ public class ArticleVenduManager {
 		validerNomArticle(articlevendu, businessException);
 		validerDescription(articlevendu, businessException);
 		validerDate(articlevendu.getDateDebutEncheres(), businessException);
-		validerDate(articlevendu.getDateFinEcheres(), businessException);
+		validerDate(articlevendu.getDateFinEncheres(), businessException);
 		validerPrix(articlevendu.getPrixInitial(), businessException);
 		validerPrix(articlevendu.getPrixVente(), businessException);
 		validerEtatVente(articlevendu.getEtatVente(), businessException);

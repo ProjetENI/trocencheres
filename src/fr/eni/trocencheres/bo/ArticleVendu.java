@@ -14,8 +14,25 @@ public class ArticleVendu {
 	private int prixVente;
 	private int etatVente;
 
+	private Categorie categorieArticle;
+
 
 	// construteur avec toutes les variables d'instances
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, int etatVente, Categorie categorieArticle) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.categorieArticle = categorieArticle;
+	}
+	
+	// construteur sans les catégories
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEcheres, int prixInitial, int prixVente, int etatVente) {
 		super();
@@ -59,11 +76,11 @@ public class ArticleVendu {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public LocalDate getDateFinEcheres() {
+	public LocalDate getDateFinEncheres() {
 		return dateFinEncheres;
 	}
-	public void setDateFinEcheres(LocalDate dateFinEcheres) {
-		this.dateFinEncheres = dateFinEcheres;
+	public void setDateFinEncheres(LocalDate dateFinEncheres) {
+		this.dateFinEncheres = dateFinEncheres;
 	}
 
 	public int getPrixInitial() {
@@ -86,5 +103,16 @@ public class ArticleVendu {
 	public void setEtatVente(int etatVente) {
 		this.etatVente = etatVente;
 	}
+
+
+	public Categorie getCategorieArticle() {
+		return categorieArticle;
+	}
+
+	public void setCategorieArticle(Categorie categorieArticle) {
+		this.categorieArticle = categorieArticle;
+	}
+	
+	
 
 }
