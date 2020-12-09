@@ -86,8 +86,8 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 	@Override
 	public Utilisateur listerUtilisateurInformation(String identifiant, String mdp) throws BusinessException {
 
-		Utilisateur infoUtilisateur = new Utilisateur();
-
+		Utilisateur infoUtilisateur = null;
+		boolean userFound = false;
 		try (	Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement pstt_utilisateur = conn.prepareStatement(SELECT_ALL_UTILISATEUR_INFORMATIONS)) {
 
@@ -112,19 +112,25 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
             	boolean administrateur = rs.getBoolean("administrateur");
 
             	infoUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur);
+            	userFound = true;
             }
-            else {
-            	BusinessException businessException = new BusinessException();
-    			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_INEXISTANTE);
-    			throw businessException;
-            }
+   
 
 		} catch (Exception e) {
+			System.out.println(1);
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
 			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_ECHEC);
 			throw businessException;
 		}
+		
+        if (!userFound) {
+        	BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_INEXISTANTE);
+			throw businessException;
+        }
+		
+		
 		return infoUtilisateur;
 	}
 
