@@ -6,6 +6,30 @@ $('#confirm-delete').on('show.bs.modal', function(e) {
 	$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 });
 
+/*************************************************
+*	JAVASCRIPT POUR AFFICHER UNE BULLE
+*	AVEC LA VALEUR DE RANGE CONTROL
+*************************************************/
+var rangeSlider = function(){
+  var slider = $('.range-slider'),
+      range = $('.range-slider__range'),
+      value = $('.range-slider__value');
+    
+  slider.each(function(){
+
+    value.each(function(){
+      var value = $(this).prev().attr('value');
+      $(this).html(value);
+    });
+
+    range.on('input', function(){
+      $(this).next(value).html(this.value);
+    });
+  });
+};
+
+rangeSlider();
+
 
 /*************************************************
 *	JAVASCRIPT TOGGLE OPEN CLOSE

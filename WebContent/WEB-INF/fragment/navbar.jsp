@@ -16,10 +16,16 @@
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item">
-							<a class="nav-link" href="DeconnectionServlet">Se déconnecter<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="ListerArticles">Enchères<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="AjouterArticleServlet">Vendre un article<span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="MonProfilServlet">Mon Profil<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="DeconnectionServlet">Se déconnecter<span class="sr-only">(current)</span></a>
 						</li>
 					</c:otherwise>
 				</c:choose>

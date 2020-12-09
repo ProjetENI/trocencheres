@@ -55,4 +55,10 @@
 		<servlet-name>Login</servlet-name>
 		<jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
 	</servlet>
+	
+	<servlet>
+		<description>AjouterArticle</description>
+		<servlet-name>AjouterArticle</servlet-name>
+		<jsp-file>/WEB-INF/jsp/ajouterArticle.jsp</jsp-file>
+	</servlet>
 </web-app>
