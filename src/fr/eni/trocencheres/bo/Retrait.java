@@ -6,6 +6,7 @@ public class Retrait {
 	private String rue;
 	private String code_postal;
 	private String ville;
+	private ArticleVendu article;
 	
 
 	// construteur avec toutes les variables d'instances
@@ -39,6 +40,12 @@ public class Retrait {
 	}
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+	
+	public void ajouterArticle (ArticleVendu pArticle) {
+		if (this.equals(article.getLieuRetrait())) {
+			this.article = pArticle ;
+		}
 	}
 	
 	

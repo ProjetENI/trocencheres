@@ -1,5 +1,7 @@
 package fr.eni.trocencheres.bo;
 
+import java.util.List;
+
 public class Utilisateur {
 	
 	// declaration des variables de la utilisateur
@@ -16,6 +18,9 @@ public class Utilisateur {
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur = false;
+	
+	private List<ArticleVendu> articles;
+	private List<Enchere> historiqueEnchereUtilisateur;
 
 
 	//constructeur vide
@@ -187,7 +192,26 @@ public class Utilisateur {
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-
+	public List<ArticleVendu> getArticles() {
+		return articles;
+	}
+	public void setArticles(List<ArticleVendu> articles) {
+		this.articles = articles;
+	}	
+	
+	//Methode permettant de respecter l'association bidirectionelle
+	public void ajouterArticles (ArticleVendu article) {
+		if (this.equals(article.getUtilisateur())) {
+			this.articles.add(article);
+		}
+	}
+	
+	//Methode permettant de respecter l'association bidirectionelle
+	public void ajouterEnchere (Enchere enchere) {
+		if (this.equals(enchere.getUtilisateur())) {
+			this.historiqueEnchereUtilisateur.add(enchere);
+		}
+	}
 
 	@Override
 	public String toString() {
@@ -195,8 +219,6 @@ public class Utilisateur {
 				"Utilisateur noUtilisateur=%s, pseudo=%s, nom=%s, prenom=%s, email=%s, telephone=%s, rue=%s, codePostal=%s, ville=%s, motDePasse=%s, credit=%s, administrateur=%s",
 				noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit,
 				administrateur);
-	}	
-	
-	
+	}
 
 }

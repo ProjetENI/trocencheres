@@ -8,14 +8,17 @@ public class Categorie {
 	//Déclaration des variables de la classe article vendu 	
 	private int noCategorie;
 	private String libelle;
-	
 	private List<ArticleVendu> articles;
 
 	
 	public Categorie(int noCategorie, String libelle) {
-		super();
-		this.noCategorie = noCategorie;
+		this(noCategorie);
 		this.libelle = libelle;
+	}
+	
+	// Constructeur pour passage des parametre de l'IHM à la DAL
+	public Categorie(int noCategorie) {
+		this.noCategorie = noCategorie;
 		this.setArticles(new ArrayList<>());
 	}
 	

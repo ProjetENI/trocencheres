@@ -17,18 +17,11 @@ public class Enchere {
 		this.dateEncheres = dateEncheres;
 		this.montant_enchere = montant_enchere;
 		this.articlevendu = articlevendu;
+		articlevendu.ajouterEnchere(this);
 		this.utilisateur = utilisateur;
+		utilisateur.ajouterEnchere(this);
 	}
 	
-
-	// constructeur sans la relation ArticleVendu et Utilisteur
-	public Enchere(LocalDate dateEncheres, int montant_enchere) {
-		super();
-		this.dateEncheres = dateEncheres;
-		this.montant_enchere = montant_enchere;
-	}
-
-
 	// Getters et setters
 	public LocalDate getDateEncheres() {
 		return dateEncheres;
