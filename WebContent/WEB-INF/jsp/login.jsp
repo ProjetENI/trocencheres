@@ -13,20 +13,20 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 
-				<form class="login100-form validate-form" method="post" action="ConnectionServlet">
+				<form class="login100-form validate-form validate-form-check" method="post" action="ConnectionServlet">
 
 					<span class="login100-form-title p-b-43">
 						Se connecter pour continuer
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Pseudo ou email requis">
-						<input class="input100" type="text" id="identifiant" name="identifiant">
+					<div class="wrap-input100 validate-input validate-input-check" data-validate = "Pseudo ou email requis">
+						<input class="input100 input-check" type="text" id="identifiant" name="identifiant">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Identifiant</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Mot de passe requis">
-						<input class="input100" type="password" id="motdepasse" name="motdepasse">
+					<div class="wrap-input100 validate-input validate-input-check" data-validate="Mot de passe requis">
+						<input class="input100 input-check" type="password" id="motdepasse" name="motdepasse">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Mot de passe</span>
 					</div>

@@ -27,7 +27,7 @@ $(document).on('click', '.js-openSidebar', function() {
 (function ($) {
 	"use strict";
 	/* Focus Contact2 */
-	$('.input100').each(function(){
+	$('.input-check').each(function(){
 		$(this).on('blur', function(){
 			if($(this).val().trim() != "") {
 				$(this).addClass('has-val');
@@ -39,9 +39,9 @@ $(document).on('click', '.js-openSidebar', function() {
 	})
  
 	/* Validate */
-	var input = $('.validate-input .input100');
+	var input = $('.validate-input-check .input-check');
 
-	$('.validate-form').on('submit',function(){
+	$('.validate-form-check').on('submit',function(){
 		var check = true;
 
 		for(var i=0; i<input.length; i++) {
@@ -53,7 +53,7 @@ $(document).on('click', '.js-openSidebar', function() {
 
 		return check;
 	});
-	$('.validate-form .input100').each(function(){
+	$('.validate-form-check .input-check').each(function(){
 		$(this).focus(function(){
 			hideValidate(this);
 		});
