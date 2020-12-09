@@ -46,8 +46,8 @@
  		</div>
  		
 		<div class="range-slider">
-			<label for="miseAPrix">Mise à prix</label>
-  			<input class="range-slider__range" type="range" value="150" min="0" max="1500" id="miseAPrix" name="miseAPrix">
+			<label for="prixIntial">Mise à prix</label>
+  			<input class="range-slider__range" type="range" value="150" min="0" max="1500" step="10" id="prixIntial" name="prixIntial">
   			<span class="range-slider__value">0</span>
 		</div>
 		
@@ -60,7 +60,7 @@
 			<label for="dateFinEnchere">Début de l'enchère</label>
 			<input type="date" class="form-control" name="dateFinEnchere" id="dateFinEnchere">
 		</div>
-		
+
 
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>

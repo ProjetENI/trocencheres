@@ -56,7 +56,6 @@ public class ModifierParametreServlet extends HttpServlet {
 
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-			e.printStackTrace();
 		}
 		
 		if (validModif) {

@@ -4,16 +4,16 @@ public class Retrait {
 
 	//Déclaration des variables de la classe article vendu 	
 	private String rue;
-	private String code_postal;
+	private String codePostal;
 	private String ville;
 	private ArticleVendu article;
 	
 
 	// construteur avec toutes les variables d'instances
-	public Retrait(String rue, String code_postal, String ville) {
+	public Retrait(String rue, String codePostal, String ville) {
 		super();
 		this.rue = rue;
-		this.code_postal = code_postal;
+		this.codePostal = codePostal;
 		this.ville = ville;
 	}
 
@@ -27,11 +27,11 @@ public class Retrait {
 	}
 
 
-	public String getCode_postal() {
-		return code_postal;
+	public String getCodePostal() {
+		return codePostal;
 	}
-	public void setCode_postal(String code_postal) {
-		this.code_postal = code_postal;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
 

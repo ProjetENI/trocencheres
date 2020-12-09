@@ -12,7 +12,7 @@ public interface ArticleVenduDao {
 	 * @return une liste d'article vendu
 	 * @throws BusinessException 
 	 */
-	List<ArticleVendu> listerArticleVendu() throws BusinessException;
+//	List<ArticleVendu> listerArticleVendu() throws BusinessException;
 
 	/**
 	 * Fonction prenant en paramètre un article pour l'ajouter en base de données

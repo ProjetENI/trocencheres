@@ -10,6 +10,9 @@ import java.util.List;
 
 import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.ArticleVendu;
+import fr.eni.trocencheres.bo.Categorie;
+import fr.eni.trocencheres.bo.Retrait;
+import fr.eni.trocencheres.bo.Utilisateur;
 import fr.eni.trocencheres.dal.ArticleVenduDao;
 import fr.eni.trocencheres.dal.CodesResultatDAL;
 import fr.eni.trocencheres.dal.ConnectionProvider;
@@ -17,12 +20,12 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 
 	public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 		
-	private final String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, etat_vente "
+	private final String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, prix_vente, etat_vente "
 			+ "FROM ARTICLEVENDU;";
 	
 	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLE_VENDU"
-			+ "(no_article, nom_article, description, date_debut_encheres, date_finenchere, prix_initial, prix_vente, etat_vente) "
-			+ "VALUES (?,?,?,?,?,?,?,?);";
+			+ "(no_article, nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, no_utilisateur, no_categorie, etat_vente, image) "
+			+ "VALUES (?,?,?,?,?,?,?,?,?,?);";
 	
 	private final String UPDATE_ARTICLE_VENDU_INFO = "UPDATE ARTICLE_VENDU SET "
 			+"nom_article=?, description=?, prix_initial=? " 
@@ -37,36 +40,38 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	 * @return une liste d'article vendu
 	 * @throws BusinessException 
 	 */
-	@Override
-	public List<ArticleVendu> listerArticleVendu() throws BusinessException{
-			
-		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
-		try (	Connection conn = ConnectionProvider.getConnection();
-				Statement stt = conn.createStatement()) {
-			ResultSet rs = stt.executeQuery(SELECT_ALL);
-
-			while (rs.next()) {
-				int noArticle = rs.getInt("no_article");
-				String nomArticle = rs.getString("nom_article");
-		    	String description = rs.getString("description");
-		    	LocalDate dateDebutEncheres = rs.getDate("date_debut_encheres").toLocalDate();
-		    	LocalDate dateFinEncheres = rs.getDate("date_fin_encheres").toLocalDate();
-		    	int miseAPrix = rs.getInt("prix_initial");
-		    	int prixVente  = rs.getInt("prix_vente");
-		    	int etatVente = rs.getInt("etat_vente");
-		    
-		    	ArticleVendu articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente);
-		    	listeArticleVendu.add(articleVendu);
-			
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			BusinessException businessException = new BusinessException();
-			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTES_ECHEC);
-			throw businessException;
-		}
-		return listeArticleVendu;
-	}
+//	@Override
+//	public List<ArticleVendu> listerArticleVendu() throws BusinessException{
+//			
+//		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
+//		try (	Connection conn = ConnectionProvider.getConnection();
+//				Statement stt = conn.createStatement()) {
+//			ResultSet rs = stt.executeQuery(SELECT_ALL);
+//
+//			while (rs.next()) {
+//				int noArticle = rs.getInt("no_article");
+//				String nomArticle = rs.getString("nom_article");
+//		    	String description = rs.getString("description");
+//		    	LocalDate dateDebutEncheres = rs.getDate("date_debut_enchere").toLocalDate();
+//		    	LocalDate dateFinEncheres = rs.getDate("date_fin_enchere").toLocalDate();
+//		    	int miseAPrix = rs.getInt("prix_initial");
+//		    	int prixVente  = rs.getInt("prix_vente");
+//		    	int etatVente = rs.getInt("etat_vente");
+//		    	
+////		    	ArticleVendu(int noArticle, String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
+////		    			LocalDate dateFinEncheres, int prixInitial, int etatVente, Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait)
+//		    	ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente);
+//		    	listeArticleVendu.add(articleVendu);
+//			
+//			}
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//			BusinessException businessException = new BusinessException();
+//			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTES_ECHEC);
+//			throw businessException;
+//		}
+//		return listeArticleVendu;
+//	}
 	
 	
 	
@@ -82,15 +87,17 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 
 			conn.setAutoCommit(false);
         	try (PreparedStatement pstt_articlevendu = conn.prepareStatement(INSERT_ARTICLE_VENDU, PreparedStatement.RETURN_GENERATED_KEYS)) {
-        		
+
 				pstt_articlevendu.setInt(1, articlevendu.getNoArticle());
 				pstt_articlevendu.setString(2, articlevendu.getNomArticle());
 				pstt_articlevendu.setString(3, articlevendu.getDescription());
 				pstt_articlevendu.setDate(4, java.sql.Date.valueOf(articlevendu.getDateDebutEncheres()));
 				pstt_articlevendu.setDate(5, java.sql.Date.valueOf(articlevendu.getDateFinEncheres()));
 				pstt_articlevendu.setInt(6, articlevendu.getPrixInitial());
-				pstt_articlevendu.setInt(7, articlevendu.getPrixVente());
-				pstt_articlevendu.setInt(8, articlevendu.getEtatVente());
+				pstt_articlevendu.setInt(7, articlevendu.getUtilisateur().getNoUtilisateur());
+				pstt_articlevendu.setInt(8, articlevendu.getCategorieArticle().getNoCategorie());
+				pstt_articlevendu.setString(9, articlevendu.getEtatVente());
+				pstt_articlevendu.setString(10, articlevendu.getImageURL());
 				pstt_articlevendu.executeUpdate();
 				
 				ResultSet rs = pstt_articlevendu.getGeneratedKeys();
@@ -164,13 +171,6 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
     			PreparedStatement pstt_articlevendu = conn.prepareStatement(DELETE_ARTICLE_VENDU)) {
 
 			pstt_articlevendu.setInt(1, articlevendu.getNoArticle());
-			pstt_articlevendu.setString(2, articlevendu.getNomArticle());
-			pstt_articlevendu.setString(3, articlevendu.getDescription());
-			pstt_articlevendu.setDate(4, java.sql.Date.valueOf(articlevendu.getDateDebutEncheres()));
-			pstt_articlevendu.setDate(5, java.sql.Date.valueOf(articlevendu.getDateFinEncheres()));
-			pstt_articlevendu.setInt(6, articlevendu.getPrixInitial());
-			pstt_articlevendu.setInt(7, articlevendu.getPrixVente());
-			pstt_articlevendu.setInt(8, articlevendu.getEtatVente());
 
 			pstt_articlevendu.executeUpdate();
 

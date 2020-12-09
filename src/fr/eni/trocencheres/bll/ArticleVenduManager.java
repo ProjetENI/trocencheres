@@ -16,9 +16,9 @@ public class ArticleVenduManager {
 		this.articleVenduDao = DaoFactory.getArticleVenduDao();
 	}
 	
-	public List<ArticleVendu> listerArticleVendu() throws BusinessException {
-		return this.articleVenduDao.listerArticleVendu();
-	}
+//	public List<ArticleVendu> listerArticleVendu() throws BusinessException {
+//		return this.articleVenduDao.listerArticleVendu();
+//	}
 	
 	public void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException {
 		BusinessException businessException = new BusinessException();
@@ -93,8 +93,8 @@ public class ArticleVenduManager {
 		}
 	}
 
-	private void validerEtatVente(int etatvente, BusinessException businessException) {
-		if (etatvente < 0 || etatvente != (int)etatvente) {
+	private void validerEtatVente(String etatvente, BusinessException businessException) {
+		if (etatvente != "EA" && etatvente != "EC" && etatvente != "FI") {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_ETAT_ERREUR);
 		}
 	}

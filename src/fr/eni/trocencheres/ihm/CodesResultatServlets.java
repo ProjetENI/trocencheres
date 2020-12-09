@@ -45,4 +45,14 @@ public abstract class CodesResultatServlets {
 	public static final int CHAMPS_IDENTIFIANT_VIDE_ERREUR = 30019;
 	
 	
+	/**
+	 * Erreur lanceé par la Servlet lors de la création d'une vente
+	 */
+	public static final int CHAMPS_NOM_ARTICLE_VIDE_ERREUR = 30020;
+	public static final int CHAMPS_DESCRIPTION_ARTICLE_VIDE_ERREUR = 30021;
+	public static final int CHAMPS_DATE_ARTICLE_VIDE_ERREUR = 30022;
+	public static final int CHAMPS_DATE_ARTICLE_FORMAT_ERREUR = 30023;
+	public static final int CHAMPS_RUE_RETRAIT_ARTICLE_VIDE_ERREUR = 30024;
+	public static final int CHAMPS_CODEPOSTAL_RETRAIT_ARTICLE_VIDE_ERREUR = 30025;
+	public static final int CHAMPS_VILLE_RETRAIT_VIDE_ERREUR = 30026;
 }

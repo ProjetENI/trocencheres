@@ -15,7 +15,7 @@ public class ArticleVendu {
 	private LocalDate dateFinEncheres;
 	private int prixInitial;
 	private int prixVente;
-	private int etatVente;
+	private String etatVente;
 	
 	private Categorie categorieArticle;
 	private Utilisateur utilisateur;
@@ -30,7 +30,7 @@ public class ArticleVendu {
 
 	// construteur avec toutes les variables d'instances (nb param (12))
 	public ArticleVendu(int noArticle, String nomArticle, String description, String imageURL,
-			LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int prixInitial, int prixVente, int etatVente,
+			LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int prixInitial, int prixVente, String etatVente,
 			Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait) {
 		this(noArticle, nomArticle, description, imageURL, dateDebutEncheres, dateFinEncheres, prixInitial,
 				etatVente, categorieArticle, utilisateur, lieuRetrait);
@@ -40,7 +40,7 @@ public class ArticleVendu {
 
 	// construteur pour l'ajout d'un article en base (nb param (11))
 	public ArticleVendu(int noArticle, String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int etatVente, Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait) {
+			LocalDate dateFinEncheres, int prixInitial, String etatVente, Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait) {
 		
 		this(nomArticle, description, imageURL, dateDebutEncheres, dateFinEncheres, prixInitial, categorieArticle, utilisateur, lieuRetrait);
 		this.noArticle = noArticle;
@@ -123,10 +123,10 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 	}
 
-	public int getEtatVente() {
+	public String getEtatVente() {
 		return etatVente;
 	}
-	public void setEtatVente(int etatVente) {
+	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
 

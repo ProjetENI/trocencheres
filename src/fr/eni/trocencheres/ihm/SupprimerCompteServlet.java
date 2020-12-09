@@ -32,7 +32,6 @@ public class SupprimerCompteServlet extends HttpServlet {
 			um.supprimerUtilisateur(userASupprimer);
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-			e.printStackTrace();
 		}
 		
 		Utilisateur emptyUser = null;
