@@ -8,9 +8,20 @@ public class Enchere {
 	private LocalDate dateEncheres;
 	private int montant_enchere;
 
-	
+	private ArticleVendu articlevendu;
+	private Utilisateur utilisateur;
 
 	// construteur avec toutes les variables d'instances
+	public Enchere(LocalDate dateEncheres, int montant_enchere, ArticleVendu articlevendu, Utilisateur utilisateur) {
+		super();
+		this.dateEncheres = dateEncheres;
+		this.montant_enchere = montant_enchere;
+		this.articlevendu = articlevendu;
+		this.utilisateur = utilisateur;
+	}
+	
+
+	// constructeur sans la relation ArticleVendu et Utilisteur
 	public Enchere(LocalDate dateEncheres, int montant_enchere) {
 		super();
 		this.dateEncheres = dateEncheres;
@@ -32,4 +43,20 @@ public class Enchere {
 	public void setMontant_enchere(int montant_enchere) {
 		this.montant_enchere = montant_enchere;
 	}
+
+	public ArticleVendu getArticlevendu() {
+		return articlevendu;
+	}
+	public void setArticlevendu(ArticleVendu articlevendu) {
+		this.articlevendu = articlevendu;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	
+	
 }

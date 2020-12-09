@@ -6,6 +6,8 @@ public class Categorie {
 	private int noCategorie;
 	private String libelle;
 	
+	
+	
 
 	// construteur avec toutes les variables d'instances
 	public Categorie(int noCategorie, String libelle) {
