@@ -24,6 +24,7 @@ public class DetailArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String INDEX = "Index";
+	private static final String DETAILS_ARTICLE = "DetailsArticle";
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +53,7 @@ public class DetailArticleServlet extends HttpServlet {
     		try {
     			articleRecherche = avm.informationArticleVendu(noArticleRecherche);
     			request.setAttribute("article", articleRecherche);
-    			forward(request, response, INDEX);
+    			forward(request, response, DETAILS_ARTICLE);
     		} catch (BusinessException e) {
     			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
     			forward(request, response, INDEX);

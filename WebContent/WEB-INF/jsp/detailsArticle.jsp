@@ -21,41 +21,14 @@
 </jsp:include>
 
 	<div class="container">
-		<section>
-			<form action="IndexServlet" method="POST">
-				<div class="row">
-					<div class="col-6">
-						<div class="form-group">
-							<label for="nomArticle">Article</label>
-							<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Le nom de l'article contient">
-						</div>
-						<div class="form-group">
-							<label for="categories">Catégorie</label>
-							<select class="form-control" id="categories" name="categories">
-								<option value="0">Choix de la catégorie</option>
-								<option value="1">Informatique</option>
-								<option value="2">Ameublement</option>
-								<option value="3">Vêtement</option>
-								<option value="4">Sport et Loisirs</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-6 center p-b-50 p-t-50">
-						<button type="submit" class="btn btn-primary w-60">Rechercher</button>
-					</div>
-				</div>
-			</form>
-		</section>
-		
+
 		<section>
 			<div class="row text-center mt-5">
-				<h2 class="mx-auto">LISTE DES ENCHERES EN COURS</h2>
+				<h2 class="mx-auto">DÉTAIL DE L'ARTICLE</h2>
 			</div>
 			
 			<div class="row">
-				<c:if test="${!empty listeArticles}">
-					<c:forEach items="${listeArticles}" var="article" >
-					<div class="col-12 col-md-6 col-lg-3">
+					<div class="col-12 col-md-4 col-lg-4">
 						<div class="card mb-3">
 							<c:choose>
 								<c:when test="${!empty article.imageURL}">
@@ -65,7 +38,10 @@
 							  		<img src="${pageContext.request.contextPath}/img/categorie_${article.categorieArticle.noCategorie}.jpg" class="card-img-top" alt="...">
 							  	</c:otherwise>
 							</c:choose>
-							<div class="card-body">
+						</div>
+					</div>
+					<div class="col-12 col-md-4 col-lg-4">
+					<div class="card-body">
 								<h5 class="card-title">
 									${fn:substring(article.nomArticle, 0, 20)}<br/>
 									<span class="categorie">Catégorie : ${article.categorieArticle.libelle}</span>
@@ -74,15 +50,12 @@
 									<span class="seller-title">Vendu par : </span><span class="seller-name">${article.utilisateur.pseudo}</span><br/>
 									<span class="price-title">Enchère en cours : </span><span class="price-tag">${article.prixInitial} €</span>
 								</p>
-								<form action="DetailArticleServlet" method="POST">
+								<form action="DetailsArticleServlet" method="POST">
 									<input type="hidden" class="hide" id="noArticle" name="noArticle" value="${article.noArticle}">
 									<input type="submit" class="btn btn-primary" value="Détails">
 								</form>
 							</div>
-						</div>
 					</div>
-					</c:forEach>
-				</c:if>
 			</div>
 		</section>
 	</div><!--  END .container -->

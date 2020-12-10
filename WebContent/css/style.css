@@ -288,8 +288,23 @@ iframe {
 	width: 60%;
 	height: 100%;
 }
-
-
+.card-title {
+	color: #73BEEC;
+}
+.categorie {
+	font-size:0.5em;
+	color: #194650;
+}
+.price-tag {
+	font-weight: 700;
+	font-size: 1.5em;
+	text-align: right;
+	color: #194650;
+}
+.price-title {
+	font-size: 1em;
+	color: #194650;
+}
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 .limiter {

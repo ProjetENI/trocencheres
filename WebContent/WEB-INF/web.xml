@@ -61,4 +61,10 @@
 		<servlet-name>AjouterArticle</servlet-name>
 		<jsp-file>/WEB-INF/jsp/ajouterArticle.jsp</jsp-file>
 	</servlet>
+	
+	<servlet>
+		<description>DetailsArticle</description>
+		<servlet-name>DetailsArticle</servlet-name>
+		<jsp-file>/WEB-INF/jsp/detailsArticle.jsp</jsp-file>
+	</servlet>
 </web-app>
