@@ -24,7 +24,7 @@ public class Utilisateur {
 	private List<Enchere> historiqueEnchereUtilisateur;
 
 	
-	//constructeur avec toutes les variables
+	//constructeur avec toutes les variables (Nb param (12))
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 			this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, credit,
@@ -33,7 +33,7 @@ public class Utilisateur {
 	}
 	
 		
-	//constructeur avec toutes les variables sauf le motDePasse
+	//constructeur avec toutes les variables sauf le motDePasse (Nb param (11))
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, int credit, boolean administrateur) {
 		this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville);
@@ -41,7 +41,7 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 	
-	//constructeur avec toutes les variables sauf le motDePasse
+	//constructeur avec toutes les variables sauf le motDePasse (Nb param (9))
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville) {
 		this.noUtilisateur = noUtilisateur;
@@ -58,14 +58,14 @@ public class Utilisateur {
 	}
 
 	
-	//constructeur pour modif mot de passe
+	//constructeur pour modif mot de passe (Nb param (10))
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse) {
 		this(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 		this.noUtilisateur = noUtilisateur;
 	}
 	
-	//constructeur pour l'inscription (Nb param (11))
+	//constructeur pour l'inscription (Nb param (9))
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 				String rue, String codePostal, String ville, String motDePasse) {
 			this.pseudo = pseudo;
