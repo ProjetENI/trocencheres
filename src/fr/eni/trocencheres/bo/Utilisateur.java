@@ -26,26 +26,24 @@ public class Utilisateur {
 	
 	//constructeur avec toutes les variables
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur, 
-				List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
+				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
 			this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, credit,
-					administrateur, articles, historiqueEnchereUtilisateur);
+					administrateur);
 			this.motDePasse = motDePasse;
 	}
 	
 		
 	//constructeur avec toutes les variables sauf le motDePasse
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, int credit, boolean administrateur,
-			List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
-		this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, articles, historiqueEnchereUtilisateur);
+			String rue, String codePostal, String ville, int credit, boolean administrateur) {
+		this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville);
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
 	
 	//constructeur avec toutes les variables sauf le motDePasse
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
+			String rue, String codePostal, String ville) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -62,16 +60,14 @@ public class Utilisateur {
 	
 	//constructeur pour modif mot de passe
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse,
-			List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
-		this(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, articles, historiqueEnchereUtilisateur);
+			String rue, String codePostal, String ville, String motDePasse) {
+		this(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 		this.noUtilisateur = noUtilisateur;
 	}
 	
 	//constructeur pour l'inscription (Nb param (11))
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-				String rue, String codePostal, String ville, String motDePasse,
-				List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
+				String rue, String codePostal, String ville, String motDePasse) {
 			this.pseudo = pseudo;
 			this.nom = nom;
 			this.prenom = prenom;
