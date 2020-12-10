@@ -48,7 +48,7 @@
 					</div>
 					
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
-						<div class="text-center p-t-5 p-b-20">
+						<div class="text-center p-t-5 p-b-20 container-erreur100">
 							<span class="text-danger">
 								${error}
 								<c:if test="${!empty listeCodesErreur}">
