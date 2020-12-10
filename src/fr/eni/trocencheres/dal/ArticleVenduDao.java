@@ -36,4 +36,11 @@ public interface ArticleVenduDao {
 	 */
 	void supprimerArticleVendu(ArticleVendu articlevendu) throws BusinessException;
 
+	/**
+	 * Fonction qui permet lister toutes les informations d'un article présent en base de données
+	 * @return un article vendu
+	 * @throws BusinessException 
+	 */
+	ArticleVendu informationArticleVendu(int pNoArticle) throws BusinessException;
+
 }

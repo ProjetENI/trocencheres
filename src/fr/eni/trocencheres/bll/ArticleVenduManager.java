@@ -20,6 +20,10 @@ public class ArticleVenduManager {
 		return this.articleVenduDao.listerArticleVendu();
 	}
 	
+	public ArticleVendu informationArticleVendu(int pNoArticle) throws BusinessException {
+		return this.articleVenduDao.informationArticleVendu(pNoArticle);
+	}
+	
 	public void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException {
 		BusinessException businessException = new BusinessException();
 		validerArticleVendu(articlevendu, businessException);

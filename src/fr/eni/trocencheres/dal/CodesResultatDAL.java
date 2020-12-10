@@ -64,7 +64,14 @@ public abstract class CodesResultatDAL {
 	 * Erreur à la suppression d'un article
 	 */
 	public static final int SUPPRESSION_ARTICLE_ERREUR = 10011;
-	
+	/**
+	 * Erreur à la suppression d'un article
+	 */
+	public static final int LECTURE_ARTICLE_INFORMATION_ECHEC = 10012;
+	/**
+	 * Erreur à la suppression d'un article
+	 */
+	public static final int LECTURE_ARTICLE_INFORMATION_INEXISTANT = 10013;
 }
 
 

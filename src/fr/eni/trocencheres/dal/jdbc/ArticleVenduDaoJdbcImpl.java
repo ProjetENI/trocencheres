@@ -23,6 +23,9 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	private final String SELECT_ALL_INDEX = "SELECT * FROM ARTICLES_VENDUS as A INNER JOIN CATEGORIES as C ON A.no_categorie=C.no_categorie "
 			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente='EC';";
 	
+	private final String SELECT_INFORMATIONS_ARTICLES = "SELECT * FROM ARTICLES_VENDUS as A INNER JOIN CATEGORIES as C ON A.no_categorie=C.no_categorie "
+			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente='EC' AND no_articlevendu=?;";
+	
 	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLES_VENDUS"
 			+ "(nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, no_utilisateur, no_categorie, etat_vente, image) "
 			+ "VALUES (?,?,?,?,?,?,?,?,?);";
@@ -82,6 +85,65 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			throw businessException;
 		}
 		return listeArticleVendu;
+	}
+	
+	/**
+	 * Fonction qui permet lister toutes les informations d'un article présent en base de données
+	 * @return un article vendu
+	 * @throws BusinessException 
+	 */
+	@Override
+	public ArticleVendu informationArticleVendu(int pNoArticle) throws BusinessException{
+		boolean articleFound = false;
+		ArticleVendu informationArticleVendu = null;
+		try (	Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement pstt = conn.prepareStatement(SELECT_INFORMATIONS_ARTICLES)) {
+			
+			
+			pstt.setInt(1, pNoArticle);
+			
+			ResultSet rs = pstt.executeQuery();
+    		
+    		if (rs.next()) {
+				String nomArticle = rs.getString("nom_article");
+		    	String description = rs.getString("description");
+		    	String image = rs.getString("image");
+		    	LocalDate dateDebutEncheres = rs.getDate("date_debut_enchere").toLocalDate();
+		    	LocalDate dateFinEncheres = rs.getDate("date_fin_enchere").toLocalDate();
+		    	int miseAPrix = rs.getInt("prix_initial");
+		    	//Construction de l'objet Catégorie
+		    	int categorieNo = rs.getInt("no_categorie");
+		    	String categorieLibelle = rs.getString("libelle");
+		    	Categorie categorie = new Categorie(categorieNo, categorieLibelle);
+		    	//Construction de l'objet Utilisateur
+		    	String pseudo = rs.getString("pseudo");
+            	String nom = rs.getString("nom");
+            	String prenom = rs.getString("prenom");
+            	String email = rs.getString("email");
+            	String telephone = rs.getString("telephone");
+            	String rue = rs.getString("rue");
+            	String code_postal = rs.getString("code_postal");
+            	String ville = rs.getString("ville");
+		    	Utilisateur vendeur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville);
+		    	
+		    	informationArticleVendu = new ArticleVendu(nomArticle, description, image, dateDebutEncheres, dateFinEncheres, miseAPrix, categorie, vendeur);
+		    	articleFound =true;
+    		}
+
+		}catch (Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_ARTICLE_INFORMATION_ECHEC);
+			throw businessException;
+		}
+		
+		if (!articleFound) {
+	        	BusinessException businessException = new BusinessException();
+				businessException.ajouterErreur(CodesResultatDAL.LECTURE_ARTICLE_INFORMATION_INEXISTANT);
+				throw businessException;
+	    }
+		
+		return informationArticleVendu;
 	}
 	
 	
