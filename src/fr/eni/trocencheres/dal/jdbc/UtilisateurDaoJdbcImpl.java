@@ -134,7 +134,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		return infoUtilisateur;
 	}
 
-
+	
 	/**
 	 * Fonction prenant en paramètre un utilisateur pour l'ajouter en base de données
 	 * @param Utilisateur

@@ -11,7 +11,6 @@ import java.util.List;
 import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.ArticleVendu;
 import fr.eni.trocencheres.bo.Categorie;
-import fr.eni.trocencheres.bo.Retrait;
 import fr.eni.trocencheres.bo.Utilisateur;
 import fr.eni.trocencheres.dal.ArticleVenduDao;
 import fr.eni.trocencheres.dal.CodesResultatDAL;
@@ -19,9 +18,10 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 
 
 	public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
-		
-	private final String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, prix_vente, etat_vente "
-			+ "FROM ARTICLEVENDU;";
+	
+	
+	private final String SELECT_ALL_INDEX = "SELECT * FROM ARTICLES_VENDUS as A INNER JOIN CATEGORIES as C ON A.no_categorie=C.no_categorie "
+			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente=EC;";
 	
 	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLES_VENDUS"
 			+ "(nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, no_utilisateur, no_categorie, etat_vente, image) "
@@ -40,38 +40,48 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	 * @return une liste d'article vendu
 	 * @throws BusinessException 
 	 */
-//	@Override
-//	public List<ArticleVendu> listerArticleVendu() throws BusinessException{
-//			
-//		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
-//		try (	Connection conn = ConnectionProvider.getConnection();
-//				Statement stt = conn.createStatement()) {
-//			ResultSet rs = stt.executeQuery(SELECT_ALL);
-//
-//			while (rs.next()) {
-//				int noArticle = rs.getInt("no_article");
-//				String nomArticle = rs.getString("nom_article");
-//		    	String description = rs.getString("description");
-//		    	LocalDate dateDebutEncheres = rs.getDate("date_debut_enchere").toLocalDate();
-//		    	LocalDate dateFinEncheres = rs.getDate("date_fin_enchere").toLocalDate();
-//		    	int miseAPrix = rs.getInt("prix_initial");
-//		    	int prixVente  = rs.getInt("prix_vente");
-//		    	int etatVente = rs.getInt("etat_vente");
-//		    	
-////		    	ArticleVendu(int noArticle, String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
-////		    			LocalDate dateFinEncheres, int prixInitial, int etatVente, Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait)
-//		    	ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente);
-//		    	listeArticleVendu.add(articleVendu);
-//			
-//			}
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			BusinessException businessException = new BusinessException();
-//			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTES_ECHEC);
-//			throw businessException;
-//		}
-//		return listeArticleVendu;
-//	}
+	@Override
+	public List<ArticleVendu> listerArticleVendu() throws BusinessException{
+			
+		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
+		try (	Connection conn = ConnectionProvider.getConnection();
+				Statement stt = conn.createStatement()) {
+			ResultSet rs = stt.executeQuery(SELECT_ALL_INDEX);
+
+			while (rs.next()) {
+				String nomArticle = rs.getString("nom_article");
+		    	String description = rs.getString("description");
+		    	String image = rs.getString("image");
+		    	LocalDate dateDebutEncheres = rs.getDate("date_debut_enchere").toLocalDate();
+		    	LocalDate dateFinEncheres = rs.getDate("date_fin_enchere").toLocalDate();
+		    	int miseAPrix = rs.getInt("prix_initial");
+		    	//Construction de l'objet Catégorie
+		    	int categorieNo = rs.getInt("no_categorie");
+		    	String categorieLibelle = rs.getString("libelle");
+		    	Categorie categorie = new Categorie(categorieNo, categorieLibelle);
+		    	//Construction de l'objet Utilisateur
+		    	String pseudo = rs.getString("pseudo");
+            	String nom = rs.getString("nom");
+            	String prenom = rs.getString("prenom");
+            	String email = rs.getString("email");
+            	String telephone = rs.getString("telephone");
+            	String rue = rs.getString("rue");
+            	String code_postal = rs.getString("code_postal");
+            	String ville = rs.getString("ville");
+		    	Utilisateur vendeur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville);
+		    	
+		    	ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, image, dateDebutEncheres, dateFinEncheres, miseAPrix, categorie, vendeur);
+		    	listeArticleVendu.add(articleVendu);
+			
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTES_ECHEC);
+			throw businessException;
+		}
+		return listeArticleVendu;
+	}
 	
 	
 	

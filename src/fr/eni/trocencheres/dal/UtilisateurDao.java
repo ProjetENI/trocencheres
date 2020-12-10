@@ -49,4 +49,5 @@ public interface UtilisateurDao {
 	 */
 	Utilisateur listerUtilisateurInformation(String identifiant, String mdp) throws BusinessException;
 
+
 }

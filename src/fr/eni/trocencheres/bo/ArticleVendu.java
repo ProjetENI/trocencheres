@@ -58,7 +58,7 @@ public class ArticleVendu {
 	
 	// construteur pour passage des parametre de l'IHM à la DAL sans retrait (nb param (8))
 	public ArticleVendu(String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
-				LocalDate dateFinEncheres, int prixInitial,Categorie categorieArticle, Utilisateur utilisateur) {
+				LocalDate dateFinEncheres, int prixInitial, Categorie categorieArticle, Utilisateur utilisateur) {
 			this.nomArticle = nomArticle;
 			this.description = description;
 			this.imageURL = imageURL;
