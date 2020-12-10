@@ -1,10 +1,17 @@
 package fr.eni.trocencheres.ihm;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bll.ArticleVenduManager;
@@ -57,7 +65,10 @@ public class AjouterArticleServlet extends HttpServlet {
 		// Récupération de tous les paramètres envoyés par la JSP
 		String nomArticle = verifierNomArticle(request, listeCodesErreur);
 		String description = verifierDescription(request, listeCodesErreur);
-		String imageURL = request.getParameter("photoArticle");
+
+		// String imageURL = request.getParameter("photoArticle");
+		String imageURL = uploadImage(request, listeCodesErreur, "photoArticle");
+
 		LocalDate dateDebutEncheres = verifierDate(request, listeCodesErreur, "dateDebutEnchere");
 		LocalDate dateFinEncheres = verifierDate(request, listeCodesErreur, "dateFinEnchere");
 		int prixInitial = verifierPrixInitial(request, listeCodesErreur, "prixInitial");
@@ -212,4 +223,55 @@ public class AjouterArticleServlet extends HttpServlet {
         }
         return ville;
     }
+	
+	private String uploadImage(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+		String fileName = null;
+		//récupérer l’image provenant de la JSP	
+		Part filePart = request.getPart(nomParametre);
+
+		//si l’utilisateur a saisi une image
+		if(filePart != null && filePart.getSize() > 0) {	 
+			//récupérer le nom de l’image
+			fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+
+			//séparer le nom et l’extension
+			String[] fn = fileName.split("(\\.)");
+
+			//stocker l’extension
+			String ext = fn[(fn.length-1)];
+			if(!ext.isEmpty()) {
+				//mettre en place un mécanisme ici, pour générer un nom de fichier unique afin d’éviter les écrasements de fichier
+				Date date = Calendar.getInstance().getTime();
+				DateFormat dateFormat = new SimpleDateFormat("yymmddhhmmss");
+				String strDate = dateFormat.format(date);
+
+				//recréer le nom complet
+				fileName = "photo_enchere_" + strDate.toLowerCase() + "." + ext;
+				
+				InputStream fileContent = filePart.getInputStream();
+				
+				//Version Production
+				//String sContext = //this.getServletContext().getRealPath("/");
+					     
+				//TODO : A supprimer pour la production
+				//Version eclipse (indiquer en dur le répertoire de stockage des images sur le serveur
+				// WINDOWS 10
+				// String sContext = "C:\\ENI_Workspaces\\work_workspace"+ request.getContextPath() + "/WebContent";
+				// MAC OS X
+				String sContext = "/Users/damienpuaud/eclipse-workspace/git/"+ request.getContextPath() + "/WebContent";
+
+				File f = new File(sContext + "/uploads/images/" + fileName);
+
+				try {
+					FileSave.receiveFile(fileContent, f);
+				} catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		return fileName;
+	}
+	
+
 }
