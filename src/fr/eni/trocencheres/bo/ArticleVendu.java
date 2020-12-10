@@ -41,21 +41,27 @@ public class ArticleVendu {
 	// construteur pour l'ajout d'un article en base (nb param (11))
 	public ArticleVendu(int noArticle, String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, String etatVente, Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait) {
-		
-		this(nomArticle, description, imageURL, dateDebutEncheres, dateFinEncheres, prixInitial, categorieArticle, utilisateur, lieuRetrait);
-		this.noArticle = noArticle;
+		this(noArticle,nomArticle, description, imageURL, dateDebutEncheres, dateFinEncheres, prixInitial, categorieArticle, utilisateur, lieuRetrait);
 		this.etatVente = etatVente;
 	}
 	
-	// construteur pour passage des parametre de l'IHM à la DAL avec retrait (nb param (9))
-	public ArticleVendu(String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial,Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait) {
-		
+	// construteur pour passage des parametre de l'IHM à la DAL avec retrait (nb param (10))
+		public ArticleVendu(int noArticle,String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
+				LocalDate dateFinEncheres, int prixInitial,Categorie categorieArticle, Utilisateur utilisateur, Retrait lieuRetrait) {
+			this(noArticle,nomArticle, description, imageURL, dateDebutEncheres, dateFinEncheres, prixInitial, categorieArticle, utilisateur);
+			this.setLieuRetrait(lieuRetrait);
+			lieuRetrait.ajouterArticle(this);
+		}
+	
+	// construteur pour l'ajout d'un article en base (nb param (9))
+	public ArticleVendu(int noArticle, String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, Categorie categorieArticle,
+			Utilisateur utilisateur) {
 		this(nomArticle, description, imageURL, dateDebutEncheres, dateFinEncheres, prixInitial, categorieArticle, utilisateur);
-		this.setLieuRetrait(lieuRetrait);
-		lieuRetrait.ajouterArticle(this);
+		this.noArticle = noArticle;
 	}
 	
+
 	// construteur pour passage des parametre de l'IHM à la DAL sans retrait (nb param (8))
 	public ArticleVendu(String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
 				LocalDate dateFinEncheres, int prixInitial, Categorie categorieArticle, Utilisateur utilisateur) {

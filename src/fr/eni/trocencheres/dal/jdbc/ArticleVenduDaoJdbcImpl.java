@@ -53,6 +53,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			ResultSet rs = stt.executeQuery(SELECT_ALL_INDEX);
 
 			while (rs.next()) {
+				int noArticle = rs.getInt("no_article");
 				String nomArticle = rs.getString("nom_article");
 		    	String description = rs.getString("description");
 		    	String image = rs.getString("image");
@@ -74,7 +75,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
             	String ville = rs.getString("ville");
 		    	Utilisateur vendeur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville);
 		    	
-		    	ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, image, dateDebutEncheres, dateFinEncheres, miseAPrix, categorie, vendeur);
+		    	ArticleVendu articleVendu = new ArticleVendu(noArticle,nomArticle, description, image, dateDebutEncheres, dateFinEncheres, miseAPrix, categorie, vendeur);
 		    	listeArticleVendu.add(articleVendu);
 			
 			}
