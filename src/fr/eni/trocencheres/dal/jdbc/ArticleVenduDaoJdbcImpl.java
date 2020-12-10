@@ -24,7 +24,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente='EC';";
 	
 	private final String SELECT_INFORMATIONS_ARTICLES = "SELECT * FROM ARTICLES_VENDUS as A INNER JOIN CATEGORIES as C ON A.no_categorie=C.no_categorie "
-			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente='EC' AND no_article='?';";
+			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente='EC' AND no_article=?;";
 	
 	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLES_VENDUS"
 			+ "(nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, no_utilisateur, no_categorie, etat_vente, image) "

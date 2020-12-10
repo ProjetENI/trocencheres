@@ -42,12 +42,13 @@ public class DetailArticleServlet extends HttpServlet {
 		ArticleVendu articleRecherche = null;
 		
 		int noArticleRecherche = verifierArticle(request, listeCodesErreur);
-		
+		System.out.println("#1 - " + noArticleRecherche);
 		ArticleVenduManager avm = new ArticleVenduManager();
 
 		if(listeCodesErreur.size()>0) {
             request.setAttribute("listeCodesErreur",listeCodesErreur);
-            forward(request, response, INDEX);
+            System.out.println("#2 - " + listeCodesErreur);
+            forward(request, response, DETAILS_ARTICLE);
         } else {
         	UtilisateurManager um = new UtilisateurManager();
     		try {
@@ -56,7 +57,8 @@ public class DetailArticleServlet extends HttpServlet {
     			forward(request, response, DETAILS_ARTICLE);
     		} catch (BusinessException e) {
     			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-    			forward(request, response, INDEX);
+    			System.out.println("#3 - " + listeCodesErreur);
+    			forward(request, response, DETAILS_ARTICLE);
     		}
         }
 	

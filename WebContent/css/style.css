@@ -288,6 +288,10 @@ iframe {
 	width: 60%;
 	height: 100%;
 }
+.w-25 {
+	width: 25%;
+	height: 100%;
+}
 .card-title {
 	color: #73BEEC;
 }
