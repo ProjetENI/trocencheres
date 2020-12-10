@@ -1,6 +1,7 @@
 package fr.eni.trocencheres.ihm;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
@@ -68,7 +69,7 @@ public class AjouterArticleServlet extends HttpServlet {
 
 		// String imageURL = request.getParameter("photoArticle");
 		String imageURL = uploadImage(request, listeCodesErreur, "photoArticle");
-
+		System.out.println(imageURL);
 		LocalDate dateDebutEncheres = verifierDate(request, listeCodesErreur, "dateDebutEnchere");
 		LocalDate dateFinEncheres = verifierDate(request, listeCodesErreur, "dateFinEnchere");
 		int prixInitial = verifierPrixInitial(request, listeCodesErreur, "prixInitial");
@@ -224,7 +225,7 @@ public class AjouterArticleServlet extends HttpServlet {
         return ville;
     }
 	
-	private String uploadImage(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+	private String uploadImage(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) throws IOException, ServletException {
 		String fileName = null;
 		//récupérer l’image provenant de la JSP	
 		Part filePart = request.getPart(nomParametre);
@@ -262,11 +263,25 @@ public class AjouterArticleServlet extends HttpServlet {
 
 				File f = new File(sContext + "/uploads/images/" + fileName);
 
-				try {
-					FileSave.receiveFile(fileContent, f);
-				} catch(IOException e) {
-					e.printStackTrace();
-				}
+				FileOutputStream fos= null;
+	            try {
+	                fos = new FileOutputStream(f);
+	                byte[] buffer = new byte[32 * 1024];
+	                int len;
+	                while ((len = fileContent.read(buffer)) > -1) {
+	                    fos.write(buffer, 0, len);
+	                }
+	            } catch (IOException e) {
+	                f.delete();
+	            }finally {
+	                 if (fos != null) {
+	                     try { fos.close(); } catch (IOException ignored) {};
+	                 }
+	                if(fileContent!= null) {
+	                    try {fileContent.close(); } catch (IOException ignored) {};
+	                }
+	            }
+
 			}
 			
 		}

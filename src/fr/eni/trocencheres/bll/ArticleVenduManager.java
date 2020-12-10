@@ -16,9 +16,9 @@ public class ArticleVenduManager {
 		this.articleVenduDao = DaoFactory.getArticleVenduDao();
 	}
 	
-//	public List<ArticleVendu> listerArticleVendu() throws BusinessException {
-//		return this.articleVenduDao.listerArticleVendu();
-//	}
+	public List<ArticleVendu> listerArticleVendu() throws BusinessException {
+		return this.articleVenduDao.listerArticleVendu();
+	}
 	
 	public void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException {
 		BusinessException businessException = new BusinessException();
