@@ -44,7 +44,7 @@
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="codePostal">Code Postal</label>
-			<input type="text" class="form-control" id="codePostal" name="codepostal" placeholder="CP">
+			<input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="CP">
 			</div>
 			<div class="form-group col-6">
 				<label for="ville">Ville</label>

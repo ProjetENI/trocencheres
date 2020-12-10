@@ -54,7 +54,6 @@ public class ArticleVenduManager {
 		validerDate(articlevendu.getDateFinEncheres(), businessException);
 		validerPrix(articlevendu.getPrixInitial(), businessException);
 		validerPrix(articlevendu.getPrixVente(), businessException);
-		validerEtatVente(articlevendu.getEtatVente(), businessException);
 	}
 	
 	private void validerNomArticle(ArticleVendu articlevendu, BusinessException businessException) {
@@ -81,8 +80,7 @@ public class ArticleVenduManager {
 
 	private void validerDate(LocalDate date, BusinessException businessException) {
 		if(date==null || 
-		   date.isAfter(LocalDate.now()) ||
-		   date.isEqual(LocalDate.now()) ) {
+		   date.isBefore(LocalDate.now()) ) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_DATE_ERREUR);
 		}
 	}
@@ -94,7 +92,7 @@ public class ArticleVenduManager {
 	}
 
 	private void validerEtatVente(String etatvente, BusinessException businessException) {
-		if (etatvente != "EA" && etatvente != "EC" && etatvente != "FI") {
+		if (etatvente != "RT" && etatvente != "VD" && etatvente != "EC" && etatvente != "CR") {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_ETAT_ERREUR);
 		}
 	}

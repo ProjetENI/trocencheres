@@ -1,3 +1,4 @@
+<%@page import="fr.eni.trocencheres.exceptions.LecteurMessage" %>
 <%@page import="fr.eni.trocencheres.bo.Utilisateur" %>
 <%@ page language="java" 
 	contentType="text/html; charset=UTF-8"
@@ -18,11 +19,24 @@
 
 <div class="container">
 
-	<form action="InscriptionServlet" method="POST">
+	<form action="AjouterArticleServlet" method="POST">
+		<span class="text-danger">
+			${error}
+			<c:if test="${!empty listeCodesErreur}">
+				<div class="alert alert-danger" role="alert">
+					<strong>Erreur!</strong>
+					<ul>
+					<c:forEach var="code" items="${listeCodesErreur}">
+						<li>${LecteurMessage.getMessageErreur(code)}</li>
+					</c:forEach>
+					</ul>
+				</div>
+			</c:if>
+		</span>
 		
 		<div class="form-group">
-			<label for="article">Article</label>
-			<input type="text" class="form-control" id="article" name="article" placeholder="Titre de l'article">
+			<label for="nomArticle">Article</label>
+			<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Titre de l'article">
 		</div>
 		<div class="form-group">
 			<label for="description">Description</label>
@@ -31,12 +45,11 @@
 		
 		<div class="form-group">
 			<label for="categories">Catégorie</label>
-			<select class="form-control" id="categories">
-				<option>Catégorie 1</option>
-				<option>Catégorie 2</option>
-				<option>Catégorie 3</option>
-				<option>Catégorie 4</option>
-				<option>Catégorie 5</option>
+			<select class="form-control" id="categories" name="categories">
+				<option value="1">Informatique</option>
+				<option value="2">Ameublement</option>
+				<option value="3">Vêtement</option>
+				<option value="4">Sport & Loisirs</option>
 			</select>
 		</div>
 		
@@ -46,8 +59,8 @@
  		</div>
  		
 		<div class="range-slider">
-			<label for="prixIntial">Mise à prix</label>
-  			<input class="range-slider__range" type="range" value="150" min="0" max="1500" step="10" id="prixIntial" name="prixIntial">
+			<label for="prixInitial">Mise à prix</label>
+  			<input class="range-slider__range" type="range" value="150" min="0" max="1500" step="10" id="prixInitial" name="prixInitial">
   			<span class="range-slider__value">0</span>
 		</div>
 		
@@ -57,7 +70,7 @@
 		</div>
 		
 		<div class="form-group date" data-provide="datepicker">
-			<label for="dateFinEnchere">Début de l'enchère</label>
+			<label for="dateFinEnchere">Fin de l'enchère</label>
 			<input type="date" class="form-control" name="dateFinEnchere" id="dateFinEnchere">
 		</div>
 

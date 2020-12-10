@@ -55,4 +55,6 @@ public abstract class CodesResultatServlets {
 	public static final int CHAMPS_RUE_RETRAIT_ARTICLE_VIDE_ERREUR = 30024;
 	public static final int CHAMPS_CODEPOSTAL_RETRAIT_ARTICLE_VIDE_ERREUR = 30025;
 	public static final int CHAMPS_VILLE_RETRAIT_VIDE_ERREUR = 30026;
+	public static final int CHAMPS_PRIX_INITIAL_ARTICLE_PARSE_ERREUR = 30027;
+	public static final int CHAMPS_CATEGORIE_ARTICLE_PARSE_ERREUR = 30028;
 }

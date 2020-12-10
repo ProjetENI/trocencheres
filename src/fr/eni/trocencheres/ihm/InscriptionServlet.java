@@ -131,7 +131,7 @@ public class InscriptionServlet extends HttpServlet {
 	
 	private String verifierCodePostal(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String codepostal;
-        codepostal = request.getParameter("codepostal");
+        codepostal = request.getParameter("codePostal");
         if(codepostal==null || codepostal.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_CODEPOSTAL_VIDE_ERREUR);

@@ -50,7 +50,7 @@ public class AjouterArticleServlet extends HttpServlet {
 		// Récupération de l'utilisateur de la session en cours
 		HttpSession session = request.getSession();
 		Utilisateur userSession = (Utilisateur) session.getAttribute("utilisateur");
-		
+
 		// Déclaration de la liste listeCodesErreur et instanciation vide pour y insérer les erreurs potentielles
 		List<Integer> listeCodesErreur = new ArrayList<>();
 
@@ -60,20 +60,26 @@ public class AjouterArticleServlet extends HttpServlet {
 		String imageURL = request.getParameter("photoArticle");
 		LocalDate dateDebutEncheres = verifierDate(request, listeCodesErreur, "dateDebutEnchere");
 		LocalDate dateFinEncheres = verifierDate(request, listeCodesErreur, "dateFinEnchere");
-		int prixInitial = Integer.parseInt(request.getParameter("prixIntial"));
-		Categorie categorie = new Categorie(Integer.parseInt(request.getParameter("categorie")));
+		int prixInitial = verifierPrixInitial(request, listeCodesErreur, "prixInitial");
+		Categorie categorie = new Categorie(verifierCategorie(request, listeCodesErreur, "categories"));
 		Utilisateur utilisateurVendeur = userSession;
-		
+
 		String rue = verifierRue(request, listeCodesErreur);
 		String codepostal = verifierCodePostal(request, listeCodesErreur);
 		String ville = verifierVille(request, listeCodesErreur);
 		
 		ArticleVendu articlevendu;
 		
+		if(listeCodesErreur.size()>0) {
+            request.setAttribute("listeCodesErreur",listeCodesErreur);
+            forward(request, response, AJOUTER_ARTICLE);
+        }
+		
+
 		// Si l'utilisateur a gardé l'adresse de retrait par défaut instancie un ArticleVendu sans les paramètres adresse
-		if ( userSession.getRue().equals(rue) && 
-			 userSession.getCodePostal().equals(codepostal) &&	
-			 userSession.getVille().equals(ville) ) {
+		if ( utilisateurVendeur.getRue().equals(rue) && 
+			 utilisateurVendeur.getCodePostal().equals(codepostal) &&	
+			 utilisateurVendeur.getVille().equals(ville) ) {
 
 			articlevendu = new ArticleVendu(nomArticle, description, imageURL, dateDebutEncheres, 
 														 dateFinEncheres, prixInitial, categorie, utilisateurVendeur);			
@@ -102,7 +108,7 @@ public class AjouterArticleServlet extends HttpServlet {
     		try {
     			avm.ajouterArticleVendu(articlevendu);
     			forward(request, response, INDEX);
-    		} catch (BusinessException e) {
+    		} catch (BusinessException e) { 
     			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
     			forward(request, response, AJOUTER_ARTICLE);
     		}
@@ -156,6 +162,26 @@ public class AjouterArticleServlet extends HttpServlet {
         }
         return date;
     }
+	
+	private int verifierPrixInitial(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+		int prixInitial = 0;
+		try {
+			prixInitial = Integer.parseInt(request.getParameter(nomParametre));
+		} catch (NumberFormatException e) {
+			 listeCodesErreur.add(CodesResultatServlets.CHAMPS_PRIX_INITIAL_ARTICLE_PARSE_ERREUR);
+		}
+		return prixInitial;
+	}
+	
+	private int verifierCategorie(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+		int categorie = 0;
+		try {
+			categorie = Integer.parseInt(request.getParameter(nomParametre));
+		} catch (NumberFormatException e) {
+			 listeCodesErreur.add(CodesResultatServlets.CHAMPS_CATEGORIE_ARTICLE_PARSE_ERREUR);
+		}
+		return categorie;
+	}
 
 	private String verifierRue(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String rue;
@@ -169,7 +195,7 @@ public class AjouterArticleServlet extends HttpServlet {
 	
 	private String verifierCodePostal(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String codepostal;
-        codepostal = request.getParameter("codepostal");
+        codepostal = request.getParameter("codePostal");
         if(codepostal==null || codepostal.trim().equals(""))
         {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_CODEPOSTAL_RETRAIT_ARTICLE_VIDE_ERREUR);
