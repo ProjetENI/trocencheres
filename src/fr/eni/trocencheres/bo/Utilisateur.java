@@ -1,5 +1,6 @@
 package fr.eni.trocencheres.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Utilisateur {
@@ -22,44 +23,29 @@ public class Utilisateur {
 	private List<ArticleVendu> articles;
 	private List<Enchere> historiqueEnchereUtilisateur;
 
-
-	//constructeur vide
-	public Utilisateur() {
-		
-	}
-	//constructeur pour modif mot de passe
+	
+	//constructeur avec toutes les variables
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse) {
-		this.noUtilisateur = noUtilisateur;
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-}
-
-	//constructeur pour l'inscription
-	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-				String rue, String codePostal, String ville, String motDePasse) {
-			this.pseudo = pseudo;
-			this.nom = nom;
-			this.prenom = prenom;
-			this.email = email;
-			this.telephone = telephone;
-			this.rue = rue;
-			this.codePostal = codePostal;
-			this.ville = ville;
+				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur, 
+				List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
+			this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, credit,
+					administrateur, articles, historiqueEnchereUtilisateur);
 			this.motDePasse = motDePasse;
+	}
+	
+		
+	//constructeur avec toutes les variables sauf le motDePasse
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, int credit, boolean administrateur,
+			List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
+		this(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, articles, historiqueEnchereUtilisateur);
+		this.credit = credit;
+		this.administrateur = administrateur;
 	}
 	
 	//constructeur avec toutes les variables sauf le motDePasse
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville) {
-		super();
+			String rue, String codePostal, String ville, List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -69,31 +55,23 @@ public class Utilisateur {
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
+		this.articles = new ArrayList<>();
+		this.historiqueEnchereUtilisateur = new ArrayList<>();
 	}
-		
-	//constructeur avec toutes les variables sauf le motDePasse
+
+	
+	//constructeur pour modif mot de passe
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, int credit, boolean administrateur) {
-		super();
+			String rue, String codePostal, String ville, String motDePasse,
+			List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
+		this(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, articles, historiqueEnchereUtilisateur);
 		this.noUtilisateur = noUtilisateur;
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.credit = credit;
-		this.administrateur = administrateur;
 	}
-
-
-
-	//constructeur avec toutes les variables
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-				String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
-			this.noUtilisateur = noUtilisateur;
+	
+	//constructeur pour l'inscription (Nb param (11))
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+				String rue, String codePostal, String ville, String motDePasse,
+				List<ArticleVendu> articles, List<Enchere> historiqueEnchereUtilisateur) {
 			this.pseudo = pseudo;
 			this.nom = nom;
 			this.prenom = prenom;
@@ -103,10 +81,9 @@ public class Utilisateur {
 			this.codePostal = codePostal;
 			this.ville = ville;
 			this.motDePasse = motDePasse;
-			this.credit = credit;
-			this.administrateur = administrateur;
+			this.articles = new ArrayList<>();
+			this.historiqueEnchereUtilisateur = new ArrayList<>();
 	}
-
 
 	// Getters et setters 
 	public int getNoUtilisateur() {
