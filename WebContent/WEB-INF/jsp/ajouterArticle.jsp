@@ -20,7 +20,7 @@
 <div class="container">
 
 	<form action="AjouterArticleServlet" method="POST" enctype="multipart/form-data">
-		<span class="text-danger">
+		 <span class="text-danger">
 			${error}
 			<c:if test="${!empty listeCodesErreur}">
 				<div class="alert alert-danger" role="alert">
@@ -32,11 +32,11 @@
 					</ul>
 				</div>
 			</c:if>
-		</span>
+		</span> 
 		
 		<div class="form-group">
 			<label for="nomArticle">Article</label>
-			<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Titre de l'article">
+			<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Titre de l'article">			
 		</div>
 		<div class="form-group">
 			<label for="description">Description</label>
