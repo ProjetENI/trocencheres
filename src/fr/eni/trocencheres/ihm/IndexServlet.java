@@ -48,8 +48,6 @@ public class IndexServlet extends HttpServlet {
     		}
         }
 
-		forward(request, response, INDEX);
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -75,8 +73,6 @@ public class IndexServlet extends HttpServlet {
     			forward(request, response, INDEX);
     		}
         }
-
-		forward(request, response, INDEX);
 
 	}
 

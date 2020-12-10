@@ -21,7 +21,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	
 	
 	private final String SELECT_ALL_INDEX = "SELECT * FROM ARTICLES_VENDUS as A INNER JOIN CATEGORIES as C ON A.no_categorie=C.no_categorie "
-			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente=EC;";
+			+ "INNER JOIN UTILISATEURS as U ON A.no_utilisateur=U.no_utilisateur WHERE etat_vente='EC';";
 	
 	private final String INSERT_ARTICLE_VENDU = "INSERT INTO ARTICLES_VENDUS"
 			+ "(nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, no_utilisateur, no_categorie, etat_vente, image) "
@@ -46,6 +46,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 		List<ArticleVendu> listeArticleVendu = new ArrayList <>();
 		try (	Connection conn = ConnectionProvider.getConnection();
 				Statement stt = conn.createStatement()) {
+			
 			ResultSet rs = stt.executeQuery(SELECT_ALL_INDEX);
 
 			while (rs.next()) {

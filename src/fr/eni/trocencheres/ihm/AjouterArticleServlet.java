@@ -257,9 +257,9 @@ public class AjouterArticleServlet extends HttpServlet {
 				//TODO : A supprimer pour la production
 				//Version eclipse (indiquer en dur le répertoire de stockage des images sur le serveur
 				// WINDOWS 10
-				// String sContext = "C:\\ENI_Workspaces\\work_workspace"+ request.getContextPath() + "/WebContent";
+				String sContext = "D:\\JAVA EE\\WorkSpaceProject_2020"+ request.getContextPath() + "/WebContent";
 				// MAC OS X
-				String sContext = "/Users/damienpuaud/eclipse-workspace/git/"+ request.getContextPath() + "/WebContent";
+				//String sContext = "/Users/damienpuaud/eclipse-workspace/git/"+ request.getContextPath() + "/WebContent";
 
 				File f = new File(sContext + "/uploads/images/" + fileName);
 
