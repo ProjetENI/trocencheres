@@ -19,7 +19,7 @@
 
 <div class="container">
 
-	<form action="AjouterArticleServlet" method="POST">
+	<form action="AjouterArticleServlet" method="POST" enctype="multipart/form-data">
 		<span class="text-danger">
 			${error}
 			<c:if test="${!empty listeCodesErreur}">
@@ -55,7 +55,7 @@
 		
 		<div class="form-group">
 			<label for="photoArticle">Photo de l'article</label>
-			<input type="file" class="form-control-file" id="photoArticle" name="photoArticle" >
+			<input type="file" class="form-control-file" id="photoArticle" name="photoArticle" accept="image/png, image/jpeg">
  		</div>
  		
 		<div class="range-slider">
