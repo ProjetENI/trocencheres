@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="/WEB-INF/fragment/header.jsp">
-    <jsp:param name="onglet" value="Header_Value"/>
+    <jsp:param name="onglet" value="Mon profil"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/navbar.jsp">
-    <jsp:param name="title" value="Navbar_Value"/>
+    <jsp:param name="title" value="Mon profil"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/banner.jsp">

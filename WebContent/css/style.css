@@ -33,7 +33,9 @@
   font-family: Montserrat-Regular;
   src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
 }
-
+.form-control-lg {
+    height: calc(1.5em + 1rem + 2px);
+}
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #18354C;
@@ -53,7 +55,7 @@ h2 {
 }
 
 input[type=text] {
-	height: 30px;
+    height: calc(1.5em + 1rem + 2px);
 	font-size: 1.2em;
 	color: #18354C;
 }

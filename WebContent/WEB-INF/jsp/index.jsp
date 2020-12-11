@@ -43,7 +43,7 @@
 						</div>
 					</div>
 					<div class="col-4">
-						<button type="submit" class="btn btn-outline-primary w-60 mt-3" style="height:40px">Rechercher</button>
+						<button type="submit" class="btn btn-outline-primary w-60 mt-4" style="height:40px">Rechercher</button>
 					</div>
 				</div>
 			</form>

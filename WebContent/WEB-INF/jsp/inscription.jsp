@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="prenom">Prénom</label>
-				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30012 || code eq 20004 }">error-field</c:if></c:forEach></c:if>" id="prenom" name="prenom" placeholder="Votre prénom">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30012 || code eq 20004 }">error-field</c:if></c:forEach></c:if>" id="prenom" name="prenom" placeholder="Votre prénom" value="${param.prenom}">
 				<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30012 || code eq 20004 }">
@@ -34,7 +34,7 @@
 
 			<div class="form-group col-6">
 				<label for="nom">Nom</label>
-				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30011 || code eq 20003 }">error-field</c:if></c:forEach></c:if>" id="nom" name="nom" placeholder="Votre Nom">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30011 || code eq 20003 }">error-field</c:if></c:forEach></c:if>" id="nom" name="nom" placeholder="Votre Nom" value="${param.nom}">
 				<c:if test="${!empty listeCodesErreur}">
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30011 || code eq 20003 }">
@@ -48,7 +48,7 @@
 
 			<div class="form-group col-6">
 				<label for="pseudo">Pseudo</label>
-				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30010 || code eq 20000 || code eq 20001 }">error-field</c:if></c:forEach></c:if>" id="pseudo" name="pseudo" placeholder="Votre pseudo">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30010 || code eq 20000 || code eq 20001 }">error-field</c:if></c:forEach></c:if>" id="pseudo" name="pseudo" placeholder="Votre pseudo" value="${param.pseudo}">
 				<c:if test="${!empty listeCodesErreur}">
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30010 || code eq 20000 || code eq 20001 }">
@@ -62,7 +62,7 @@
 			
 			<div class="form-group col-6">
 				<label for="telephone">N° de téléphone</label>
-				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30014 || code eq 20005 }">error-field</c:if></c:forEach></c:if>" id="telephone" name="telephone" placeholder="Votre N° de téléphone">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30014 || code eq 20005 }">error-field</c:if></c:forEach></c:if>" id="telephone" name="telephone" placeholder="Votre N° de téléphone" value="${param.telephone}">
 				<c:if test="${!empty listeCodesErreur}">
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30014 || code eq 20005 }">
@@ -77,7 +77,7 @@
 
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>
-			<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30015 }">error-field</c:if></c:forEach></c:if>" id="rue" name="rue" placeholder="Votre adresse">
+			<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30015 }">error-field</c:if></c:forEach></c:if>" id="rue" name="rue" placeholder="Votre adresse" value="${param.rue}">
 			<c:if test="${!empty listeCodesErreur}">
 				<c:forEach var="code" items="${listeCodesErreur}">
 				<c:if test="${ code eq 30015 }">
@@ -91,7 +91,7 @@
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="codePostal">Code Postal</label>
-			<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30016 || code eq 20006 }">error-field</c:if></c:forEach></c:if>" id="codePostal" name="codePostal" placeholder="CP">
+			<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30016 || code eq 20006 }">error-field</c:if></c:forEach></c:if>" id="codePostal" name="codePostal" placeholder="CP" value="${param.codePostal}">
 			<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30016 || code eq 20006 }">
@@ -106,7 +106,7 @@
 			</div>
 			<div class="form-group col-6">
 				<label for="ville">Ville</label>
-				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30017 }">error-field</c:if></c:forEach></c:if>" id="ville" name="ville" placeholder="Ville">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30017 }">error-field</c:if></c:forEach></c:if>" id="ville" name="ville" placeholder="Ville" value="${param.ville}">
 				<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30017 }">
@@ -122,7 +122,7 @@
 		</div>
 		<div class="form-group">
 			<label for="email">Email</label>
-			<input type="email" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30013 || code eq 20002 }">error-field</c:if></c:forEach></c:if>" id="email" name="email" aria-describedby="emailHelp">
+			<input type="email" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30013 || code eq 20002 }">error-field</c:if></c:forEach></c:if>" id="email" name="email" aria-describedby="emailHelp" value="${param.email}">
 			<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 			<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">

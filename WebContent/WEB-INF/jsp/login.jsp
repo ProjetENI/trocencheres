@@ -24,7 +24,6 @@
 						<input class="input100 input-check" type="text" id="identifiant" name="identifiant">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Identifiant</span>
-
 					</div>
 
 					<div class="wrap-input100 validate-input validate-input-check" data-validate="Mot de passe requis">
