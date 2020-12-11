@@ -56,6 +56,7 @@ public class InscriptionServlet extends HttpServlet {
     			forward(request, response, INDEX);
     		} catch (BusinessException e) {
     			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+    			System.out.println(e.getListeCodesErreur().toString());
     			forward(request, response, INSCRIPTION);
     		}
         }

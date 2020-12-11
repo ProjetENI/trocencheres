@@ -23,7 +23,7 @@
 				<input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom">
 				<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30012 }">
+                		<c:if test="${ code eq 30012 || code eq 20004 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>
@@ -37,7 +37,7 @@
 				<input type="text" class="form-control" id="nom" name="nom" placeholder="Votre Nom">
 				<c:if test="${!empty listeCodesErreur}">
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30011 }">
+                		<c:if test="${ code eq 30011 || code eq 20003 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>
@@ -51,7 +51,7 @@
 				<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Votre pseudo">
 				<c:if test="${!empty listeCodesErreur}">
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30010 }">
+                		<c:if test="${ code eq 30010 || code eq 20000 || code eq 20001 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>
@@ -82,7 +82,7 @@
 			<input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="CP">
 			<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30016 }">
+                		<c:if test="${ code eq 30016 || code eq 20006 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>
@@ -114,7 +114,7 @@
 			<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 			<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30013 }">
+                		<c:if test="${ code eq 30013 || code eq 20002 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>
@@ -129,7 +129,7 @@
 			<input type="password" class="form-control" id="password" name="password">
 			<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30018 }">
+                		<c:if test="${ code eq 30018 || code eq 20007 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>

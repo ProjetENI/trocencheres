@@ -94,7 +94,7 @@ public class UtilisateurManager {
 	private void validerPseudo(Utilisateur utilisateur, BusinessException businessException) {
 		String checkAlphaNumeric = "[\\w]";
 
-		if (utilisateur.getPseudo().length() < 5 && utilisateur.getPseudo().length() > 20) {
+		if (utilisateur.getPseudo().length() < 5 || utilisateur.getPseudo().length() > 20) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_PSEUDO_TAILLE_NOM_ERREUR);
 		}
 		if (utilisateur.getPseudo().matches(checkAlphaNumeric)) {
@@ -112,14 +112,14 @@ public class UtilisateurManager {
 
 	private void validerNom(Utilisateur utilisateur, BusinessException businessException) {
 
-		if (utilisateur.getNom().length() < 3 && utilisateur.getNom().length() > 30) {
+		if (utilisateur.getNom().length() < 3 || utilisateur.getNom().length() > 30) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_NOM_UTILISATEUR_NOM_ERREUR);
 		}
 	}
 
 	private void validerPrenom(Utilisateur utilisateur, BusinessException businessException) {
 
-		if (utilisateur.getPrenom().length() < 2 && utilisateur.getPrenom().length() > 30) {
+		if (utilisateur.getPrenom().length() < 2 || utilisateur.getPrenom().length() > 30) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_PRENOM_UTILISATEUR_NOM_ERREUR);
 		}
 	}
