@@ -15,12 +15,6 @@
 	</servlet>
 
 	<servlet>
-		<description>Inscription</description>
-		<servlet-name>Inscription</servlet-name>
-		<jsp-file>/WEB-INF/jsp/inscription.jsp</jsp-file>
-	</servlet>
-
-	<servlet>
 		<description>Parametres</description>
 		<servlet-name>Parametres</servlet-name>
 		<jsp-file>/WEB-INF/jsp/parametresUtilisateur.jsp</jsp-file>

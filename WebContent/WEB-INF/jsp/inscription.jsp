@@ -9,7 +9,7 @@
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/banner.jsp">
-    <jsp:param name="title" value="Banner_Value"/>
+    <jsp:param name="title" value="Inscription"/>
 </jsp:include>
 
 
@@ -18,9 +18,9 @@
 <form action="InscriptionServlet" method="POST">
 		
 		<div class="row">
-		<div class="form-group col-6">
-			<label for="prenom">Prénom</label>
-			<input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom">
+			<div class="form-group col-4">
+				<label for="prenom">Prénom</label>
+				<input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom">
 				<c:if test="${!empty listeCodesErreur}">               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30012 }">
@@ -29,18 +29,13 @@
                 			</div>
                 	 	</c:if>
                     </c:forEach> 
-          		
-                </c:if>
-       </div>	 
-		</div>
-   
-		
-		<div class="row">
-		<div class="form-group col-6">
-			<label for="nom">Nom</label>
-			<input type="text" class="form-control" id="nom" name="nom" placeholder="Votre Nom">
+				</c:if>
+			</div>
+
+			<div class="form-group col-4">
+				<label for="nom">Nom</label>
+				<input type="text" class="form-control" id="nom" name="nom" placeholder="Votre Nom">
 				<c:if test="${!empty listeCodesErreur}">
-               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
                 		<c:if test="${ code eq 30011 }">
                 		<div class="alert alert-danger" role="alert">
@@ -48,31 +43,24 @@
                 			</div>
                 	 	</c:if>
                     </c:forEach> 
-          		
                 </c:if>
-       </div>	 
-		</div>
-						
-		<div class="row">
-			<div class="form-group col-6">
+	       </div>	 
+
+			<div class="form-group col-4">
 				<label for="pseudo">Pseudo</label>
 				<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Votre pseudo">
 				<c:if test="${!empty listeCodesErreur}">
-               	 
                  	<c:forEach var="code" items="${listeCodesErreur}">
-                		<c:if test="${ code eq 30011 }">
+                		<c:if test="${ code eq 30010 }">
                 		<div class="alert alert-danger" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
                 			</div>
                 	 	</c:if>
                     </c:forEach> 
-          		
                 </c:if>
-				
-          		
-                		
 			</div>
 		</div>
+
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>
 			<input type="text" class="form-control" id="rue" name="rue" placeholder="Votre adresse">
