@@ -48,27 +48,32 @@ public class ModifierMotDePasseServlet extends HttpServlet {
 		String passwordNouveau = verifierNouveauPassword(request, listeCodesErreur);
 		String passwordNouveau2 = verifierNouveauPassword2(request, listeCodesErreur);
 		
-		if (passwordNouveau.equals(passwordNouveau2)) {
-			Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),userConnecter.getPseudo(),userConnecter.getNom(),userConnecter.getPrenom(),
-					userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille(),passwordAncien);
-			
-			try {
-				um.modifierMotDePasse(myUser,passwordNouveau);
-				validModif = true;
-
-			} catch (BusinessException e) {
-				request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+		if(listeCodesErreur.size()>0) {
+            request.setAttribute("listeCodesErreur",listeCodesErreur);
+            forward(request, response, PARAMETRE_UTILISATEUR);
+        } else {
+			if (passwordNouveau.equals(passwordNouveau2)) {
+				Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),userConnecter.getPseudo(),userConnecter.getNom(),userConnecter.getPrenom(),
+						userConnecter.getEmail(),userConnecter.getTelephone(),userConnecter.getRue(),userConnecter.getCodePostal(),userConnecter.getVille(),passwordAncien);
+				
+				try {
+					um.modifierMotDePasse(myUser,passwordNouveau);
+					validModif = true;
+	
+				} catch (BusinessException e) {
+					request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+				}
+				
+				if (validModif) {
+					myUser.setMotDePasse(passwordNouveau);
+					session.setAttribute("utilisateur", myUser);
+				}
+				
+			} else {
+				be.ajouterErreur(CodesResultatServlets.CORRESPONDACE_MDP);
+				request.setAttribute("listeCodesErreur", be.getListeCodesErreur());
 			}
-			
-			if (validModif) {
-				myUser.setMotDePasse(passwordNouveau);
-				session.setAttribute("utilisateur", myUser);
-			}
-			
-		} else {
-			be.ajouterErreur(CodesResultatServlets.CORRESPONDACE_MDP);
-			request.setAttribute("listeCodesErreur", be.getListeCodesErreur());
-		}
+        }
 
 		forward(request, response, PARAMETRE_UTILISATEUR);
 
