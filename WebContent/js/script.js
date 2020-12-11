@@ -7,6 +7,21 @@ $('#confirm-delete').on('show.bs.modal', function(e) {
 });
 
 /*************************************************
+*	JAVASCRIPT POUR GARDER LA TAB ACTIVE LORS
+*	D'UN RAFFRAICHISSEMENT DE LA PAGE PROFILE
+*************************************************/
+
+$(document).ready(function(){
+    $('a[data-toggle="pill"]').on('show.bs.tab', function(e) {
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+    var activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        $('#v-pills-tab a[href="' + activeTab + '"]').tab('show');
+    }
+});
+
+/*************************************************
 *	JAVASCRIPT POUR AFFICHER UNE BULLE
 *	AVEC LA VALEUR DE RANGE CONTROL
 *************************************************/
