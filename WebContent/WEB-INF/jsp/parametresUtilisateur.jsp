@@ -11,34 +11,97 @@
 				<div class="form-group col-6">
 					<label for="prenom">Prénom</label>
 					<input type="text" class="form-control" id="prenom" name="prenom" value="${utilisateur.prenom}">
+					<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30012 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>
+                    </c:forEach>           		
+                </c:if>
 				</div>
 				<div class="form-group col-6">
 					<label for="nom">Nom</label>
 					<input type="text" class="form-control" id="nom" name="nom" value="${utilisateur.nom}">
+					<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30011 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>
+                    </c:forEach>           		
+                </c:if>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="pseudo">Pseudo</label>
 					<input type="text" class="form-control" id="pseudo" name="pseudo" value="${utilisateur.pseudo}">
+					<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30010 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>
+                    </c:forEach>           		
+                </c:if>
 				</div>
 				<div class="form-group col-6">
 					<label for="telephone">Numéro de téléphone</label>
 					<input type="text" class="form-control" id="telephone" name="telephone" value="${utilisateur.telephone}">
+					<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30014 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>
+                    </c:forEach>           		
+                </c:if>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="rue">N° et nom de rue</label>
 				<input type="text" class="form-control" id="rue" name="rue" value="${utilisateur.rue}">
+				<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30015 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>               	 	
+                    </c:forEach>           		
+                </c:if>				
 			</div>
 			<div class="row">
 				<div class="form-group col-6">
 					<label for="codePostal">Code Postal</label>
 				<input type="text" class="form-control" id="codePostal" name="codePostal" value="${utilisateur.codePostal}">
+				<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30016 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>                	 	
+                    </c:forEach>           		
+                </c:if>				
 				</div>
 				<div class="form-group col-6">
 					<label for="ville">Ville</label>
 					<input type="text" class="form-control" id="ville" name="ville" value="${utilisateur.ville}">
+					<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30017 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>                	 	
+                    </c:forEach>          		
+                </c:if>				
 				</div>
 			</div>
 			<div class="form-group">
@@ -47,9 +110,15 @@
 				<small id="emailHelp" class="form-text text-muted">Aucune crainte, nous ne pratiquons pas le SPAM.</small>
 			</div>
 			<button type="submit" class="btn btn-primary">Modifier</button>
+			<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30013 }">
+                		<div class="alert alert-danger" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>                	 	
+                    </c:forEach>           		
+                </c:if>				
 		</form>
-	</section>
-	
-	
-	
+	</section>			
 </div>
