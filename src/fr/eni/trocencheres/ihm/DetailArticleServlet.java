@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +24,8 @@ import fr.eni.trocencheres.bo.ArticleVendu;
 public class DetailArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String INDEX = "Index";
-	private static final String DETAILS_ARTICLE = "DetailsArticle";
+	private static final String INDEX = "/IndexServlet";
+	private static final String DETAILS_ARTICLE = "/WEB-INF/jsp/detailsArticle.jsp";
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,13 +43,11 @@ public class DetailArticleServlet extends HttpServlet {
 		ArticleVendu articleRecherche = null;
 		
 		int noArticleRecherche = verifierArticle(request, listeCodesErreur);
-		System.out.println("#1 - " + noArticleRecherche);
 		ArticleVenduManager avm = new ArticleVenduManager();
 
 		if(listeCodesErreur.size()>0) {
             request.setAttribute("listeCodesErreur",listeCodesErreur);
-            System.out.println("#2 - " + listeCodesErreur);
-            forward(request, response, DETAILS_ARTICLE);
+            forward(request, response, INDEX);
         } else {
         	UtilisateurManager um = new UtilisateurManager();
     		try {
@@ -57,8 +56,7 @@ public class DetailArticleServlet extends HttpServlet {
     			forward(request, response, DETAILS_ARTICLE);
     		} catch (BusinessException e) {
     			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-    			System.out.println("#3 - " + listeCodesErreur);
-    			forward(request, response, DETAILS_ARTICLE);
+    			forward(request, response, INDEX);
     		}
         }
 	
@@ -66,8 +64,10 @@ public class DetailArticleServlet extends HttpServlet {
 	
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection) throws ServletException, IOException {
 
-		RequestDispatcher rd = this.getServletContext().getNamedDispatcher(redirection);
-		rd.forward(request, response);
+		ServletContext servletContext = getServletContext();
+		RequestDispatcher requestDispatcher = servletContext
+		.getRequestDispatcher(redirection);
+		requestDispatcher.forward(request, response);
 	}
 	
 	private int verifierArticle(HttpServletRequest request, List<Integer> listeCodesErreur) {

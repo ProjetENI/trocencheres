@@ -286,7 +286,8 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			throw businessException;
         }
 
-}
+	}
+
 
 
 }

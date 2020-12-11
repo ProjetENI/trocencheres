@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -41,8 +42,8 @@ import fr.eni.trocencheres.bo.Utilisateur;
 public class AjouterArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String INDEX = "Index";
-	private static final String AJOUTER_ARTICLE = "AjouterArticle";
+	private static final String INDEX = "/IndexServlet";
+	private static final String AJOUTER_ARTICLE = "/WEB-INF/jsp/ajouterArticle.jsp";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -131,7 +132,9 @@ public class AjouterArticleServlet extends HttpServlet {
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection)
 			throws ServletException, IOException {
 
-		RequestDispatcher rd = this.getServletContext().getNamedDispatcher(redirection);
+		ServletContext servletContext = getServletContext();
+		RequestDispatcher rd = servletContext
+		.getRequestDispatcher(redirection);
 		rd.forward(request, response);
 	}
 

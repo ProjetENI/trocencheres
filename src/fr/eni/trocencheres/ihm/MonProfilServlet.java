@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 public class MonProfilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String INDEX = "Index";
 	private static final String MON_PROFIL = "MonProfil";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,8 +27,7 @@ public class MonProfilServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		forward(request, response, INDEX);
-
+		forward(request, response, MON_PROFIL);
 	}
 
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection) throws ServletException, IOException {

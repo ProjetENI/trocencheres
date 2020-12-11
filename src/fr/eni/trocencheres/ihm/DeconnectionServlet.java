@@ -24,16 +24,14 @@ public class DeconnectionServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("utilisateur", emptyUser);
-		
-		ServletContext servletContext = getServletContext();
-		RequestDispatcher requestDispatcher = servletContext
-		.getRequestDispatcher(INDEX);
-		requestDispatcher.forward(request, response);
+		forward(request, response, INDEX);
 	}
 
 	protected void forward(HttpServletRequest request, HttpServletResponse response, String redirection) throws ServletException, IOException {
 
-		RequestDispatcher rd = this.getServletContext().getNamedDispatcher(redirection);
-		rd.forward(request, response);
+		ServletContext servletContext = getServletContext();
+		RequestDispatcher requestDispatcher = servletContext
+		.getRequestDispatcher(redirection);
+		requestDispatcher.forward(request, response);
 	}
 }
