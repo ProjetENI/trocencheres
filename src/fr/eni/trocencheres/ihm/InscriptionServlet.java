@@ -63,6 +63,7 @@ public class InscriptionServlet extends HttpServlet {
 
 	}
 
+	
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection) throws ServletException, IOException {
 
 		ServletContext servletContext = getServletContext();
