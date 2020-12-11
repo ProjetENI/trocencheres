@@ -48,51 +48,56 @@
 			</c:if>
 		</div>
 		
-		<div class="form-group">
-			<label for="categories">Catégorie</label>
-			<select class="form-control" id="categories" name="categories">
-				<option value="1">Informatique</option>
-				<option value="2">Ameublement</option>
-				<option value="3">Vêtement</option>
-				<option value="4">Sport & Loisirs</option>
-			</select>
+		<div class="row">
+			<div class="form-group col-4">
+				<label for="categories">Catégorie</label>
+				<select class="form-control" id="categories" name="categories">
+					<option value="1">Informatique</option>
+					<option value="2">Ameublement</option>
+					<option value="3">Vêtement</option>
+					<option value="4">Sport & Loisirs</option>
+				</select>
+			</div>
+			
+			<div class="range-slider col-4">
+				<label for="prixInitial">Mise à prix</label>
+	  			<input class="range-slider__range" type="range" value="150" min="0" max="1500" step="10" id="prixInitial" name="prixInitial">
+	  			<span class="range-slider__value">0</span>
+			</div>
+			
+			<div class="form-group col-4">
+				<label for="photoArticle">Photo de l'article</label>
+				<input type="file" class="form-control-file" id="photoArticle" name="photoArticle" accept="image/png, image/jpeg">
+	 		</div>
 		</div>
-		
-		<div class="form-group">
-			<label for="photoArticle">Photo de l'article</label>
-			<input type="file" class="form-control-file" id="photoArticle" name="photoArticle" accept="image/png, image/jpeg">
- 		</div>
- 		
-		<div class="range-slider">
-			<label for="prixInitial">Mise à prix</label>
-  			<input class="range-slider__range" type="range" value="150" min="0" max="1500" step="10" id="prixInitial" name="prixInitial">
-  			<span class="range-slider__value">0</span>
-		</div>
-		
-		<div class="form-group date" data-provide="datepicker">
-			<label for="dateDebutEnchere">Début de l'enchère</label>
-			<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateDebutEnchere" id="dateDebutEnchere">
-			<c:if test="${!empty listeCodesErreur}">               	 
-              	<c:forEach var="code" items="${listeCodesErreur}">
-             		<c:if test="${ code eq 30022 || code eq 20044}">
-             		<div class="invalid-feedback" role="alert">
-             			${LecteurMessage.getMessageErreur(code)}
-             			</div>
-             	 	</c:if>
-                 </c:forEach> 
-			</c:if>
-		</div>
-		
-		<div class="form-group date" data-provide="datepicker">
-			<label for="dateFinEnchere">Fin de l'enchère</label>
-			<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateFinEnchere" id="dateFinEnchere">
-			<c:forEach var="code" items="${listeCodesErreur}">
-         		<c:if test="${ code eq 30022 || code eq 20044}">
-         		<div class="invalid-feedback" role="alert">
-         			${LecteurMessage.getMessageErreur(code)}
-         			</div>
-         	 	</c:if>
-             </c:forEach> 
+
+
+		<div class="row">
+			<div class="form-group date col-6" data-provide="datepicker">
+				<label for="dateDebutEnchere">Début de l'enchère</label>
+				<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateDebutEnchere" id="dateDebutEnchere">
+				<c:if test="${!empty listeCodesErreur}">               	 
+	              	<c:forEach var="code" items="${listeCodesErreur}">
+	             		<c:if test="${ code eq 30022 || code eq 20044}">
+	             		<div class="invalid-feedback" role="alert">
+	             			${LecteurMessage.getMessageErreur(code)}
+	             			</div>
+	             	 	</c:if>
+	                 </c:forEach> 
+				</c:if>
+			</div>
+			
+			<div class="form-group date col-6" data-provide="datepicker">
+				<label for="dateFinEnchere">Fin de l'enchère</label>
+				<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateFinEnchere" id="dateFinEnchere">
+				<c:forEach var="code" items="${listeCodesErreur}">
+	         		<c:if test="${ code eq 30022 || code eq 20044}">
+	         		<div class="invalid-feedback" role="alert">
+	         			${LecteurMessage.getMessageErreur(code)}
+	         			</div>
+	         	 	</c:if>
+	             </c:forEach> 
+			</div>
 		</div>
 
 

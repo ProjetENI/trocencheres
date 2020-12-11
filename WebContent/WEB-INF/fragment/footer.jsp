@@ -1,6 +1,6 @@
  
     <footer class="d-flex justify-content-center align-items-center mt-5">
-	  
+	  	© 2020 - TROCENCHERES ENI - Damien P. | François L. | David A. | Cyril T.
     </footer>
 
      <!-- Bootstrap core JavaScript -->
