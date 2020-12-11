@@ -112,7 +112,7 @@
                 		<c:if test="${ code eq 30017 }">
                 		<div class="invalid-feedback" role="alert">
                 			${LecteurMessage.getMessageErreur(code)}
-                			</div>
+                		</div>
                 	 	</c:if>
                 	 	
                     </c:forEach> 

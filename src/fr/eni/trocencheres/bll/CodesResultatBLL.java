@@ -59,7 +59,8 @@ public abstract class CodesResultatBLL {
 	/**
 	 * Echec la date de vente de l'article ne respecte pas les règles définies
 	 */
-	public static final int REGLE_ARTICLE_DATE_ERREUR=20044;
+	public static final int REGLE_ARTICLE_DATE_DEBUT_ERREUR=20044;
+	public static final int REGLE_ARTICLE_DATE_FIN_ERREUR=20047;
 	/**
 	 * Echec le prix de vente de l'article ne respecte pas les règles définies
 	 */

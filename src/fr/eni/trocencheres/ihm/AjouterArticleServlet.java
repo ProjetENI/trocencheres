@@ -71,8 +71,8 @@ public class AjouterArticleServlet extends HttpServlet {
 		// String imageURL = request.getParameter("photoArticle");
 		String imageURL = uploadImage(request, listeCodesErreur, "photoArticle");
 		System.out.println(imageURL);
-		LocalDate dateDebutEncheres = verifierDate(request, listeCodesErreur, "dateDebutEnchere");
-		LocalDate dateFinEncheres = verifierDate(request, listeCodesErreur, "dateFinEnchere");
+		LocalDate dateDebutEncheres = verifierDateDebut(request, listeCodesErreur, "dateDebutEnchere");
+		LocalDate dateFinEncheres = verifierDateFin(request, listeCodesErreur, "dateFinEnchere");
 		int prixInitial = verifierPrixInitial(request, listeCodesErreur, "prixInitial");
 		Categorie categorie = new Categorie(verifierCategorie(request, listeCodesErreur, "categories"));
 		Utilisateur utilisateurVendeur = userSession;
@@ -160,13 +160,31 @@ public class AjouterArticleServlet extends HttpServlet {
         return description;
     }
 	
-	private LocalDate verifierDate(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+	private LocalDate verifierDateDebut(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
 
         String stringDate = request.getParameter(nomParametre);
         LocalDate date = null;
         
         if(stringDate==null || stringDate.trim().equals("")) {
-            listeCodesErreur.add(CodesResultatServlets.CHAMPS_DATE_ARTICLE_VIDE_ERREUR);
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_DATE_DEBUT_ARTICLE_VIDE_ERREUR);
+        } else {
+        	try {
+            	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            	date = LocalDate.parse(stringDate, dtf);
+    		} catch (DateTimeParseException e) {
+    			listeCodesErreur.add(CodesResultatServlets.CHAMPS_DATE_ARTICLE_FORMAT_ERREUR);
+    		}
+        }
+        return date;
+    }
+	
+	private LocalDate verifierDateFin(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+
+        String stringDate = request.getParameter(nomParametre);
+        LocalDate date = null;
+        
+        if(stringDate==null || stringDate.trim().equals("")) {
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_DATE_FIN_ARTICLE_VIDE_ERREUR);
         } else {
         	try {
             	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");

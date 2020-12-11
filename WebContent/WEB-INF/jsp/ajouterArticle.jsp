@@ -89,9 +89,9 @@
 			
 			<div class="form-group date col-6" data-provide="datepicker">
 				<label for="dateFinEnchere">Fin de l'enchère</label>
-				<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateFinEnchere" id="dateFinEnchere">
+				<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20047}">error-field</c:if></c:forEach></c:if>" name="dateFinEnchere" id="dateFinEnchere">
 				<c:forEach var="code" items="${listeCodesErreur}">
-	         		<c:if test="${ code eq 30022 || code eq 20044}">
+	         		<c:if test="${ code eq 30029 || code eq 20047}">
 	         		<div class="invalid-feedback" role="alert">
 	         			${LecteurMessage.getMessageErreur(code)}
 	         			</div>
