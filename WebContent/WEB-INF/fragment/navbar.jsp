@@ -1,3 +1,4 @@
+<%@page import="fr.eni.trocencheres.bo.Utilisateur" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,6 +19,7 @@
 <!-- 						<li class="nav-item"> -->
 <!-- 							<a class="nav-link" href="ListerArticles">Enchères<span class="sr-only">(current)</span></a> -->
 <!-- 						</li> -->
+						
 						<li class="nav-item">
 							<a class="nav-link" href="AjouterArticleServlet">Vendre un article<span class="sr-only">(current)</span></a>
 						</li>
@@ -27,6 +29,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="DeconnectionServlet">Se déconnecter<span class="sr-only">(current)</span></a>
 						</li>
+						<p class="card-text ml-3">
+							<span class="price-title">Crédits </span><span class="price-tag">${utilisateur.credit} <i class="fa fa-gavel"></i></span>
+						</p>
 					</c:otherwise>
 				</c:choose>
 			</ul>

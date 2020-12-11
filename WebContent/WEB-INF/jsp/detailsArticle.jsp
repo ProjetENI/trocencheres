@@ -47,7 +47,7 @@
 					</h5>
 					<p>
 						<span class="seller-title">Vendu par : </span><span class="seller-name">${article.utilisateur.pseudo}</span><br/>
-						<span class="price-title">Enchère en cours : </span><span class="price-tag">${article.prixInitial} <i class="fa fa-gavel"></i></span>
+						<span class="price-title">Prix en cours : </span><span class="price-tag">${article.prixInitial} <i class="fa fa-gavel"></i></span>
 					</p>
 					
 					
