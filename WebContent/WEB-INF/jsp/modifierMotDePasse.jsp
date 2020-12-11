@@ -28,7 +28,7 @@
 					<!-- Affichage d'une erreur si le champs mots de passe est vide -->
 					<c:if test="${!empty listeCodesErreur}">
 	                 	<c:forEach var="code" items="${listeCodesErreur}">
-	                		<c:if test="${ code eq 30018 }">
+	                		<c:if test="${ code eq 30030 }">
 	                		<div class="invalid-feedback" role="alert">
 	                			${LecteurMessage.getMessageErreur(code)}
 	                			</div>
@@ -42,7 +42,7 @@
 					<!-- Affichage d'une erreur si le champs mots de passe est vide -->
 					<c:if test="${!empty listeCodesErreur}">
 	                 	<c:forEach var="code" items="${listeCodesErreur}">
-	                		<c:if test="${ code eq 30018 }">
+	                		<c:if test="${ code eq 30031 }">
 	                		<div class="invalid-feedback" role="alert">
 	                			${LecteurMessage.getMessageErreur(code)}
 	                			</div>

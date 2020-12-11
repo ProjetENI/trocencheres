@@ -100,7 +100,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
         password = request.getParameter("nouveauMotDePasse1");
         if(password==null || password.trim().equals(""))
         {
-            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD1_VIDE_ERREUR);
         }
         return password;
     }
@@ -110,7 +110,7 @@ public class ModifierMotDePasseServlet extends HttpServlet {
         password = request.getParameter("nouveauMotDePasse2");
         if(password==null || password.trim().equals(""))
         {
-            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD_VIDE_ERREUR);
+            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PASSWORD2_VIDE_ERREUR);
         }
         return password;
     }

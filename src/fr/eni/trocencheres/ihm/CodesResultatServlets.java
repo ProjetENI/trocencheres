@@ -39,6 +39,8 @@ public abstract class CodesResultatServlets {
 	public static final int CHAMPS_CODEPOSTAL_VIDE_ERREUR=30016;
 	public static final int CHAMPS_VILLE_VIDE_ERREUR=30017;
 	public static final int CHAMPS_PASSWORD_VIDE_ERREUR=30018;
+	public static final int CHAMPS_PASSWORD1_VIDE_ERREUR=30030;
+	public static final int CHAMPS_PASSWORD2_VIDE_ERREUR=30031;
 	/**
 	 * Erreur lanceé par la Servlet lors de la suppression d'un compte utilisateur
 	 */
