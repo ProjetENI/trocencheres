@@ -41,7 +41,6 @@ public class ModifierParametreServlet extends HttpServlet {
 		String pseudo = verifierPseudo(request, listeCodesErreur);
 		String nom = verifierNom(request, listeCodesErreur);
 		String prenom = verifierPrenom(request, listeCodesErreur);
-		System.out.println("Prenom : " + prenom);
 		String email = verifierEmail(request, listeCodesErreur);
 		String telephone = verifierTelephone(request, listeCodesErreur);
 		String rue = verifierRue(request, listeCodesErreur);

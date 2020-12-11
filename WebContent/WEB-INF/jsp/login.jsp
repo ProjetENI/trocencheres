@@ -51,13 +51,11 @@
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
 						<div class="text-center p-t-5 p-b-20 container-erreur100">
 							<span class="text-danger">
-								${error}
 								<c:if test="${!empty listeCodesErreur}">
 									<div class="invalid-feedback" role="alert">
-										<strong>Erreur!</strong>
-										<ul>
+										<h2>Erreur!</h2>
 										<c:forEach var="code" items="${listeCodesErreur}">
-											<li>${LecteurMessage.getMessageErreur(code)}</li>
+											${LecteurMessage.getMessageErreur(code)}<br/>
 										</c:forEach>
 										</ul>
 									</div>
