@@ -15,7 +15,7 @@
 					<c:if test="${!empty listeCodesErreur}">
 	                 	<c:forEach var="code" items="${listeCodesErreur}">
 	                		<c:if test="${ code eq 30018 }">
-	                		<div class="alert alert-danger" role="alert">
+	                		<div class="invalid-feedback" role="alert">
 	                			${LecteurMessage.getMessageErreur(code)}
 	                			</div>
 	                	 	</c:if>
@@ -29,7 +29,7 @@
 					<c:if test="${!empty listeCodesErreur}">
 	                 	<c:forEach var="code" items="${listeCodesErreur}">
 	                		<c:if test="${ code eq 30018 }">
-	                		<div class="alert alert-danger" role="alert">
+	                		<div class="invalid-feedback" role="alert">
 	                			${LecteurMessage.getMessageErreur(code)}
 	                			</div>
 	                	 	</c:if>
@@ -43,7 +43,7 @@
 					<c:if test="${!empty listeCodesErreur}">
 	                 	<c:forEach var="code" items="${listeCodesErreur}">
 	                		<c:if test="${ code eq 30018 }">
-	                		<div class="alert alert-danger" role="alert">
+	                		<div class="invalid-feedback" role="alert">
 	                			${LecteurMessage.getMessageErreur(code)}
 	                			</div>
 	                	 	</c:if>
@@ -54,7 +54,7 @@
 				<c:if test="${!empty listeCodesErreur}">
 	                 	<c:forEach var="code" items="${listeCodesErreur}">
 	                		<c:if test="${ code eq 30005 }">
-	                		<div class="alert alert-danger" role="alert">
+	                		<div class="invalid-feedback" role="alert">
 	                			${LecteurMessage.getMessageErreur(code)}
 	                			</div>
 	                	 	</c:if>

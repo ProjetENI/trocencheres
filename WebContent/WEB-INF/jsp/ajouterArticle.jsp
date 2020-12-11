@@ -6,41 +6,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="/WEB-INF/fragment/header.jsp">
-    <jsp:param name="onglet" value="Header_Value"/>
+    <jsp:param name="onglet" value="Nouvelle enchere"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/navbar.jsp">
-    <jsp:param name="title" value="Navbar_Value"/>
+    <jsp:param name="title" value="Nouvelle enchere"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/banner.jsp">
-    <jsp:param name="title" value="Nouvelle enchère"/>
+    <jsp:param name="title" value="Nouvelle enchere"/>
 </jsp:include>
 
 <div class="container">
 
 	<form action="AjouterArticleServlet" method="POST" enctype="multipart/form-data">
-		 <span class="text-danger">
-			${error}
-			<c:if test="${!empty listeCodesErreur}">
-				<div class="alert alert-danger" role="alert">
-					<strong>Erreur!</strong>
-					<ul>
-					<c:forEach var="code" items="${listeCodesErreur}">
-						<li>${LecteurMessage.getMessageErreur(code)}</li>
-					</c:forEach>
-					</ul>
-				</div>
-			</c:if>
-		</span> 
 		
 		<div class="form-group">
 			<label for="nomArticle">Article</label>
-			<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Titre de l'article">			
+			<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30020 || code eq 20040 || code eq 20041 }">error-field</c:if></c:forEach></c:if>" id="nomArticle" name="nomArticle" placeholder="Titre de l'article">
+			<c:if test="${!empty listeCodesErreur}">               	 
+              	<c:forEach var="code" items="${listeCodesErreur}">
+             		<c:if test="${ code eq 30020 || code eq 20040 || code eq 20041 }">
+             		<div class="invalid-feedback" role="alert">
+             			${LecteurMessage.getMessageErreur(code)}
+             			</div>
+             	 	</c:if>
+                 </c:forEach> 
+			</c:if>
 		</div>
 		<div class="form-group">
 			<label for="description">Description</label>
-			<textarea rows="" cols="" class="form-control" id="description" name="description"></textarea>
+			<textarea rows="" cols="" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30021 || code eq 20042 || code eq 20043 }">error-field</c:if></c:forEach></c:if>" id="description" name="description"></textarea>
+			<c:if test="${!empty listeCodesErreur}">               	 
+              	<c:forEach var="code" items="${listeCodesErreur}">
+             		<c:if test="${ code eq 30021 || code eq 20042 || code eq 20043 }">
+             		<div class="invalid-feedback" role="alert">
+             			${LecteurMessage.getMessageErreur(code)}
+             			</div>
+             	 	</c:if>
+                 </c:forEach> 
+			</c:if>
 		</div>
 		
 		<div class="form-group">
@@ -66,27 +71,74 @@
 		
 		<div class="form-group date" data-provide="datepicker">
 			<label for="dateDebutEnchere">Début de l'enchère</label>
-			<input type="date" class="form-control" name="dateDebutEnchere" id="dateDebutEnchere">
+			<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateDebutEnchere" id="dateDebutEnchere">
+			<c:if test="${!empty listeCodesErreur}">               	 
+              	<c:forEach var="code" items="${listeCodesErreur}">
+             		<c:if test="${ code eq 30022 || code eq 20044}">
+             		<div class="invalid-feedback" role="alert">
+             			${LecteurMessage.getMessageErreur(code)}
+             			</div>
+             	 	</c:if>
+                 </c:forEach> 
+			</c:if>
 		</div>
 		
 		<div class="form-group date" data-provide="datepicker">
 			<label for="dateFinEnchere">Fin de l'enchère</label>
-			<input type="date" class="form-control" name="dateFinEnchere" id="dateFinEnchere">
+			<input type="date" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30022 || code eq 20044}">error-field</c:if></c:forEach></c:if>" name="dateFinEnchere" id="dateFinEnchere">
+			<c:forEach var="code" items="${listeCodesErreur}">
+         		<c:if test="${ code eq 30022 || code eq 20044}">
+         		<div class="invalid-feedback" role="alert">
+         			${LecteurMessage.getMessageErreur(code)}
+         			</div>
+         	 	</c:if>
+             </c:forEach> 
 		</div>
 
 
 		<div class="form-group">
 			<label for="rue">N° et nom de rue</label>
-			<input type="text" class="form-control" id="rue" name="rue" value="${utilisateur.rue}">
+			<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30015 }">error-field</c:if></c:forEach></c:if>" id="rue" name="rue" value="${utilisateur.rue}">
+			<c:if test="${!empty listeCodesErreur}">
+				<c:forEach var="code" items="${listeCodesErreur}">
+				<c:if test="${ code eq 30015 }">
+					<div class="invalid-feedback" role="alert">
+						${LecteurMessage.getMessageErreur(code)}
+					</div>
+				</c:if>
+				</c:forEach>
+			</c:if>		
 		</div>
 		<div class="row">
 			<div class="form-group col-6">
 				<label for="codePostal">Code Postal</label>
-			<input type="text" class="form-control" id="codePostal" name="codePostal" value="${utilisateur.codePostal}">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30016 || code eq 20006 }">error-field</c:if></c:forEach></c:if>" id="codePostal" name="codePostal" value="${utilisateur.codePostal}">
+				<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30016 || code eq 20006 }">
+                		<div class="invalid-feedback" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>
+                	 	
+                    </c:forEach> 
+          		
+                </c:if>
 			</div>
 			<div class="form-group col-6">
 				<label for="ville">Ville</label>
-				<input type="text" class="form-control" id="ville" name="ville" value="${utilisateur.ville}">
+				<input type="text" class="form-control <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test="${ code eq 30017 }">error-field</c:if></c:forEach></c:if>" id="ville" name="ville" value="${utilisateur.ville}">
+				<c:if test="${!empty listeCodesErreur}">               	 
+                 	<c:forEach var="code" items="${listeCodesErreur}">
+                		<c:if test="${ code eq 30017 }">
+                		<div class="invalid-feedback" role="alert">
+                			${LecteurMessage.getMessageErreur(code)}
+                			</div>
+                	 	</c:if>
+                	 	
+                    </c:forEach> 
+          		
+                </c:if>	
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Enregistrer</button>

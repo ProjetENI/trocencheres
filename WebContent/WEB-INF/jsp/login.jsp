@@ -2,11 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="/WEB-INF/fragment/header.jsp">
-    <jsp:param name="onglet" value="Header_Value"/>
+    <jsp:param name="onglet" value="Connexion"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/navbar.jsp">
-    <jsp:param name="title" value="Navbar_Value"/>
+    <jsp:param name="title" value="Connexion"/>
 </jsp:include>
 
 	<!-- NOUVELLE PRESENTATION -->
@@ -24,6 +24,7 @@
 						<input class="input100 input-check" type="text" id="identifiant" name="identifiant">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Identifiant</span>
+
 					</div>
 
 					<div class="wrap-input100 validate-input validate-input-check" data-validate="Mot de passe requis">
@@ -52,7 +53,7 @@
 							<span class="text-danger">
 								${error}
 								<c:if test="${!empty listeCodesErreur}">
-									<div class="alert alert-danger" role="alert">
+									<div class="invalid-feedback" role="alert">
 										<strong>Erreur!</strong>
 										<ul>
 										<c:forEach var="code" items="${listeCodesErreur}">

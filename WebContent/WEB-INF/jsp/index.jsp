@@ -9,11 +9,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <jsp:include page="/WEB-INF/fragment/header.jsp">
-    <jsp:param name="onglet" value="Header_Value"/>
+    <jsp:param name="onglet" value="Liste des encheres"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/navbar.jsp">
-    <jsp:param name="title" value="Navbar_Value"/>
+    <jsp:param name="title" value="Liste des encheres"/>
 </jsp:include>
 
 <jsp:include page="/WEB-INF/fragment/banner.jsp">
@@ -24,11 +24,13 @@
 		<section>
 			<form action="IndexServlet" method="POST">
 				<div class="row">
-					<div class="col-6">
+					<div class="col-4">
 						<div class="form-group">
 							<label for="nomArticle">Article</label>
 							<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Le nom de l'article contient">
 						</div>
+					</div>
+					<div class="col-4">
 						<div class="form-group">
 							<label for="categories">Catégorie</label>
 							<select class="form-control" id="categories" name="categories">
@@ -40,8 +42,8 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-6 center p-b-50 p-t-50">
-						<button type="submit" class="btn btn-primary w-60">Rechercher</button>
+					<div class="col-4">
+						<button type="submit" class="btn btn-primary w-60 mt-3" style="height:40px">Rechercher</button>
 					</div>
 				</div>
 			</form>

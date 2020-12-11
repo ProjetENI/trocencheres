@@ -744,8 +744,19 @@ input.input100 {
     opacity: 1;
   }
 }
-
-
+/*==================================================================
+[ FORMS FEEDBACK ]*/
+.invalid-feedback {
+	width: 100%;
+	display: block;
+	margin-top: .25rem;
+	font-size: 80%;
+	color: #dc3545;
+}
+.error-field {
+	color: #dc3545;
+	border-color: #dc3545;
+}
 
 /*==================================================================
 [ Social ]*/
