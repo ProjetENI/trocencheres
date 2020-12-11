@@ -24,13 +24,13 @@
 		<section>
 			<form action="IndexServlet" method="POST">
 				<div class="row">
-					<div class="col-4">
+					<div class="col-12 col-md-4">
 						<div class="form-group">
 							<label for="nomArticle">Article</label>
-							<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Le nom de l'article contient">
+							<input type="text" class="form-control" id="nomArticle" name="nomArticle" placeholder="Rechercher un article">
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-12 col-md-4">
 						<div class="form-group">
 							<label for="categories">Catégorie</label>
 							<select class="form-control" id="categories" name="categories">
@@ -42,8 +42,8 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-4">
-						<button type="submit" class="btn btn-outline-primary w-60 mt-4" style="height:40px">Rechercher</button>
+					<div class="col-12 col-md-4 mx-auto text-center">
+						<button type="submit" class="btn btn-outline-primary mt-4 w-full" style="height:40px">Rechercher</button>
 					</div>
 				</div>
 			</form>
