@@ -3,6 +3,7 @@ package fr.eni.trocencheres.ihm;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ import fr.eni.trocencheres.bo.Utilisateur;
 public class SupprimerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String INDEX = "Index";
+	private static final String INDEX = "/IndexServlet";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -48,8 +49,10 @@ public class SupprimerCompteServlet extends HttpServlet {
 
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection) throws ServletException, IOException {
 
-		RequestDispatcher rd = this.getServletContext().getNamedDispatcher(redirection);
-		rd.forward(request, response);
+		ServletContext servletContext = getServletContext();
+		RequestDispatcher requestDispatcher = servletContext
+		.getRequestDispatcher(redirection);
+		requestDispatcher.forward(request, response);
 	}
 }
 

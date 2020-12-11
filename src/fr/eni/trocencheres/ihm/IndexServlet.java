@@ -28,9 +28,6 @@ public class IndexServlet extends HttpServlet {
 		List<Integer> listeCodesErreur = new ArrayList<>();
 		List<ArticleVendu> listeArticlesVendus = new ArrayList<>();
 		
-//		String articleRecherche = verifierArticle(request, listeCodesErreur);
-//		String categorie = request.getParameter("categories");
-		
 		ArticleVenduManager avm = new ArticleVenduManager();
 
 		if(listeCodesErreur.size()>0) {
@@ -53,10 +50,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Integer> listeCodesErreur = new ArrayList<>();
 		List<ArticleVendu> listeArticlesVendus = new ArrayList<>();
-		
-//		String articleRecherche = verifierArticle(request, listeCodesErreur);
-//		String categorie = request.getParameter("categories");
-		
+
 		ArticleVenduManager avm = new ArticleVenduManager();
 
 		if(listeCodesErreur.size()>0) {
@@ -82,13 +76,4 @@ public class IndexServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	private String verifierArticle(HttpServletRequest request, List<Integer> listeCodesErreur) {
-        String nomArticle;
-        nomArticle = request.getParameter("nomArticle");
-        if(nomArticle==null || nomArticle.trim().equals(""))
-        {
-            listeCodesErreur.add(CodesResultatServlets.CHAMPS_PSEUDO_VIDE_ERREUR);
-        }
-        return nomArticle;
-    }
 }
