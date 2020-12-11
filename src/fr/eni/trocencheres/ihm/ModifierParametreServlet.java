@@ -41,6 +41,7 @@ public class ModifierParametreServlet extends HttpServlet {
 		String pseudo = verifierPseudo(request, listeCodesErreur);
 		String nom = verifierNom(request, listeCodesErreur);
 		String prenom = verifierPrenom(request, listeCodesErreur);
+		System.out.println("Prenom : " + prenom);
 		String email = verifierEmail(request, listeCodesErreur);
 		String telephone = verifierTelephone(request, listeCodesErreur);
 		String rue = verifierRue(request, listeCodesErreur);
@@ -49,20 +50,25 @@ public class ModifierParametreServlet extends HttpServlet {
 		
 		
 		Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur(),pseudo,nom,prenom,email,telephone,rue,codepostal,ville);
-	
-		try {
-			um.modifierUtilisateur(myUser);
-			validModif = true;
 
-		} catch (BusinessException e) {
-			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
-		}
+		if(listeCodesErreur.size()>0) {
+            request.setAttribute("listeCodesErreur",listeCodesErreur);
+			forward(request, response, PARAMETRE_UTILISATEUR);
+		} else {
+			try {
+				um.modifierUtilisateur(myUser);
+				validModif = true;
+	
+			} catch (BusinessException e) {
+				request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+			}
+			
+			if (validModif) {
+				session.setAttribute("utilisateur", myUser);
+			}
 		
-		if (validModif) {
-			session.setAttribute("utilisateur", myUser);
+			forward(request, response, PARAMETRE_UTILISATEUR);
 		}
-		
-		forward(request, response, PARAMETRE_UTILISATEUR);
 
 	}
 
@@ -96,8 +102,7 @@ public class ModifierParametreServlet extends HttpServlet {
 	private String verifierPrenom(HttpServletRequest request, List<Integer> listeCodesErreur) {
         String prenom;
         prenom = request.getParameter("prenom");
-        if(prenom==null || prenom.trim().equals(""))
-        {
+        if(prenom.equals(null) || prenom.trim().equals("")) {
             listeCodesErreur.add(CodesResultatServlets.CHAMPS_PRENOM_VIDE_ERREUR);
         }
         return prenom;

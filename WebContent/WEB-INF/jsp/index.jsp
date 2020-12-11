@@ -74,7 +74,7 @@
 									<span class="seller-title">Vendu par : </span><span class="seller-name">${article.utilisateur.pseudo}</span><br/>
 									<span class="price-title">Enchère en cours : </span><span class="price-tag">${article.prixInitial} <i class="fa fa-gavel"></i></span>
 								</p>
-								<c:if test="${!utilisateur eq null}">
+								<c:if test="${!empty utilisateur}">
 								<form action="DetailArticleServlet" method="POST">
 									<input type="hidden" class="hide" id="noArticle" name="noArticle" value="${article.noArticle}">
 									<input type="submit" class="btn btn-primary" value="Détails">

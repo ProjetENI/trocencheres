@@ -7,7 +7,7 @@
 	<welcome-file-list>
 		<welcome-file>IndexServlet</welcome-file>
 	</welcome-file-list>
-
+	
 	<servlet>
 		<description>Index</description>
 		<servlet-name>Index</servlet-name>
@@ -50,11 +50,6 @@
 		<jsp-file>/WEB-INF/jsp/supprimerCompte.jsp</jsp-file>
 	</servlet>
 
-	<servlet>
-		<description>Login</description>
-		<servlet-name>Login</servlet-name>
-		<jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
-	</servlet>
 	
 	<servlet>
 		<description>AjouterArticle</description>

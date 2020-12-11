@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ import fr.eni.trocencheres.bo.Utilisateur;
 public class ConnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String INDEX = "Index";
-	private static final String LOGIN = "Login";
+	private static final String INDEX = "/IndexServlet";
+	private static final String LOGIN = "/WEB-INF/jsp/login.jsp";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -69,7 +70,9 @@ public class ConnectionServlet extends HttpServlet {
 	private void forward(HttpServletRequest request, HttpServletResponse response, String redirection)
 			throws ServletException, IOException {
 
-		RequestDispatcher rd = this.getServletContext().getNamedDispatcher(redirection);
+		ServletContext servletContext = getServletContext();
+		RequestDispatcher rd = servletContext
+		.getRequestDispatcher(redirection);
 		rd.forward(request, response);
 	}
 	
