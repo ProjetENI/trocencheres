@@ -60,4 +60,9 @@ public abstract class CodesResultatServlets {
 	public static final int CHAMPS_PRIX_INITIAL_ARTICLE_PARSE_ERREUR = 30027;
 	public static final int CHAMPS_CATEGORIE_ARTICLE_PARSE_ERREUR = 30028;
 	public static final int CHAMPS_DATE_FIN_ARTICLE_VIDE_ERREUR = 30029;
+	
+	/**
+	 * Erreur lanceé par la Servlet lors d'une enchère sur un article
+	 */
+	public static final int CHAMPS_MONTANT_ENCHERE_VIDE_ERREUR = 30040;
 }

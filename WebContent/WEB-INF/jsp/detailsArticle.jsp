@@ -56,6 +56,8 @@
 					</p>
 					
 					<form class="validate-form w-60 validate-form-check" method="post" action="EncherirServlet">
+					
+						<input type="hidden" class="hide" id="noArticle" name="noArticle" value="${article.noArticle}">
 
 						<div class="wrap-input100 validate-input validate-input-check" data-validate = "Indiquez une enchère">
 							<input class="input100 input-check" type="text" id="enchere" name="enchere">

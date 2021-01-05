@@ -72,20 +72,24 @@ public class ArticleVendu {
 
 	// construteur pour passage des parametre de l'IHM à la DAL sans retrait (nb param (8))
 	public ArticleVendu(String nomArticle, String description, String imageURL, LocalDate dateDebutEncheres,
-				LocalDate dateFinEncheres, int prixInitial, Categorie categorieArticle, Utilisateur utilisateur) {
-			this.nomArticle = nomArticle;
-			this.description = description;
-			this.imageURL = imageURL;
-			this.dateDebutEncheres = dateDebutEncheres;
-			this.dateFinEncheres = dateFinEncheres;
-			this.prixInitial = prixInitial;
-			this.categorieArticle = categorieArticle;
-			categorieArticle.ajouterArticles(this);
-			this.utilisateur = utilisateur;
-			utilisateur.ajouterArticles(this);
-			this.sethistoriqueEnchereArticle(new ArrayList<>());
-		}
+			LocalDate dateFinEncheres, int prixInitial, Categorie categorieArticle, Utilisateur utilisateur) {
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.imageURL = imageURL;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.categorieArticle = categorieArticle;
+		categorieArticle.ajouterArticles(this);
+		this.utilisateur = utilisateur;
+		utilisateur.ajouterArticles(this);
+		this.sethistoriqueEnchereArticle(new ArrayList<>());
+	}
 	
+	//constructeur pour l'enchere d'un article (Nb param (1))
+	public ArticleVendu(int noArticle) {
+		this.noArticle = noArticle;
+	}
 
 	// Getters et setters
 	public int getNoArticle() {

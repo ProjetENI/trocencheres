@@ -86,6 +86,10 @@ public class Utilisateur {
 			this.articles = new ArrayList<>();
 			this.historiqueEnchereUtilisateur = new ArrayList<>();
 	}
+	//constructeur pour l'enchere d'un article (Nb param (1))
+	public Utilisateur(int noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
+	}
 
 	// Getters et setters 
 	public int getNoUtilisateur() {
