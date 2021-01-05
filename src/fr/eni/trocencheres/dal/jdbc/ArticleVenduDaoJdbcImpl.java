@@ -105,6 +105,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			ResultSet rs = pstt.executeQuery();
     		
     		if (rs.next()) {
+    			int noArticle = pNoArticle;
 				String nomArticle = rs.getString("nom_article");
 		    	String description = rs.getString("description");
 		    	String image = rs.getString("image");
@@ -126,7 +127,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
             	String ville = rs.getString("ville");
 		    	Utilisateur vendeur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville);
 		    	
-		    	informationArticleVendu = new ArticleVendu(nomArticle, description, image, dateDebutEncheres, dateFinEncheres, miseAPrix, categorie, vendeur);
+		    	informationArticleVendu = new ArticleVendu(noArticle, nomArticle, description, image, dateDebutEncheres, dateFinEncheres, miseAPrix, categorie, vendeur);
 		    	articleFound =true;
     		}
 
@@ -155,9 +156,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 	 */
 	@Override
 	public void ajouterArticleVendu(ArticleVendu articlevendu) throws BusinessException {
-//		"INSERT INTO ARTICLE_VENDU"
-//				+ "(no_article, nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, no_utilisateur, no_categorie, etat_vente, image) "
-//				+ "VALUES (?,?,?,?,?,?,?,?,?,?);"
+		
 		try (Connection conn = ConnectionProvider.getConnection()) {
 
 			conn.setAutoCommit(false);
@@ -255,5 +254,7 @@ import fr.eni.trocencheres.dal.ConnectionProvider;
 			throw businessException;
         }
 		}
+	
+	
 	}
 
