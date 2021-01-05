@@ -1,8 +1,8 @@
 package fr.eni.trocencheres.dal;
 
 import fr.eni.trocencheres.dal.jdbc.ArticleVenduDaoJdbcImpl;
-import fr.eni.trocencheres.dal.jdbc.UtilisateurDaoJdbcImpl;
 import fr.eni.trocencheres.dal.jdbc.EnchereDaoJdbcImpl;
+import fr.eni.trocencheres.dal.jdbc.UtilisateurDaoJdbcImpl;
 
 public abstract class DaoFactory {
 	

@@ -3,7 +3,7 @@ package fr.eni.trocencheres.dal;
 import fr.eni.trocencheres.BusinessException;
 import fr.eni.trocencheres.bo.Enchere;
 
-public interface EnchereDAO {
+public interface EnchereDao{
 
 	/**
 	 * Fonction prenant en paramètre un article pour l'ajouter en base de données
