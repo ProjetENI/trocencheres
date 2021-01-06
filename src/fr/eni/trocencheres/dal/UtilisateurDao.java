@@ -49,5 +49,12 @@ public interface UtilisateurDao {
 	 */
 	Utilisateur listerUtilisateurInformation(String identifiant, String mdp) throws BusinessException;
 
+	/**
+	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
+	 * @return une liste d'Utilisateur
+	 * @throws BusinessException 
+	 */
+	Utilisateur listerUtilisateurInformation(int noUser) throws BusinessException;
+
 
 }

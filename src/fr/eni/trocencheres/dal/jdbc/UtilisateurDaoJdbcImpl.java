@@ -23,6 +23,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			+ "no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur "
 			+ "FROM UTILISATEURS WHERE (pseudo=? OR email=?) AND mot_de_passe=?;";
 	
+	private final String SELECT_ALL_UTILISATEUR_INFORMATIONS_ID = "SELECT "
+			+ "no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur "
+			+ "FROM UTILISATEURS WHERE no_utilisateur=?;";
+	
 	private final String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS"
 			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
 			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?);";
@@ -94,6 +98,60 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 			pstt_utilisateur.setString(1, identifiant);
 			pstt_utilisateur.setString(2, identifiant);
 			pstt_utilisateur.setString(3, mdp);
+
+			ResultSet rs = pstt_utilisateur.executeQuery();
+			
+
+            if (rs.next()) {
+            	int noUtilisateur = rs.getInt("no_utilisateur");
+            	String pseudo = rs.getString("pseudo");
+            	String nom = rs.getString("nom");
+            	String prenom = rs.getString("prenom");
+            	String email = rs.getString("email");
+            	String telephone = rs.getString("telephone");
+            	String rue = rs.getString("rue");
+            	String code_postal = rs.getString("code_postal");
+            	String ville = rs.getString("ville");
+            	int credit = rs.getInt("credit");
+            	boolean administrateur = rs.getBoolean("administrateur");
+
+            	infoUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, administrateur);
+            	userFound = true;
+            }
+   
+
+		} catch (Exception e) {
+			System.out.println(1);
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_ECHEC);
+			throw businessException;
+		}
+		
+        if (!userFound) {
+        	BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_LISTE_INEXISTANTE);
+			throw businessException;
+        }
+		
+		
+		return infoUtilisateur;
+	}
+	
+	/**
+	 * Fonction qui permet lister toutes les informations d'un utilisateurs présents en base de données
+	 * @return une liste d'Utilisateur
+	 * @throws BusinessException 
+	 */
+	@Override
+	public Utilisateur listerUtilisateurInformation(int noUser) throws BusinessException {
+
+		Utilisateur infoUtilisateur = null;
+		boolean userFound = false;
+		try (	Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement pstt_utilisateur = conn.prepareStatement(SELECT_ALL_UTILISATEUR_INFORMATIONS_ID)) {
+
+			pstt_utilisateur.setInt(1, noUser);
 
 			ResultSet rs = pstt_utilisateur.executeQuery();
 			
