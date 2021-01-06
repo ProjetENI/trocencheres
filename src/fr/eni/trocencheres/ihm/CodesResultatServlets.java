@@ -65,4 +65,5 @@ public abstract class CodesResultatServlets {
 	 * Erreur lanceé par la Servlet lors d'une enchère sur un article
 	 */
 	public static final int CHAMPS_MONTANT_ENCHERE_VIDE_ERREUR = 30040;
+	public static final int CHAMPS_MONTANT_ENCHERE_ENTIER_ERREUR = 30041;
 }

@@ -37,7 +37,7 @@ public class EnchereManager {
 	}
 
 	private void validerMontant(int prix, BusinessException businessException) {
-		if( prix < 0 || prix != (int)prix ) {
+		if(prix < 0 || prix != (int)prix ) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_MONTANT_ENCHERE_NOM_ERREUR);
 		}
 	}
