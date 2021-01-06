@@ -69,4 +69,10 @@ public abstract class CodesResultatBLL {
 	 * Echec l'état de vente de l'article ne respecte pas les règles définies
 	 */
 	public static final int REGLE_ARTICLE_ETAT_ERREUR=20046;
+	
+	/**
+	 * Echec le montant de l'enchere ne respecte pas les règles définies
+	 */
+	public static final int REGLE_MONTANT_ENCHERE_NOM_ERREUR=20050;
+	
 }

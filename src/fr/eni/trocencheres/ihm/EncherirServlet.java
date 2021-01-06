@@ -26,13 +26,13 @@ import fr.eni.trocencheres.bo.Utilisateur;
 public class EncherirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String ENCHERE = "Enchere";
+	private static final String DETAILS_ARTICLE = "/WEB-INF/jsp/detailsArticle.jsp";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		forward(request, response, ENCHERE);
+		forward(request, response, DETAILS_ARTICLE);
 	}
 
 	/**
@@ -47,15 +47,15 @@ public class EncherirServlet extends HttpServlet {
 		List<Integer> listeCodesErreur = new ArrayList<>();
 		
 
-		int credit = Integer.parseInt(verifierMontantEnchere(request, listeCodesErreur));
+		int montantEnchere = verifierMontantEnchere(request, listeCodesErreur, "montantEnchere");
 		ArticleVendu noArticle = new ArticleVendu(Integer.parseInt(request.getParameter("noArticle")));
 
 		Utilisateur myUser = new Utilisateur(userConnecter.getNoUtilisateur());
-		Enchere enchere = new Enchere(LocalDate.now(), credit, noArticle, myUser);
+		Enchere enchere = new Enchere(LocalDate.now(), montantEnchere, noArticle, myUser);
 
 		if(listeCodesErreur.size()>0) {
             request.setAttribute("listeCodesErreur",listeCodesErreur);
-			forward(request, response, ENCHERE);
+			forward(request, response, DETAILS_ARTICLE);
 		} else {
 			try {
 				um.modifierUtilisateur(myUser);
@@ -69,7 +69,7 @@ public class EncherirServlet extends HttpServlet {
 				session.setAttribute("utilisateur", myUser);
 			}
 		
-			forward(request, response, ENCHERE);
+			forward(request, response, DETAILS_ARTICLE);
 		}
 
 	}
@@ -80,14 +80,14 @@ public class EncherirServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	private String verifierMontantEnchere(HttpServletRequest request, List<Integer> listeCodesErreur) {
-        String NouveauMontantEnchere;
-        NouveauMontantEnchere = request.getParameter("montantEnchere");
-        if(NouveauMontantEnchere==null || NouveauMontantEnchere.trim().equals(""))
-        {
-            listeCodesErreur.add(CodesResultatServlets.CHAMPS_MONTANT_ENCHERE_VIDE_ERREUR);
-        }
-        return NouveauMontantEnchere;
-    }
+	private int verifierMontantEnchere(HttpServletRequest request, List<Integer> listeCodesErreur, String nomParametre) {
+		int montantEnchere = 0;
+		try {
+			montantEnchere = Integer.parseInt(request.getParameter(nomParametre));
+		} catch (NumberFormatException e) {
+			listeCodesErreur.add(CodesResultatServlets.CHAMPS_MONTANT_ENCHERE_VIDE_ERREUR);
+		}
+		return montantEnchere;
+	}
 
 }

@@ -56,14 +56,22 @@
 					</p>
 					
 					<form class="validate-form w-60 validate-form-check" method="post" action="EncherirServlet">
-					
 						<input type="hidden" class="hide" id="noArticle" name="noArticle" value="${article.noArticle}">
 
-						<div class="wrap-input100 validate-input validate-input-check" data-validate = "Indiquez une enchère">
-							<input class="input100 input-check" type="text" id="enchere" name="enchere">
+						<div class="wrap-input100 validate-input validate-input-check <c:if test='${!empty listeCodesErreur}'><c:forEach var="code" items="${listeCodesErreur}"><c:if test='${ code eq 20050 || code eq 30040 }'>error-field</c:if></c:forEach></c:if>" data-validate = "Indiquez une enchère">
+							<input class="input100 input-check" type="text" id="montantEnchere" name="montantEnchere">
 							<span class="focus-input100"></span>
 							<span class="label-input100">Votre enchère</span>
 						</div>
+						<c:if test="${!empty listeCodesErreur}">               	 
+		                 	<c:forEach var="code" items="${listeCodesErreur}">
+		                		<c:if test="${ code eq 20050 || code eq 30040 }">
+		                		<div class="invalid-feedback" role="alert">
+		                			${LecteurMessage.getMessageErreur(code)}
+		                			</div>
+		                	 	</c:if>
+		                    </c:forEach>           		
+		                </c:if>
 						
 						<input type="submit" class="btn btn-primary" value="Encherir">
 					</form>
